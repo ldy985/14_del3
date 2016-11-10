@@ -10,7 +10,7 @@ public abstract class Ownable extends Field {
     private Player owner;
 
     public Ownable(int number, int price, String name) {
-        super(number, name);
+        super(name, number);
         this.price = price;
     }
 
