@@ -3,31 +3,25 @@ package Game;
 public class Tax extends Field {
 
     private int taxAmount;
-    private final int taxRate=-1;
+    private final int taxRate = -1;
 
-    private Tax(int no, String name, int taxAmount){
-
-        this.no=no;
-        this.taxAmount=taxAmount;
-        this.name=name;
+    private Tax(int no, String name, int taxAmount) {
+        super(name, no);
+        this.taxAmount = taxAmount;
     }
 
-    private int getTaxAmount(){
+    private int getTaxAmount() {
 
         return taxAmount;
 
     }
 
-    private int calculateTax(int totalValue){
+    private int calculateTax(int totalValue) {
 
-        int i=Player.getTotalValue()*(10/100)*taxRate;
-
-        return i;
-
-
+        return totalValue * (10 / 100) * taxRate;
     }
 
-    public landOnField(){
+    public void landOnField(Player player) {
 
     }
 }
