@@ -3,6 +3,7 @@ package Game;
 import desktop_codebehind.Car;
 import desktop_codebehind.Player;
 import desktop_resources.GUI;
+import java.util.*;
 
 import java.awt.*;
 
@@ -22,7 +23,7 @@ public class GameController {
     private Shaker shaker;
     private ArrayList<Player> players = new ArrayList<Player>(); //creates an ArrayList that can contain Player objects
     private GameBoard gameBoard;
-    private boolean gameWon = false;
+    //private boolean gameWon = false;
 
 
     public GameController(){
@@ -35,7 +36,7 @@ public class GameController {
         int numberOfPlayers = GUI.getUserInteger("How many players?", 2,6);
 
         for (int i = 0; i < numberOfPlayers ; i++){
-            String name = GUI.getUserString("What is Player" + (i+1) + "'s name?");
+            String name = GUI.getUserString("What is Player" + (i+1) + "'s name?"); //the + (i+1) changes the number so system prints player1 then player2...
             players.add = new Player(name); //creates a new player object.
 
             // Adds player to the GUI
@@ -88,13 +89,60 @@ public class GameController {
         player1.isTurn(true);
 
         //loop as long as more than one player is in the game (not bankroupt)
-        while(players.size(); > 1){
+        while(players.size() > 1){
 
             //go though all the players.
-            for(int i = 0; i <= players.size; - 1; i++ ){
-                
+            for(int i = 0; i <= players.size() - 1; i++){
+
+                Player currentPlayer = players.get(i);
+                //Checks which player has the turn and that the page has not been won.
+                //the system will go uot of this loop when there is 1 player left in the game
+                //therefore that player has won.
+                while(currentPlayer.getIsTurn() && players.size()>1){
+
+                    //rolls the dice
+                    shaker.shake();
+
+                    //displayes the dice in the GUI
+                    displayDice(shaker);
+
+                    //moves the players avitar on the gameboard in the GUI
+                    handleFieldAction(shaker.getSum(), currentPlayer);
+
+                    //stores the players location on the gameboard
+                    if(currentPlayer.getOnField()+shaker.getSum() <= gameBoard.fieldArray.lenght()){
+                        currentPlayer.setOnField(currentPlayer.getOnField()+shaker.getSum());
+                    }
+                    else{
+                        currentPlayer.setOnField(currentPlayer.getOnField()+shaker.getSum() - gameBoard.fieldArray.lenght());
+                    }
+
+                    //controles what happens when the player  lands on a specific field.
+                    Field currentField = gameBoard.getField(currentPlayer.getOnField());
+                    currentField.landOnField(currentPlayer);
+
+                    //removes bankroupt players from the game
+                    if(currentPlayer.getBalance() <= 0){
+                        players.remove(i);
+                    }
+
+                    //moves the turn to the next player
+                    if(i + 1 <= players.size() - 1){
+                        players.get(i+1).setIsturn(true);
+                    }
+                    else{
+                        players.get(0).setIsTurn(true);
+                    }
+
+                    currentPlayer.setIsTurn(false);
+
+                }
+
+                //gets displayed when a winner has been found.
+                GUI.showMessage(players.get(i).getName() + "Won");
             }
         }
+        GUI.close();
     }
 
 
