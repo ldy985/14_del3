@@ -9,7 +9,7 @@ public abstract class Field {
     private String name;
     private int number;
 
-    public Field(String name, int number){
+    public Field(int number, String name){
 
         this.name = name;
         this.number = number;
