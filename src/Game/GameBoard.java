@@ -14,7 +14,7 @@ public class GameBoard {
     public int getNoOfFleetsOwned(Player player) {
         int num = 0;
 
-        for (Field theField : GameBoard) {
+        for (Field theField : Board) {
             if (theField instanceof Ownable) {
                 if (((Ownable) theField).getOwner() == player) {
                     num++;

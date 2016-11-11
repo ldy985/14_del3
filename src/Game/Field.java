@@ -9,8 +9,10 @@ public abstract class Field {
     private String name;
     private int number;
 
-    Field(){
+    public Field(int number, String name){
 
+        this.name = name;
+        this.number = number;
     }
 
     public abstract void landOnField(Player player);

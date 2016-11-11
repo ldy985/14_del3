@@ -1,39 +1,48 @@
 package Game;
 
-public class Tax {
+/**
+ * A field of the Type Tax
+ */
+public class Tax extends Field {
 
     private int taxAmount;
-    private int taxRate=-1;
+    private final int taxRate = -1;
 
-    private Tax(int no, String name, int taxAmount){
+    /**
+     *
+     * @param no The field number
+     * @param name The name of the Field
+     * @param taxAmount The permanent tax on the Field
+     */
+    private Tax(int no, String name, int taxAmount) {
+        super(no, name);
+        this.taxAmount = taxAmount;
+    }
 
-        new Tax(1, "Caravan",taxAmount);
-        new Tax(2, "Goldmine",taxAmount);
+    /**
+     * Gets the permanent amount of tax the player needs to pay
+     */
+    private int getTaxAmount() {
+
+        return taxAmount;
 
     }
 
-    private getTaxAmount();{
+    /**
+     * Calculates the tax the player needs to pay
+     * @param totalValue The total value of the player
+     * @return The amount of money the player needs to pay
+     */
+    private int calculateTax(int totalValue) {
 
-        if (int no=1){
-
-            taxAmount = calculateTax()*taxRate;
-
-        }
-        else
-        {
-            taxAmount = 2000;
-        }
-
+        return totalValue * (10 / 100) * taxRate;
     }
 
-    private int calculateTax(int totalValue){
-
-        int taxBeforeRate = totalValue*(10/100);
-        return taxBeforeRate;
-
-    }
-
-    public landOnField(){
+    /**
+     * Handles the stuff that needs to happen when a player lands on a field
+     * @param player The player that lands on the field
+     */
+    public void landOnField(Player player) {
 
     }
 }
