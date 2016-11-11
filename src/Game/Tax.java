@@ -1,35 +1,29 @@
 package Game;
 
-public class Tax {
+public class Tax extends Field {
 
     private int taxAmount;
-    private int taxRate=-1;
+    private final int taxRate=-1;
 
     private Tax(int no, String name, int taxAmount){
 
-        new Tax(1, "Caravan",taxAmount);
-        new Tax(2, "Goldmine",taxAmount);
-
+        this.no=no;
+        this.taxAmount=taxAmount;
+        this.name=name;
     }
 
-    private getTaxAmount();{
+    private int getTaxAmount(){
 
-        if (int no=1){
-
-            taxAmount = calculateTax()*taxRate;
-
-        }
-        else
-        {
-            taxAmount = 2000;
-        }
+        return taxAmount;
 
     }
 
     private int calculateTax(int totalValue){
 
-        int taxBeforeRate = totalValue*(10/100);
-        return taxBeforeRate;
+        int i=Player.getTotalValue()*(10/100)*taxRate;
+
+        return i;
+
 
     }
 
