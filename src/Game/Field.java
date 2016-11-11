@@ -1,20 +1,33 @@
 package Game;
 
-
 /**
- * Created by Timothy Rasmussen on 10-11-2016.
+ * Field defines common attribues and methods for all the Field types
+ *
+ * Bugs: none known
+ *
+ * @author       Timothy Rasmussen
+ * @version      v.0.1
  */
 public abstract class Field {
 
     private String name;
     private int number;
 
+    /**
+     * Constructs a Field
+     * @param number the id of the Field
+     * @param name The name of the Field
+     */
     public Field(int number, String name){
 
         this.name = name;
         this.number = number;
     }
 
+    /**
+     * Handles the stuff that needs to happen when a player lands on a Field
+     * @param player The player that lands on the Field
+     */
     public abstract void landOnField(Player player);
 
 }
