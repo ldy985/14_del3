@@ -1,5 +1,14 @@
 package Game;
 
+/**
+ * Keeps track of the balance, and adds/subtracts by the points on the board.
+ *
+ * Bugs: none known
+ *
+ * @author       Casper Bodskov
+ * @version      v.0.1
+ */
+
 public class Fleet extends Ownable {
 
     private final int RENT_1 = 500;

@@ -1,12 +1,15 @@
 package Game;
 
 
-//*******************************************************************
-//  Player
-//
-// Represents each player as an object.
-// Keeps track of whether the player has his turn, has won, and the car spot for the previous turn.
-//*******************************************************************
+/**
+ * Keeps track of the balance, and adds/subtracts by the points on the board.
+ *
+ * Bugs: none known
+ *
+ * @author       Lasse Dyrsted
+ * @version      v.0.1
+ */
+
 public class Player {
 
     private final String name;

@@ -1,5 +1,13 @@
 package Game;
 
+/**
+ * Keeps track of the balance, and adds/subtracts by the points on the board.
+ *
+ * Bugs: none known
+ *
+ * @author       Rasmus Blichfeld
+ * @version      v.0.1
+ */
 
 // Game entrypoint.
 public class Game {
