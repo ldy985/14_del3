@@ -10,8 +10,12 @@ package Game;
  */
 public abstract class Field {
 
-    private String name;
-    private int number;
+    private final String name;
+    private final int number;
+
+    public String getName() {
+        return name;
+    }
 
     /**
      * Constructs a Field
@@ -29,5 +33,16 @@ public abstract class Field {
      * @param player The player that lands on the Field
      */
     public abstract void landOnField(Player player);
+
+
+    //public abstract desktop_fields.Field toGUIField();
+
+    public desktop_fields.Field toGUIField() {
+        desktop_fields.Shipping.Builder a = new desktop_fields.Shipping.Builder()
+                .setTitle(name)
+                .setPicture(null);
+        return a.build();
+    }
+
 
 }

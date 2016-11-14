@@ -5,7 +5,7 @@ package Game;
  */
 public class Territory extends Ownable {
 
-    private int rent;
+    private final int rent;
 
     public Territory(int number, String name, int price, int rent) {
 
@@ -14,28 +14,8 @@ public class Territory extends Ownable {
 
     }
 
-    public void landOnField(Player player) {
-
-        //This need to add game options.
-        //GUI needs to be added.
-
-        if (getOwner() == player) {
-
-            return;
-        }
-
-        if (true) { //if somebody buys the field.
-
-        setOwner(player);
-
-        }
-
-    }
-
     public int getRent() {
-
         return rent;
-
     }
 
 }

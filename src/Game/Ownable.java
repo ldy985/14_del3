@@ -1,24 +1,27 @@
 package Game;
 
 
+import desktop_resources.GUI;
+
 /**
  * Shaker class, contains the Die objects
- *
+ * <p>
  * Bugs: none known
  *
- * @author       Timothy Rasmussen
- * @version      v.0.1
+ * @author Timothy Rasmussen
+ * @version v.0.1
  */
 public abstract class Ownable extends Field {
 
-    private int price;
+    private final int price;
     private Player owner;
 
     /**
      * The constructor of the Ownable type
+     *
      * @param number The id of the Field
-     * @param price The price of the Field
-     * @param name The name of the Field
+     * @param price  The price of the Field
+     * @param name   The name of the Field
      */
     public Ownable(int number, int price, String name) {
         super(number, name);
@@ -32,6 +35,7 @@ public abstract class Ownable extends Field {
 
     /**
      * Gets the owner of an ownable Field
+     *
      * @return returns the owner.
      */
     public Player getOwner() {
@@ -40,10 +44,59 @@ public abstract class Ownable extends Field {
 
     /**
      * Sets the owner of an ownable field
+     *
      * @param owner The new owner
      */
     public void setOwner(Player owner) {
         this.owner = owner;
     }
 
+    public void landOnField(Player player) {
+
+        // No one owns the field and the player has the money to buy it
+        if (owner == null && price <= player.getAccount().getBalance()) {
+
+            // Checks whether the player wants to buy
+            if (GUI.getUserSelection(("Do you want to buy " + getName() + "for " + price + "?"), "No", "Yes") == "Yes") {
+
+                player.getAccount().addBalance(-price);
+                player.setRealEstateValue(player.getRealEstateValue() + price);
+                setOwner(player);
+                GUI.showMessage(player.getName() + " Bought " + getName());
+
+            }
+        }
+        //Someone else owns the field
+        if (owner != player && owner != null) {
+            player.getAccount().addBalance(-getRent());
+            owner.getAccount().addBalance(getRent());
+        }
+        /*
+        // If the player doesn't own the field and If no-one owns the field and
+        if (getOwner() != player && getOwner() != null) {
+
+            // if they have enough money
+            if (price <= player.getAccount().getBalance()) {
+
+                // Checks whether the player wants to buy
+                if (true) {//TODO: add gui
+
+                    player.getAccount().addBalance(-price);
+                    setOwner(player);
+
+                }
+                //If another player owns the field
+            } else {
+
+                getOwner().getAccount().addBalance(price);
+            }
+
+        }else{
+            player.getAccount().addBalance(-getRent());
+        }
+
+*/
+
+
+    }
 }

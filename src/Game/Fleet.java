@@ -6,7 +6,6 @@ public class Fleet extends Ownable {
     private final int RENT_2 = 1000;
     private final int RENT_3 = 2000;
     private final int RENT_4 = 4000;
-    private int numberOfFleets;
 
     public Fleet(int noOfFleets, String name, int price) {
 
@@ -14,32 +13,20 @@ public class Fleet extends Ownable {
 
     }
 
-    public void landOnField(Player player){      
-
-        numberOfFleets = GameBoard.getNoOfFleetsOwned(player);
-        this.player = player;
-
-    }
 
     public int getRent() {
-
-        switch (numberOfFleets){
+        switch (GameController.getGameBoard().getNoOfFleetsOwned(GameController.getCurrentPlayer())) {
             case 1:
-                rent = RENT_1;
-                break;
+                return RENT_1;
             case 2:
-                rent = RENT_2;
-                break;
+                return RENT_2;
             case 3:
-                rent = RENT_3;
-                break;
+                return RENT_3;
             case 4:
-                rent = RENT_4;
-                break;
+                return RENT_4;
         }
 
-        return rent;
-
+        return 0;//Should never happen
     }
 
 }
