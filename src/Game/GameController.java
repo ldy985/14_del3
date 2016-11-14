@@ -1,51 +1,70 @@
 package Game;
 
+
 import desktop_codebehind.Car;
-import desktop_codebehind.Player;
 import desktop_resources.GUI;
-import java.util.*;
 
 import java.awt.*;
-
-import static desktop_codebehind.FieldFactory.fields;
+import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * The main flow of the game.
- *
+ * <p>
  * Bugs: none known
  *
- * @author       Mathias S Larsen (2016)
- * @version      v.0.1
+ * @author Mathias S Larsen (2016)
+ * @version v.0.1
  */
 
 public class GameController {
 
-    private Shaker shaker;
-    private ArrayList<Player> players = new ArrayList<Player>(); //creates an ArrayList that can contain Player objects
-    private GameBoard gameBoard;
-    //private boolean gameWon = false;
+    private static Shaker shaker;
+    private static Player currentPlayer;
+    private static final int FIELD_COUNT = 21;
+    private final int START_BALANCE = 30000;
+    private final ArrayList<Player> players = new ArrayList<Player>(); //creates an ArrayList that can contain Player objects
 
-
-    public GameController(){
-
-        gameBoard = new GameBoard(21); //creates a Gameboard object.
-        shaker = new Shaker(2); //creates a shaker with 2 dice.
+    public static GameBoard getGameBoard() {
+        return gameBoard;
     }
 
-    private void initializePlayers(){
-        int numberOfPlayers = GUI.getUserInteger("How many players?", 2,6);
+    private static final GameBoard gameBoard = new GameBoard();
 
-        for (int i = 0; i < numberOfPlayers ; i++){
-            String name = GUI.getUserString("What is Player" + (i+1) + "'s name?"); //the + (i+1) changes the number so system prints player1 then player2...
-            players.add = new Player(name); //creates a new player object.
+    public GameController() {
+
+         //creates a Gameboard object.
+        shaker = new Shaker(2); //creates a shaker with 2 dice.
+    }
+    //private boolean gameWon = false;
+
+    public static Player getCurrentPlayer() {
+        return currentPlayer;
+    }
+
+    public static Shaker getShaker() {
+        return shaker;
+    }
+
+    private void initializePlayers() {
+
+        int numberOfPlayers = 2; // TODO: 11-11-2016 GUI
+        for (int i = 0; i < numberOfPlayers; i++) {
+            String name = GUI.getUserString("What is Player" + (i + 1) + "'s name?"); //the + (i+1) changes the number so system prints player1 then player2...
+            players.add(new Player(name, START_BALANCE)); //creates a new player object.
 
             // Adds player to the GUI
             // Adds a car object which has a new color, specified by a random-method between the integers 0-255
-            GUI.addPlayer(player.getName(), 30000, new Car.Builder()
-                    .primaryColor(new Color(rand.nextInt(256), rand.nextInt(256), rand.nextInt(256)))
+            GUI.addPlayer(players.get(i).getName(), START_BALANCE, new Car.Builder()
+                    .primaryColor(randomColor())
                     .build());
         }
 
+    }
+
+    private Color randomColor() {
+        Random random = new Random();
+        return new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256));
     }
 
     private void displayDice(Shaker shaker) {
@@ -59,92 +78,64 @@ public class GameController {
         GUI.setDice(faceValue1, faceValue2);
     }
 
-    private void handleFieldAction(int sum, Player player) {
+    private void movePlayer(Player thisPlayer) {
 
+        //stores the players location on the gameboard
+        if (thisPlayer.getOnField() + shaker.getSum() <= FIELD_COUNT) {
+            thisPlayer.setOnField(thisPlayer.getOnField() + shaker.getSum());
+        } else {
+            thisPlayer.setOnField(thisPlayer.getOnField() + shaker.getSum() - FIELD_COUNT);
+        }
 
         //"Moves" the car on the board by removing it in the previous location
         // and then set it to the new location.
-        GUI.removeAllCars(player.getName());
-        GUI.setCar(sum - 1, player.getName());
-
-        // Finds the modifier of the specific field.
-        int points = fields[sum - 2].getRent();
-
-        // Adds or subtracts points to/from the players balance
-        player.getAccount().addBalance(points);
-
-        // Displays new balance in the GUI
-        GUI.setBalance(player.getName(), player.getAccount().getBalance());
-
-        GUI.showMessage(fields[sum - 2].getActionText());
+        GUI.removeAllCars(thisPlayer.getName());
+        GUI.setCar(thisPlayer.getOnField(), thisPlayer.getName());
 
     }
 
-    public void startGame(){
+    public void startGame() {
+
 
         initializePlayers();
 
-        //sets player1 to be the current player.
-        Player player1 = players.get(0);
-        player1.isTurn(true);
-
         //loop as long as more than one player is in the game (not bankroupt)
-        while(players.size() > 1){
+        while (players.size() > 1) {
 
             //go though all the players.
-            for(int i = 0; i <= players.size() - 1; i++){
 
-                Player currentPlayer = players.get(i);
-                //Checks which player has the turn and that the page has not been won.
-                //the system will go uot of this loop when there is 1 player left in the game
-                //therefore that player has won.
-                while(currentPlayer.getIsTurn() && players.size()>1){
+            for (int i = 0; i < players.size(); i++) {
+                currentPlayer = players.get(i);
 
-                    //rolls the dice
-                    shaker.shake();
 
-                    //displayes the dice in the GUI
-                    displayDice(shaker);
+                //rolls the dice
+                shaker.shake();
 
-                    //moves the players avitar on the gameboard in the GUI
-                    handleFieldAction(shaker.getSum(), currentPlayer);
+                //displayes the dice in the GUI
+                displayDice(shaker);
 
-                    //stores the players location on the gameboard
-                    if(currentPlayer.getOnField()+shaker.getSum() <= gameBoard.fieldArray.lenght()){
-                        currentPlayer.setOnField(currentPlayer.getOnField()+shaker.getSum());
-                    }
-                    else{
-                        currentPlayer.setOnField(currentPlayer.getOnField()+shaker.getSum() - gameBoard.fieldArray.lenght());
-                    }
+                //moves the players avitar on the gameboard in the GUI
+                movePlayer(currentPlayer);
 
-                    //controles what happens when the player  lands on a specific field.
-                    Field currentField = gameBoard.getField(currentPlayer.getOnField());
-                    currentField.landOnField(currentPlayer);
 
-                    //removes bankroupt players from the game
-                    if(currentPlayer.getBalance() <= 0){
-                        players.remove(i);
-                    }
+                //controles what happens when the player lands on a specific field.
+                Field currentField = gameBoard.getField(currentPlayer.getOnField());
+                currentField.landOnField(currentPlayer);
 
-                    //moves the turn to the next player
-                    if(i + 1 <= players.size() - 1){
-                        players.get(i+1).setIsturn(true);
-                    }
-                    else{
-                        players.get(0).setIsTurn(true);
-                    }
-
-                    currentPlayer.setIsTurn(false);
-
+                //removes bankroupt players from the game
+                if (currentPlayer.getAccount().getBalance() <= 0) {
+                    players.remove(currentPlayer);
+                    break;//Stop the loop when we remove an element because we use foreach else we get a pointer error
                 }
 
-                //gets displayed when a winner has been found.
-                GUI.showMessage(players.get(i).getName() + "Won");
+
             }
+
         }
+
+        //gets displayed when a winner has been found.
+        GUI.showMessage(players.get(0).getName() + "Won");
+
         GUI.close();
     }
-
-
-
 }

@@ -6,11 +6,13 @@ public class Game {
 
     public static void main(String[] args) {
 
+        GameController gameController = new GameController();
+
         // The GUI generates the fields on the board
-        GameController.initializeGui();
+        //gameController.initializePlayers();
 
         // The startGame() method is called to startGame the game
-        GameController.startGame();
+        gameController.startGame();
 
     }
 }

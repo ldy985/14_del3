@@ -1,17 +1,18 @@
 package Game;
 
+import desktop_resources.GUI;
+
 /**
  * A field of the Type Tax
  */
 public class Tax extends Field {
 
-    private int taxAmount;
-    private final int taxRate = -1;
+    private final int taxAmount;
+    private float taxRate;
 
     /**
-     *
-     * @param no The field number
-     * @param name The name of the Field
+     * @param no        The field number
+     * @param name      The name of the Field
      * @param taxAmount The permanent tax on the Field
      */
     private Tax(int no, String name, int taxAmount) {
@@ -30,19 +31,32 @@ public class Tax extends Field {
 
     /**
      * Calculates the tax the player needs to pay
+     *
      * @param totalValue The total value of the player
      * @return The amount of money the player needs to pay
      */
     private int calculateTax(int totalValue) {
 
-        return totalValue * (10 / 100) * taxRate;
+        return (int) (totalValue * taxRate); // TODO: 11-11-2016 talk about rounding
     }
 
     /**
      * Handles the stuff that needs to happen when a player lands on a field
+     *
      * @param player The player that lands on the field
      */
     public void landOnField(Player player) {
+
+
+        int calculatedTax = calculateTax(player.getRealEstateValue()+player.getAccount().getBalance());
+        if (taxRate != 1.0f && GUI.getUserSelection(("Do you want to pay " + taxAmount + "or 10% (" + calculatedTax + ")"), taxAmount + "", "10%") == "10%") {
+            player.getAccount().addBalance(calculatedTax);
+
+        } else {
+            player.getAccount().addBalance(-taxAmount);
+        }
+
+        GUI.showMessage("You landed on " + getName());
 
     }
 }

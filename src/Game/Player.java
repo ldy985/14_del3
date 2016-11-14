@@ -11,21 +11,21 @@ public class Player {
 
     private final String name;
     private final Account account;
-    private boolean isTurn;
-    private int totalValue = 0;
+    private int realEstateValue = 0;
+    private int onField;
 
     //
-    public Player(String playerName) {
+    public Player(String playerName, int startBalance) {
         name = playerName;
-        account = new Account(1000);
+        account = new Account(startBalance);
     }
 
-    public int getTotalValue() {
-        return totalValue;
+    public int getRealEstateValue() {
+        return realEstateValue;
     }
 
-    public void setTotalValue(int totalValue) {
-        this.totalValue = totalValue;
+    public void setRealEstateValue(int realEstateValue) {
+        this.realEstateValue = realEstateValue;
     }
 
     // Returns the account object.
@@ -38,28 +38,11 @@ public class Player {
         return name;
     }
 
-    // Returns the turn boolean.
-    public boolean getIsTurn() {
-        return isTurn;
+    public int getOnField() {
+        return onField;
     }
 
-    // Changes whether the player has the turn or not.
-    public void setIsTurn(boolean turn) {
-        isTurn = turn;
+    public void setOnField(int onField) {
+        this.onField = onField;
     }
-
-    // Method for checking if someone has won
-    public boolean hasWon() {
-
-        int currentBalance = account.getBalance();
-
-        // Win condition: If the player has 3000 points or over, he/she wins.
-        if (currentBalance >= 3000) {
-            return true;
-        } else {
-            return false;
-        }
-
-    }
-
 }
