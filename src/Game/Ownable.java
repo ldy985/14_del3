@@ -57,7 +57,7 @@ public abstract class Ownable extends Field {
         if (owner == null && price <= player.getAccount().getBalance()) {
 
             // Checks whether the player wants to buy
-            if (GUI.getUserSelection(("Do you want to buy " + getName() + "for " + price + "?"), "No", "Yes") == "Yes") {
+            if (GUI.getUserButtonPressed(("Do you want to buy " + getName() + "for " + price + "?"), "No", "Yes") == "Yes") {
 
                 player.getAccount().addBalance(-price);
                 player.setRealEstateValue(player.getRealEstateValue() + price);

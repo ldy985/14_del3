@@ -33,9 +33,9 @@ public class Fleet extends Ownable {
                 return RENT_3;
             case 4:
                 return RENT_4;
+            default:
+                return 0; //Should never happen
         }
-
-        return 0;//Should never happen
     }
 
 }
