@@ -3,8 +3,14 @@ package Game;
 import desktop_resources.GUI;
 
 /**
- * A field of the Type Tax
+ * Keeps track of the balance, and adds/subtracts by the points on the board.
+ *
+ * Bugs: none known
+ *
+ * @author       Casper Bodskov
+ * @version      v.0.1
  */
+
 public class Tax extends Field {
 
     private final int taxAmount;

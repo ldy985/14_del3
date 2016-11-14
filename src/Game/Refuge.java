@@ -3,8 +3,14 @@ package Game;
 import desktop_resources.GUI;
 
 /**
- * Created by razze on 10-11-2016.
+ * Keeps track of the balance, and adds/subtracts by the points on the board.
+ *
+ * Bugs: none known
+ *
+ * @author       Rasmus Blichfeldt
+ * @version      v.0.1
  */
+
 public class Refuge extends Field{
 
     private final int bonus;

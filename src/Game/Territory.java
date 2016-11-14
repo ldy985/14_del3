@@ -1,8 +1,14 @@
 package Game;
 
 /**
- * Created by shitface on 10-11-2016.
+ * Keeps track of the balance, and adds/subtracts by the points on the board.
+ *
+ * Bugs: none known
+ *
+ * @author       Timothy Rasmussen
+ * @version      v.0.1
  */
+
 public class Territory extends Ownable {
 
     private final int rent;
