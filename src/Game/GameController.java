@@ -8,6 +8,9 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 
+import static Game.Language.getString;
+import static Game.Language.setLanguage;
+
 /**
  * The main flow of the game.
  * <p>
@@ -35,6 +38,7 @@ public class GameController {
 
          //creates a Gameboard object.
         shaker = new Shaker(2); //creates a shaker with 2 dice.
+
     }
     //private boolean gameWon = false;
 
@@ -50,7 +54,7 @@ public class GameController {
 
         int numberOfPlayers = 2; // TODO: 11-11-2016 GUI
         for (int i = 0; i < numberOfPlayers; i++) {
-            String name = GUI.getUserString("What is Player" + (i + 1) + "'s name?"); //the + (i+1) changes the number so system prints player1 then player2...
+            String name = GUI.getUserString(getString("name1") + (i + 1) + getString("name2")); //the + (i+1) changes the number so system prints player1 then player2...
             players.add(new Player(name, START_BALANCE)); //creates a new player object.
 
             // Adds player to the GUI
@@ -96,7 +100,6 @@ public class GameController {
 
     public void startGame() {
 
-
         initializePlayers();
 
         //loop as long as more than one player is in the game (not bankroupt)
@@ -134,7 +137,7 @@ public class GameController {
         }
 
         //gets displayed when a winner has been found.
-        GUI.showMessage(players.get(0).getName() + "Won");
+        GUI.showMessage(players.get(0).getName() + getString("won"));
 
         GUI.close();
     }

@@ -10,12 +10,16 @@ package Game;
  */
 public abstract class Field {
 
-    private final String name;
+    private String name;
     private final int number;
+
+    public void setName(String newName){name = newName;}
 
     public String getName() {
         return name;
     }
+
+
 
     /**
      * Constructs a Field
