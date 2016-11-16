@@ -40,6 +40,10 @@ public class RefugeTest {
         assertEquals("Camp42", refuge.getName());
     }
 
+    /**
+     * tests if the field can be converted to the type of field the GUI uses.
+     * @throws Exception
+     */
     @Test
     public void toGUIField() throws Exception {
 
