@@ -27,8 +27,8 @@ public class Player {
         return realEstateValue;
     }
 
-    public void setRealEstateValue(int realEstateValue) {
-        this.realEstateValue = realEstateValue;
+    public void addRealEstateValue(int newRealEstateValue) {
+        this.realEstateValue = realEstateValue + newRealEstateValue;
     }
 
     // Returns the account object.
