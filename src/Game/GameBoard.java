@@ -10,6 +10,8 @@ import java.lang.reflect.Type;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import static Game.Language.setLanguage;
+
 /**
  * GameBoard encapsulates all the Fields used in the game
  * <p>
@@ -23,9 +25,11 @@ public class GameBoard {
     private final Field[] board;
 
     public GameBoard() {
+
         //board = new Field[numberOfFields];
         board = loadBoardFromFile("board.cfg");
         showOnGui();
+
     }
 
 
@@ -36,6 +40,7 @@ public class GameBoard {
 
         for (int i = 0; i < 21; i++) {
             tempField[i] = board[i].toGUIField();
+
         }
 
         // Leaves the rest of the fields available in the GUI empty
@@ -52,9 +57,9 @@ public class GameBoard {
 
         try {
             Gson g = new Gson();
+            Language lang = new Language();
 
             Field[] loadedFields = new Field[21];
-
 
             Path relativePath = Paths.get(fileName);
             String absolutePath = relativePath.toAbsolutePath().toString();
@@ -67,6 +72,7 @@ public class GameBoard {
 
                 String[] lineSplit = line.split("\\|");
                 loadedFields[i] = g.fromJson(lineSplit[1], (Type) Class.forName("Game." + lineSplit[0]));
+                loadedFields[i].setName(lang.getString(loadedFields[i].getName()));
                 i++;
 
             }
