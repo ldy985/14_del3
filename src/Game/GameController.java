@@ -84,13 +84,13 @@ public class GameController {
         GUI.setDice(faceValue1, faceValue2);
     }
 
-    private void movePlayer(Player thisPlayer) {
+    private void movePlayer(Player thisPlayer, int moveFields) {
 
         //stores the players location on the gameboard
-        if (thisPlayer.getOnField() + shaker.getSum() <= FIELD_COUNT) {
-            thisPlayer.setOnField(thisPlayer.getOnField() + shaker.getSum());
+        if (thisPlayer.getOnField() + moveFields <= FIELD_COUNT) {
+            thisPlayer.setOnField(thisPlayer.getOnField() + moveFields);
         } else {
-            thisPlayer.setOnField(thisPlayer.getOnField() + shaker.getSum() - FIELD_COUNT);
+            thisPlayer.setOnField(thisPlayer.getOnField() + moveFields - FIELD_COUNT);
         }
 
         //"Moves" the car on the board by removing it in the previous location
@@ -120,7 +120,7 @@ public class GameController {
                 displayDice(shaker);
 
                 //moves the players avitar on the gameboard in the GUI
-                movePlayer(currentPlayer);
+                movePlayer(currentPlayer, shaker.getSum());
 
 
                 //controles what happens when the player lands on a specific field.
