@@ -51,13 +51,7 @@ public class TerritoryTest {
     public void landOnField() throws Exception {
 
     }
-
-    @Test
-    public void getName() throws Exception {
-
-        assertEquals("TestTerri", territory.getName());
-    }
-
+    
     /**
      * Tests if the field can be used to create the type of field the GUI uses.
      * @throws Exception
@@ -72,6 +66,16 @@ public class TerritoryTest {
             test = true;
         }
         assertEquals(test, true);
+    }
+
+    @Test
+    public void getName() throws Exception {
+
+        assertEquals("TestTerri", territory.getName());
+
+        territory.setName("Ritz");
+
+        assertEquals("RitZ", territory.getName());
     }
 
 }
