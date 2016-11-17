@@ -24,7 +24,7 @@ public class Language {
             default: string = "Invalid Language. Please select English";
         }
 
-        // Returns th
+        // Returns the selected language
         string = language.getString(inputString);
 
         return string;
