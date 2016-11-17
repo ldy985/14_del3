@@ -18,12 +18,11 @@ public abstract class Ownable extends Field {
 
     /**
      * The constructor of the Ownable type
-     *
-     * @param number The id of the Field
-     * @param price  The price of the Field
+     *  @param number The id of the Field
      * @param name   The name of the Field
+     * @param price  The price of the Field
      */
-    public Ownable(int number, int price, String name) {
+    public Ownable(int number, String name, int price) {
         super(number, name);
         this.price = price;
     }

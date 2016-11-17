@@ -15,7 +15,7 @@ public class Territory extends Ownable {
 
     public Territory(int number, String name, int price, int rent) {
 
-        super(number, price, name);
+        super(number, name, price);
         this.rent = rent;
 
     }
