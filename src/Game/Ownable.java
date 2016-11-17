@@ -63,7 +63,7 @@ public abstract class Ownable extends Field {
                 player.getAccount().addBalance(-price);
                 player.addRealEstateValue(price);
                 setOwner(player);
-                GUI.showMessage(player.getName() + " Bought " + getName());
+                GUI.showMessage(player.getName() + getString("bought") + getName());
 
             }
         }

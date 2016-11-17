@@ -1,6 +1,7 @@
 package Game;
 
 import desktop_resources.GUI;
+import static Game.Language.getString;
 
 /**
  * Keeps track of the balance, and adds/subtracts by the points on the board.
@@ -55,14 +56,14 @@ public class Tax extends Field {
 
 
         int calculatedTax = calculateTax(player.getRealEstateValue()+player.getAccount().getBalance());
-        if (taxRate != 1.0f && GUI.getUserSelection(("Do you want to pay " + taxAmount + "or 10% (" + calculatedTax + ")"), taxAmount + "", "10%") == "10%") {
+        if (taxRate != 1.0f && GUI.getUserSelection((getString("paytax1") + taxAmount + getString("paytax2") + "10% ( " + calculatedTax + ")"), taxAmount + "", "10%") == "10%") {
             player.getAccount().addBalance(calculatedTax);
 
         } else {
             player.getAccount().addBalance(-taxAmount);
         }
 
-        GUI.showMessage("You landed on " + getName());
+        GUI.showMessage(getString("landed") + getName());
 
     }
 }

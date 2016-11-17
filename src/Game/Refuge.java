@@ -1,6 +1,7 @@
 package Game;
 
 import desktop_resources.GUI;
+import static Game.Language.getString;
 
 /**
  * Keeps track of the balance, and adds/subtracts by the points on the board.
@@ -28,6 +29,6 @@ public class Refuge extends Field{
     public void landOnField(Player player){
 
         player.getAccount().addBalance(bonus);
-        GUI.showMessage("You landed on " + getName());
+        GUI.showMessage(getString("landed") + getName());
     }
 }
