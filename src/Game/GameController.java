@@ -32,7 +32,7 @@ public class GameController {
         return gameBoard;
     }
 
-    private static final GameBoard gameBoard = new GameBoard();
+    private static final GameBoard gameBoard = new GameBoard(FIELD_COUNT);
 
     public GameController() {
 
