@@ -23,8 +23,11 @@ import static Game.Language.setLanguage;
 public class GameBoard {
 
     private final Field[] board;
+    private int numberOfFields;
 
-    public GameBoard() {
+    public GameBoard(int number) {
+
+        numberOfFields = number;
 
         //board = new Field[numberOfFields];
         board = loadBoardFromFile("board.cfg");
@@ -38,7 +41,7 @@ public class GameBoard {
 
         desktop_fields.Field[] tempField = new desktop_fields.Field[40];
 
-        for (int i = 0; i < 21; i++) {
+        for (int i = 0; i < numberOfFields; i++) {
             tempField[i] = board[i].toGUIField();
 
         }
