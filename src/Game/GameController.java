@@ -5,6 +5,7 @@ import desktop_codebehind.Car;
 import desktop_resources.GUI;
 
 import java.awt.*;
+import java.lang.management.GarbageCollectorMXBean;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -23,7 +24,6 @@ import static Game.Language.setLanguage;
 public class GameController {
 
     private static Shaker shaker;
-    private static Ownable ownable;
     private static Player currentPlayer;
     private static final int FIELD_COUNT = 21;
     private final int START_BALANCE = 30000;
@@ -127,10 +127,10 @@ public class GameController {
                 Field currentField = gameBoard.getField(currentPlayer.getOnField());
                 currentField.landOnField(currentPlayer);
 
-                //removes bankroupt players from the game
+                //removes bankrupt players from the game
                 if (currentPlayer.getAccount().getBalance() <= 0) {
                     players.remove(currentPlayer);
-                    ownable.setOwner(null);
+                    gameBoard.deleteOwnership(currentPlayer);
                     break;//Stop the loop when we remove an element because we use foreach else we get a pointer error
                 }
 

@@ -134,4 +134,17 @@ public class GameBoard {
 
         return num;
     }
+
+    public void deleteOwnership(Player player){
+
+        for (Field theField : board) {
+            if (theField instanceof Ownable) {
+                if (((Ownable) theField).getOwner() == player) {
+                    ((Ownable)theField).setOwner(null);
+                }
+            }
+        }
+
+
+    }
 }
