@@ -2,6 +2,7 @@ package Game;
 
 import com.google.gson.Gson;
 import desktop_fields.Empty;
+import desktop_fields.Shipping;
 import desktop_resources.GUI;
 
 import java.io.BufferedReader;
@@ -50,14 +51,22 @@ public class GameBoard {
 
         for (int i = 0; i < numberOfFields; i++) {
             tempField[i] = board[i].toGUIField();
-
         }
+
+
 
         // Leaves the rest of the fields available in the GUI empty
         for (int i = 21; i < 40; i++) {
-
-            tempField[i] = new Empty.Builder().build();
+            if (i == 35){
+                tempField[35] = new Shipping.Builder().setTitle("<b>Rules").setDescription("2-6 players play. Players roll 2 dice, and move their pieces around the board. If a player runs out of gold they are removed from the game. Remaining players continue with the game. Last player standing wins.").setPicture("").setSubText("").build();
+            }else{
+                tempField[i] = new Empty.Builder().build();
+            }
         }
+
+
+
+
 
         // Creates the GUI with the fieldarray
         GUI.create(tempField);
