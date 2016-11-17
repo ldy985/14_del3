@@ -23,6 +23,7 @@ import static Game.Language.setLanguage;
 public class GameController {
 
     private static Shaker shaker;
+    private static Ownable ownable;
     private static Player currentPlayer;
     private static final int FIELD_COUNT = 21;
     private final int START_BALANCE = 30000;
@@ -52,7 +53,8 @@ public class GameController {
 
     private void initializePlayers() {
 
-        int numberOfPlayers = 2; // TODO: 11-11-2016 GUI
+        String numberSelected = GUI.getUserSelection(getString("greeting"), "2", "3", "4", "5", "6");
+        int numberOfPlayers = Integer.parseInt(numberSelected);
         for (int i = 0; i < numberOfPlayers; i++) {
             String name = GUI.getUserString(getString("name1") + (i + 1) + getString("name2")); //the + (i+1) changes the number so system prints player1 then player2...
             players.add(new Player(name, START_BALANCE)); //creates a new player object.
@@ -128,6 +130,7 @@ public class GameController {
                 //removes bankroupt players from the game
                 if (currentPlayer.getAccount().getBalance() <= 0) {
                     players.remove(currentPlayer);
+                    ownable.setOwner(null);
                     break;//Stop the loop when we remove an element because we use foreach else we get a pointer error
                 }
 
