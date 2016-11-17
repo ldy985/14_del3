@@ -25,6 +25,10 @@ public class GameBoard {
     private final Field[] board;
     private int numberOfFields;
 
+    /**
+     * The constructor of the class GameBoard
+     * @param number The number of fields we want on the board
+     */
     public GameBoard(int number) {
 
         numberOfFields = number;
@@ -35,7 +39,10 @@ public class GameBoard {
 
     }
 
-
+    /**
+     * Creates the GUI based on field array.
+     *
+     */
     private void showOnGui() {
 
 
@@ -56,6 +63,11 @@ public class GameBoard {
         GUI.create(tempField);
     }
 
+    /**
+     * Creates field objects from a properties file, converted through Gson.
+     * @param fileName  Name of the ressource file
+     * @return
+     */
     private Field[] loadBoardFromFile(String fileName) {
 
         try {
