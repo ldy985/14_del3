@@ -29,6 +29,6 @@ public class Refuge extends Field{
     public void landOnField(Player player){
 
         player.getAccount().addBalance(bonus);
-        GUI.showMessage(getString("landed") + getName());
+        InterfaceController.showMessage(getString("landed") + getName());
     }
 }

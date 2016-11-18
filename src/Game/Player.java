@@ -15,7 +15,7 @@ public class Player {
     private final String name;
     private final Account account;
     private int realEstateValue = 0;
-    private int onField;
+    private int onField=0;
 
     //
     public Player(String playerName, int startBalance) {

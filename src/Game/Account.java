@@ -35,7 +35,7 @@ public class Account {
      */
     public void addBalance(int amount) {
         balance = balance + amount;
-        GUI.setBalance(GameController.getCurrentPlayer().getName(),balance);
+        InterfaceController.setBalance(balance);
     }
 
     /**

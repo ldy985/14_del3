@@ -23,7 +23,7 @@ import static Game.Language.setLanguage;
 
 public class GameController {
 
-    private static Shaker shaker;
+    private static Shaker shaker = new Shaker(2); //creates a shaker with 2 dice.
     private static Player currentPlayer;
     private static final int FIELD_COUNT = 21;
     private final int START_BALANCE = 30000;
@@ -36,9 +36,6 @@ public class GameController {
     private static final GameBoard gameBoard = new GameBoard(FIELD_COUNT);
 
     public GameController() {
-
-         //creates a Gameboard object.
-        shaker = new Shaker(2); //creates a shaker with 2 dice.
 
     }
     //private boolean gameWon = false;
@@ -53,15 +50,15 @@ public class GameController {
 
     private void initializePlayers() {
 
-        String numberSelected = GUI.getUserSelection(getString("greeting"), "2", "3", "4", "5", "6");
+        String numberSelected = InterfaceController.getUserSelection(getString("greeting"), "2", "3", "4", "5", "6");
         int numberOfPlayers = Integer.parseInt(numberSelected);
         for (int i = 0; i < numberOfPlayers; i++) {
-            String name = GUI.getUserString(getString("name1") + (i + 1) + getString("name2")); //the + (i+1) changes the number so system prints player1 then player2...
+            String name = InterfaceController.getUserString(getString("name1") + (i + 1) + getString("name2")); //the + (i+1) changes the number so system prints player1 then player2...
             players.add(new Player(name, START_BALANCE)); //creates a new player object.
 
             // Adds player to the GUI
             // Adds a car object which has a new color, specified by a random-method between the integers 0-255
-            GUI.addPlayer(players.get(i).getName(), START_BALANCE, new Car.Builder()
+            InterfaceController.addPlayer(players.get(i).getName(), START_BALANCE, new Car.Builder()
                     .primaryColor(randomColor())
                     .build());
         }
@@ -81,10 +78,10 @@ public class GameController {
 
 
         // Displays the dice on the board
-        GUI.setDice(faceValue1, faceValue2);
+        InterfaceController.setDice(faceValue1, faceValue2);
     }
 
-    private void movePlayer(Player thisPlayer, int moveFields) {
+    public static void movePlayer(Player thisPlayer, int moveFields) {
 
         //stores the players location on the gameboard
         if (thisPlayer.getOnField() + moveFields <= FIELD_COUNT) {
@@ -95,8 +92,8 @@ public class GameController {
 
         //"Moves" the car on the board by removing it in the previous location
         // and then set it to the new location.
-        GUI.removeAllCars(thisPlayer.getName());
-        GUI.setCar(thisPlayer.getOnField(), thisPlayer.getName());
+        InterfaceController.removeAllCars(thisPlayer.getName());
+        InterfaceController.setCar(thisPlayer.getOnField(), thisPlayer.getName());
 
     }
 
@@ -140,8 +137,8 @@ public class GameController {
         }
 
         //gets displayed when a winner has been found.
-        GUI.showMessage(players.get(0).getName() + getString("won"));
+        InterfaceController.showMessage(players.get(0).getName() + getString("won"));
 
-        GUI.close();
+        InterfaceController.close();
     }
 }
