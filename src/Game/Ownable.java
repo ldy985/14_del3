@@ -1,7 +1,6 @@
 package Game;
 
 
-import desktop_resources.GUI;
 import static Game.Language.getString;
 
 /**
@@ -16,16 +15,20 @@ public abstract class Ownable extends Field {
 
     private final int price;
     private Player owner;
-
     /**
      * The constructor of the Ownable type
-     *  @param number The id of the Field
+     *
+     * @param number The id of the Field
      * @param name   The name of the Field
      * @param price  The price of the Field
      */
     public Ownable(int number, String name, int price) {
         super(number, name);
         this.price = price;
+    }
+
+    public int getPrice() {
+        return price;
     }
 
     /**
@@ -57,13 +60,13 @@ public abstract class Ownable extends Field {
         if (owner == null && price <= player.getAccount().getBalance()) {
 
             // Checks whether the player wants to buy
-            if (GUI.getUserButtonPressed(player.getName() + (getString("turn1") +
+            if (InterfaceController.getUserButtonPressed(player.getName() + (getString("turn1") +
                     getString("buy1") + getName() + getString("buy2") + price + "?"), getString("no"), getString("yes")) == getString("yes")) {
 
                 player.getAccount().addBalance(-price);
                 player.addRealEstateValue(price);
                 setOwner(player);
-                GUI.showMessage(player.getName() + getString("bought") + getName());
+                InterfaceController.showMessage(player.getName() + " " + getString("bought") + " " + getName());
 
             }
         }

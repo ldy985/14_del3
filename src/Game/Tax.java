@@ -56,7 +56,7 @@ public class Tax extends Field {
 
 
         int calculatedTax = calculateTax(player.getRealEstateValue()+player.getAccount().getBalance());
-        if (taxRate != 1.0f && GUI.getUserSelection((getString("paytax1") + taxAmount + getString("paytax2") + "10% ( " + calculatedTax + ")"), taxAmount + "", "10%") == "10%") {
+        if (taxRate != 1.0f && InterfaceController.getUserSelection((getString("paytax1") + taxAmount + getString("paytax2") + "10% ( " + calculatedTax + ")"), taxAmount + "", "10%") == "10%") {
             player.getAccount().addBalance(calculatedTax);
 
         } else {

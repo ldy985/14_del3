@@ -20,6 +20,8 @@ public class Game {
         // Selects the language
         setLanguage("english");
 
+        InterfaceController.setInterfaceMode(InterfaceController.Mode.GUI);
+
         GameController gameController = new GameController();
 
         // The GUI generates the fields on the board
