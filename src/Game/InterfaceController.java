@@ -1,6 +1,8 @@
 package Game;
 
 import desktop_codebehind.Car;
+import desktop_fields.Empty;
+import desktop_fields.Shipping;
 import desktop_resources.GUI;
 
 
@@ -176,5 +178,48 @@ public class InterfaceController {
         Console,
         Test,
         TestConsole
+    }
+
+    /**
+     * Creates the GUI based on field array.
+     */
+    public static void showOnGui(Field[] board) {
+
+        switch (mode) {
+            case Console:
+                break;
+            case GUI:
+                desktop_fields.Field[] tempField = new desktop_fields.Field[40];
+
+                for (int i = 0; i < board.length; i++) {
+                    tempField[i] = convertToGUI(board[i]);
+                }
+
+
+                // Leaves the rest of the fields available in the GUI empty
+                for (int i = 21; i < 40; i++) {
+                    if (i == 35) {
+                        tempField[35] = new Shipping.Builder().setTitle("<b>Rules").setDescription("2-6 players play. Players roll 2 dice, and move their pieces around the board. If a player runs out of gold they are removed from the game. Remaining players continue with the game. Last player standing wins.").setPicture("").setSubText("").build();
+                    } else {
+                        tempField[i] = new Empty.Builder().build();
+                    }
+                }
+
+                // Creates the GUI with the fieldarray
+                GUI.create(tempField);
+                break;
+            case Test:
+                System.out.println("Create GUI call");
+                break;
+        }
+
+
+    }
+
+    public static desktop_fields.Field convertToGUI(Field theField) {
+        desktop_fields.Shipping.Builder a = new desktop_fields.Shipping.Builder()
+                .setTitle(theField.getName())
+                .setPicture(null);
+        return a.build();
     }
 }

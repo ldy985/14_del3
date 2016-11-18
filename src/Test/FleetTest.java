@@ -4,7 +4,7 @@ import Game.Fleet;
 import Game.Player;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Testes the Fleet class
@@ -41,6 +41,8 @@ public class FleetTest {
         assertEquals(player, fleet.getOwner());
     }
 
+    
+
     @Test
     public void getName() throws Exception {
 
@@ -60,16 +62,5 @@ public class FleetTest {
 
     }
 
-    @Test
-    public void toGUIField() throws Exception {
-
-        boolean test = false;
-
-
-        if(fleet.toGUIField() instanceof desktop_fields.Field){
-            test = true;
-        }
-        assertEquals(test, true);
-    }
 
 }

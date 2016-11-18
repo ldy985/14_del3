@@ -59,20 +59,5 @@ public class LaborCampTest {
 
     }
 
-    /**
-     * tests if the field can be converted to the type of field the GUI uses.
-     * @throws Exception
-     */
-    @Test
-    public void toGUIField() throws Exception {
-
-        boolean test = false;
-
-
-        if(labor.toGUIField() instanceof desktop_fields.Field){
-            test = true;
-        }
-        assertEquals(test, true);
-    }
 
 }

@@ -52,21 +52,6 @@ public class TerritoryTest {
 
     }
     
-    /**
-     * Tests if the field can be used to create the type of field the GUI uses.
-     * @throws Exception
-     */
-    @Test
-    public void toGUIField() throws Exception {
-
-        boolean test = false;
-
-
-        if(territory.toGUIField() instanceof desktop_fields.Field){
-            test = true;
-        }
-        assertEquals(test, true);
-    }
 
     @Test
     public void getName() throws Exception {

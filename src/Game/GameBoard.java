@@ -36,40 +36,8 @@ public class GameBoard {
 
         //board = new Field[numberOfFields];
         board = loadBoardFromFile("board.cfg");
-        showOnGui();
+        InterfaceController.showOnGui(board);
 
-    }
-
-    /**
-     * Creates the GUI based on field array.
-     *
-     */
-    private void showOnGui() {
-
-
-        desktop_fields.Field[] tempField = new desktop_fields.Field[40];
-
-        for (int i = 0; i < numberOfFields; i++) {
-            tempField[i] = board[i].toGUIField();
-        }
-
-
-
-        // Leaves the rest of the fields available in the GUI empty
-        for (int i = 21; i < 40; i++) {
-            if (i == 35){
-                tempField[35] = new Shipping.Builder().setTitle("<b>Rules").setDescription("2-6 players play. Players roll 2 dice, and move their pieces around the board. If a player runs out of gold they are removed from the game. Remaining players continue with the game. Last player standing wins.").setPicture("").setSubText("").build();
-            }else{
-                tempField[i] = new Empty.Builder().build();
-            }
-        }
-
-
-
-
-
-        // Creates the GUI with the fieldarray
-        GUI.create(tempField);
     }
 
     /**
