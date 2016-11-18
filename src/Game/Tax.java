@@ -22,9 +22,10 @@ public class Tax extends Field {
      * @param name      The name of the Field
      * @param taxAmount The permanent tax on the Field
      */
-    private Tax(int no, String name, int taxAmount) {
+    public Tax(int no, String name, int taxAmount, float taxRate) {
         super(no, name);
         this.taxAmount = taxAmount;
+        this.taxRate = taxRate;
     }
 
     /**
