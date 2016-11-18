@@ -1,17 +1,12 @@
 package Game;
 
 import com.google.gson.Gson;
-import desktop_fields.Empty;
-import desktop_fields.Shipping;
-import desktop_resources.GUI;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.lang.reflect.Type;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
-import static Game.Language.setLanguage;
 
 /**
  * GameBoard encapsulates all the Fields used in the game
@@ -22,6 +17,10 @@ import static Game.Language.setLanguage;
  * @version v.0.1
  */
 public class GameBoard {
+
+    public Field[] getBoard() {
+        return board;
+    }
 
     private final Field[] board;
     private int numberOfFields;

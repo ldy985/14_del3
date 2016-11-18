@@ -125,8 +125,8 @@ public class InterfaceController {
                 System.out.print(s);
                 System.out.print(" [");
 
-                for (String item: s1) {
-                    System.out.print(item+" ");
+                for (String item : s1) {
+                    System.out.print(item + " ");
                 }
                 System.out.print("] ");
 
@@ -148,8 +148,8 @@ public class InterfaceController {
                 System.out.print(s);
                 System.out.print(" [");
 
-                for (String item: no) {
-                    System.out.print(item+" ");
+                for (String item : no) {
+                    System.out.print(item + " ");
                 }
                 System.out.print("] ");
 

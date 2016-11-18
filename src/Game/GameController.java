@@ -2,15 +2,12 @@ package Game;
 
 
 import desktop_codebehind.Car;
-import desktop_resources.GUI;
 
 import java.awt.*;
-import java.lang.management.GarbageCollectorMXBean;
 import java.util.ArrayList;
 import java.util.Random;
 
 import static Game.Language.getString;
-import static Game.Language.setLanguage;
 
 /**
  * The main flow of the game.
