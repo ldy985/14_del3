@@ -4,8 +4,14 @@ import java.util.Enumeration;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+
 /**
- * Created by razze on 16-11-2016.
+ * Fetches the selected language
+ *
+ * Bugs: none known
+ *
+ * @author       Rasmus Blichfeldt
+ * @version      v.0.1
  */
 public class Language {
 

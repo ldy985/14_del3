@@ -6,8 +6,14 @@ import desktop_fields.Shipping;
 import desktop_resources.GUI;
 
 
+
 /**
- * Created by ldylab on 17-11-2016.
+ * Chooses whether we run a console version of the program or the GUI
+ *
+ * Bugs: none known
+ *
+ * @author       Lasse Dyrsted
+ * @version      v.0.1
  */
 public class InterfaceController {
 

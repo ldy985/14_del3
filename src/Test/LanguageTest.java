@@ -6,6 +6,16 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
+/**
+ * Tests the Language class
+ *
+ * Bugs: none known
+ *
+ * @author       Rasmus Blichfeldt (tror jeg)
+ * @version      v.0.1
+ */
+
+
 public class LanguageTest {
 
     @Test

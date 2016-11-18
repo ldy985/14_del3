@@ -9,8 +9,14 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
+
 /**
- * Created by Matt_Lab on 18/11/2016.
+ * Tests the Tax class
+ *
+ * Bugs: none known
+ *
+ * @author       Mathias Larsen
+ * @version      v.0.1
  */
 public class TaxTest {
 

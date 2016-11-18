@@ -6,7 +6,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 /**
- * Testes the Player class
+ * Tests the Player class
  *
  * Bugs: none known
  *

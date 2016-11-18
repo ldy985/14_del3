@@ -6,9 +6,16 @@ import org.junit.Test;
 import static Game.Language.setLanguage;
 import static org.junit.Assert.assertEquals;
 
+
 /**
- * Created by razze on 17-11-2016.
+ * Tests the Game class
+ *
+ * Bugs: none known
+ *
+ * @author       Rasmus Blichfeldt
+ * @version      v.0.1
  */
+
 public class GameTest {
 
     @Test

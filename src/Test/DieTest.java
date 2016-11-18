@@ -6,9 +6,16 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 
+
 /**
- * Created by Matt_Lab on 26/09/2016.
+ * Tests the Die class
+ *
+ * Bugs: none known
+ *
+ * @author       Mathias Larsen
+ * @version      v.0.1
  */
+
 public class DieTest {
     Die die = new Die();
 
