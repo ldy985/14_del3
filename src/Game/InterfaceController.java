@@ -6,19 +6,23 @@ import desktop_fields.Shipping;
 import desktop_resources.GUI;
 
 
-
 /**
  * Chooses whether we run a console version of the program or the GUI
- *
+ * <p>
  * Bugs: none known
  *
- * @author       Lasse Dyrsted
- * @version      v.0.1
+ * @author Lasse Dyrsted
+ * @version v.0.1
  */
 public class InterfaceController {
 
     private static Mode mode;
     private static String preDefinedAnswer;
+
+    public enum Mode {
+        GUI,
+        Test
+    }
 
     private InterfaceController() {
     }
@@ -33,8 +37,7 @@ public class InterfaceController {
 
     public static void addPlayer(String name, int start_balance, Car build) {
         switch (mode) {
-            case Console:
-                break;
+
             case GUI:
                 GUI.addPlayer(name, start_balance, build);
             case Test:
@@ -46,8 +49,7 @@ public class InterfaceController {
     public static String getUserString(String s) {
 
         switch (mode) {
-            case Console:
-                break;
+
             case GUI:
                 return GUI.getUserString(s);
             case Test:
@@ -61,8 +63,7 @@ public class InterfaceController {
 
     public static void setDice(int faceValue1, int faceValue2) {
         switch (mode) {
-            case Console:
-                break;
+
             case GUI:
                 GUI.setDice(faceValue1, faceValue2);
 
@@ -73,8 +74,7 @@ public class InterfaceController {
 
     public static void removeAllCars(String name) {
         switch (mode) {
-            case Console:
-                break;
+
             case GUI:
                 GUI.removeAllCars(name);
             case Test:
@@ -85,8 +85,7 @@ public class InterfaceController {
 
     public static void setCar(int onField, String name) {
         switch (mode) {
-            case Console:
-                break;
+
             case GUI:
                 GUI.setCar(onField, name);
             case Test:
@@ -97,9 +96,7 @@ public class InterfaceController {
 
     public static void showMessage(String won) {
         switch (mode) {
-            case Console:
-                System.out.println(won);
-                break;
+
             case GUI:
                 GUI.showMessage(won);
             case Test:
@@ -111,8 +108,7 @@ public class InterfaceController {
 
     public static void close() {
         switch (mode) {
-            case Console:
-                break;
+
             case GUI:
                 GUI.close();
             case Test:
@@ -123,8 +119,6 @@ public class InterfaceController {
 
     public static String getUserSelection(String s, String... s1) {
         switch (mode) {
-            case Console:
-                break;
             case GUI:
                 return GUI.getUserSelection(s, s1);
             case Test:
@@ -146,8 +140,6 @@ public class InterfaceController {
     public static String getUserButtonPressed(String s, String... no) {
 
         switch (mode) {
-            case Console:
-                break;
             case GUI:
                 return GUI.getUserButtonPressed(s, no);
             case Test:
@@ -168,8 +160,7 @@ public class InterfaceController {
 
     public static void setBalance(int balance) {
         switch (mode) {
-            case Console:
-                break;
+
             case GUI:
                 GUI.setBalance(GameController.getCurrentPlayer().getName(), balance);
                 break;
@@ -179,12 +170,6 @@ public class InterfaceController {
         }
     }
 
-    public enum Mode {
-        GUI,
-        Console,
-        Test,
-        TestConsole
-    }
 
     /**
      * Creates the GUI based on field array.
@@ -192,8 +177,7 @@ public class InterfaceController {
     public static void showOnGui(Field[] board) {
 
         switch (mode) {
-            case Console:
-                break;
+
             case GUI:
                 desktop_fields.Field[] tempField = new desktop_fields.Field[40];
 

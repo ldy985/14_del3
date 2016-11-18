@@ -31,7 +31,7 @@ public class Tax extends Field {
     /**
      * Gets the permanent amount of tax the player needs to pay
      */
-    private int getTaxAmount() {
+    public int getTaxAmount() {
 
         return taxAmount;
 
@@ -65,6 +65,7 @@ public class Tax extends Field {
         }
 
         GUI.showMessage(getString("landed") + getName());
+        InterfaceController.showMessage(getString("landed") + getName());
 
     }
 }
