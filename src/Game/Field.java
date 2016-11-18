@@ -38,15 +38,4 @@ public abstract class Field {
      */
     public abstract void landOnField(Player player);
 
-
-    //public abstract desktop_fields.Field toGUIField();
-
-    public desktop_fields.Field toGUIField() {
-        desktop_fields.Shipping.Builder a = new desktop_fields.Shipping.Builder()
-                .setTitle(name)
-                .setPicture(null);
-        return a.build();
-    }
-
-
 }
