@@ -49,6 +49,10 @@ public class Shaker {
         return sum;
     }
 
+    public void setSum(int sum){
+        this.sum = sum;
+    }
+
     /**
      * Gets the Dice objects in the Shaker.
      */

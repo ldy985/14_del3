@@ -48,6 +48,10 @@ public class Tax extends Field {
         return (int) (totalValue * taxRate);
     }
 
+    public float getTaxRate(){
+        return taxRate;
+    }
+
     /**
      * Handles the stuff that needs to happen when a player lands on a field
      *
