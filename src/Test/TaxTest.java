@@ -167,4 +167,9 @@ public class TaxTest {
 
     }
 
+    @Test
+    public void testGetAmount() throws Exception{
+
+    }
+
 }

@@ -45,7 +45,7 @@ public class Tax extends Field {
      */
     private int calculateTax(int totalValue) {
 
-        return (int) (totalValue * taxRate); // TODO: 11-11-2016 talk about rounding
+        return (int) (totalValue * taxRate);
     }
 
     /**
