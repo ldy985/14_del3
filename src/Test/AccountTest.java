@@ -4,6 +4,15 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * Tests the Account class
+ *
+ * Bugs: none known
+ *
+ * @author       Casper Bodskov
+ * @version      v.0.1
+ */
+
 public class AccountTest {
     //creates a account object
     private final Game.Account account = new Game.Account(1000);

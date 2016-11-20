@@ -14,6 +14,7 @@ import static org.junit.Assert.assertEquals;
  * @author       Mathias Larsen
  * @version      v.0.1
  */
+
 public class TerritoryTest {
 
     /**

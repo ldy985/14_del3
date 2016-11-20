@@ -4,6 +4,15 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * Tests the Shaker class
+ *
+ * Bugs: none known
+ *
+ * @author       Mathias Larsen
+ * @version      v.0.1
+ */
+
 // Tests the Shaker class
 public class ShakerTest {
 
