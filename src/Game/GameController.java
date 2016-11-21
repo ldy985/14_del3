@@ -32,7 +32,7 @@ public class GameController {
 
     private static final GameBoard gameBoard = new GameBoard(FIELD_COUNT);
 
-    public GameController() {
+    public GameController() { // TODO: 21-11-2016 FIX gamecontroller creation
 
     }
     //private boolean gameWon = false;
