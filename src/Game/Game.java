@@ -22,7 +22,7 @@ public class Game {
 
         InterfaceController.setInterfaceMode(InterfaceController.Mode.GUI);
 
-        GameController gameController = new GameController();
+        GameController gameController = new GameController(); // TODO: 21-11-2016 FIX gamecontroller creation
 
         // The GUI generates the fields on the board
         //gameController.initializePlayers();

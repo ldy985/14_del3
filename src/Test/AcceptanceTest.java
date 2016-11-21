@@ -38,7 +38,7 @@ public class AcceptanceTest {
 //        assertEquals(i, player1.getOnField());
 //    }
 
-    private GameController gameController;
+    private GameController gameController; // TODO: 21-11-2016 FIX gamecontroller creation
     private GameBoard gameBoard;
     private Player player1;
     private Player player2;
