@@ -1,6 +1,5 @@
 package Game;
 
-import desktop_resources.GUI;
 import static Game.Language.getString;
 
 /**

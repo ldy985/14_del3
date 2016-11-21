@@ -1,7 +1,9 @@
 package Test;
+
 import Game.LaborCamp;
 import Game.Player;
 import org.junit.Test;
+
 import static org.junit.Assert.assertEquals;
 /**
  * Testes the LaborCamp class

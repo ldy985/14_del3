@@ -1,7 +1,5 @@
 package Game;
 
-import desktop_resources.GUI;
-
 /**
  * Keeps track of the balance, and adds/subtracts by the points on the board.
  * <p>
