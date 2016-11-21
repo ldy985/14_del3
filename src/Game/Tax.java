@@ -69,7 +69,6 @@ public class Tax extends Field {
             player.getAccount().addBalance(-taxAmount);
         }
 
-        GUI.showMessage(getString("landed") + getName());
         InterfaceController.showMessage(getString("landed") + getName());
 
     }
