@@ -18,15 +18,11 @@ import java.nio.file.Paths;
  */
 public class GameBoard {
 
-    public Field[] getBoard() {
-        return board;
-    }
-
     private final Field[] board;
     private int numberOfFields;
-
     /**
      * The constructor of the class GameBoard
+     *
      * @param number The number of fields we want on the board
      */
     public GameBoard(int number) {
@@ -39,9 +35,14 @@ public class GameBoard {
 
     }
 
+    public Field[] getBoard() {
+        return board;
+    }
+
     /**
      * Creates field objects from a properties file, converted through Gson.
-     * @param fileName  Name of the ressource file
+     *
+     * @param fileName Name of the ressource file
      * @return
      */
     private Field[] loadBoardFromFile(String fileName) {
@@ -111,12 +112,12 @@ public class GameBoard {
         return num;
     }
 
-    public void deleteOwnership(Player player){
+    public void deleteOwnership(Player player) {
 
         for (Field theField : board) {
             if (theField instanceof Ownable) {
                 if (((Ownable) theField).getOwner() == player) {
-                    ((Ownable)theField).setOwner(null);
+                    ((Ownable) theField).setOwner(null);
                 }
             }
         }

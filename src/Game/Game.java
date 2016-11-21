@@ -4,11 +4,11 @@ import static Game.Language.setLanguage;
 
 /**
  * Keeps track of the balance, and adds/subtracts by the points on the board.
- *
+ * <p>
  * Bugs: none known
  *
- * @author       Rasmus Blichfeld
- * @version      v.0.1
+ * @author Rasmus Blichfeld
+ * @version v.0.1
  */
 
 // Game entrypoint.

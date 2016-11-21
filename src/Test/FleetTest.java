@@ -8,11 +8,11 @@ import static org.junit.Assert.assertEquals;
 
 /**
  * Testes the Fleet class
- *
+ * <p>
  * Bugs: none known
  *
- * @author       Mathias Larsen
- * @version      v.0.1
+ * @author Mathias Larsen
+ * @version v.0.1
  */
 public class FleetTest {
 
@@ -24,6 +24,7 @@ public class FleetTest {
 
     /**
      * can not be tested automatically because the GameController is needed.
+     *
      * @throws Exception
      */
     @Test
@@ -41,7 +42,6 @@ public class FleetTest {
         assertEquals(player, fleet.getOwner());
     }
 
-    
 
     @Test
     public void getName() throws Exception {
@@ -55,6 +55,7 @@ public class FleetTest {
 
     /**
      * The landOnField method can not be tested automatically as it contains calls to the GUI
+     *
      * @throws Exception
      */
     @Test

@@ -19,11 +19,6 @@ public class InterfaceController {
     private static Mode mode;
     private static String preDefinedAnswer;
 
-    public enum Mode {
-        GUI,
-        Test
-    }
-
     private InterfaceController() {
     }
 
@@ -170,7 +165,6 @@ public class InterfaceController {
         }
     }
 
-
     /**
      * Creates the GUI based on field array.
      */
@@ -211,5 +205,10 @@ public class InterfaceController {
                 .setTitle(theField.getName())
                 .setPicture(null);
         return a.build();
+    }
+
+    public enum Mode {
+        GUI,
+        Test
     }
 }

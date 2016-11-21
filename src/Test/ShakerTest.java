@@ -6,11 +6,11 @@ import static org.junit.Assert.assertEquals;
 
 /**
  * Tests the Shaker class
- *
+ * <p>
  * Bugs: none known
  *
- * @author       Mathias Larsen
- * @version      v.0.1
+ * @author Mathias Larsen
+ * @version v.0.1
  */
 
 // Tests the Shaker class
@@ -113,7 +113,7 @@ public class ShakerTest {
 
         // Checks if the sum given by the Shaker class is between 2 and 12.
         // Returns a boolean whether it works.
-        int sum = shake.getDice()[0].getFaceValue()+shake.getDice()[1].getFaceValue();
+        int sum = shake.getDice()[0].getFaceValue() + shake.getDice()[1].getFaceValue();
 
         assertEquals(sum, shake.getSum());
 

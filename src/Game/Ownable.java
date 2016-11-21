@@ -15,6 +15,7 @@ public abstract class Ownable extends Field {
 
     private final int price;
     private Player owner;
+
     /**
      * The constructor of the Ownable type
      *
@@ -60,8 +61,8 @@ public abstract class Ownable extends Field {
         if (owner == null && price <= player.getAccount().getBalance()) {
 
             // Checks whether the player wants to buy
-            if (InterfaceController.getUserButtonPressed(player.getName() +" "+ (getString("turn1") +" "+
-                    getString("buy1")+" " + getName() +" "+ getString("buy2") + " " + price + " ?"), getString("no"), getString("yes")) == getString("yes")) {
+            if (InterfaceController.getUserButtonPressed(player.getName() + " " + (getString("turn1") + " " +
+                    getString("buy1") + " " + getName() + " " + getString("buy2") + " " + price + " ?"), getString("no"), getString("yes")) == getString("yes")) {
 
                 player.getAccount().addBalance(-price);
                 player.addRealEstateValue(price);

@@ -6,11 +6,11 @@ import static org.junit.Assert.assertEquals;
 
 /**
  * Tests the Account class
- *
+ * <p>
  * Bugs: none known
  *
- * @author       Casper Bodskov
- * @version      v.0.1
+ * @author Casper Bodskov
+ * @version v.0.1
  */
 
 public class AccountTest {

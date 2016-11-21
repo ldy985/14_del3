@@ -9,11 +9,11 @@ import org.junit.Test;
 
 /**
  * Testes the Refuge class
- *
+ * <p>
  * Bugs: none known
  *
- * @author       Mathias Larsen
- * @version      v.0.2
+ * @author Mathias Larsen
+ * @version v.0.2
  */
 public class RefugeTest {
 
