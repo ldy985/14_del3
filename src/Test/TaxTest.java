@@ -169,7 +169,7 @@ public class TaxTest {
 
         tax200.setName("Change");
 
-        expected = "change";
+        expected = "change"; // TODO: 22-11-2016 BUG? 
         actual = tax200.getName();
         assertEquals(expected, actual);
 
