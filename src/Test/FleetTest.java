@@ -155,10 +155,9 @@ public class FleetTest {
         actual = player2.getAccount().getBalance();
         assertEquals(expected,actual);
 
-        // testes that tha start balance i correct.
-        expected = 30000;
-        actual = this.player1.getAccount().getBalance();
-        assertEquals(expected, actual);
+        expected = 26500;
+        actual = player1.getAccount().getBalance();
+        assertEquals(expected,actual);
 
 
         /**
@@ -169,7 +168,7 @@ public class FleetTest {
         this.fleet2.landOnField(this.player1);
 
         //tests that the price of the field have been trancfered.
-        expected = 22000;
+        expected = 22500;
         actual = this.player1.getAccount().getBalance();
         assertEquals(expected, actual);
 
@@ -183,6 +182,9 @@ public class FleetTest {
         actual = player2.getAccount().getBalance();
         assertEquals(expected,actual);
 
+        expected = 23500;
+        actual = player1.getAccount().getBalance();
+        assertEquals(expected,actual);
 
         /**
          * owner ship of 3 fleets
@@ -192,7 +194,7 @@ public class FleetTest {
         this.fleet3.landOnField(this.player1);
 
         //tests that the price of the field have been trancfered.
-        expected = 18000;
+        expected = 19500;
         actual = this.player1.getAccount().getBalance();
         assertEquals(expected, actual);
 
@@ -206,6 +208,10 @@ public class FleetTest {
         actual = player2.getAccount().getBalance();
         assertEquals(expected,actual);
 
+        expected = 21500;
+        actual = player1.getAccount().getBalance();
+        assertEquals(expected,actual);
+
         /**
          * owner ship of 4 fleets
          */
@@ -214,7 +220,7 @@ public class FleetTest {
         this.fleet2.landOnField(this.player1);
 
         //tests that the price of the field have been trancfered.
-        expected = 14000;
+        expected = 17500;
         actual = this.player1.getAccount().getBalance();
         assertEquals(expected, actual);
 
@@ -226,6 +232,10 @@ public class FleetTest {
         this.fleet1.landOnField(player2);
         expected = 22500;
         actual = player2.getAccount().getBalance();
+        assertEquals(expected,actual);
+
+        expected = 21500;
+        actual = player1.getAccount().getBalance();
         assertEquals(expected,actual);
     }
 }
