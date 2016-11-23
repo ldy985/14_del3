@@ -25,7 +25,7 @@ public class GameTest {
 
         // Selects the language
         setLanguage("english");
-        GameController gameController = new GameController();
+        GameController gameController = new GameController(); // TODO: 21-11-2016 FIX gamecontroller creation
 
         double timeEnded = System.nanoTime();
 
