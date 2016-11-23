@@ -167,7 +167,7 @@ public class TaxTest {
 
         tax200.setName("Change");
 
-        expected = "change";
+        expected = "Change";
         actual = tax200.getName();
         assertEquals(expected, actual);
 
