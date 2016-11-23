@@ -15,7 +15,7 @@ import static Game.Language.getString;
  * Bugs: none known
  *
  * @author Mathias S Larsen (2016)
- * @version v.0.1
+ * @version v.0.2
  */
 
 public class GameController {
@@ -24,17 +24,16 @@ public class GameController {
     private static final GameBoard gameBoard = new GameBoard(FIELD_COUNT);
     private static Shaker shaker = new Shaker(2); //creates a shaker with 2 dice.
     private static Player currentPlayer;
-    private final int START_BALANCE = 30000;
-    private final ArrayList<Player> players = new ArrayList<Player>(); //creates an ArrayList that can contain Player objects
+    private static final int START_BALANCE = 30000;
+    private static final ArrayList<Player> players = new ArrayList<Player>(); //creates an ArrayList that can contain Player objects
 
-    public GameController() { // TODO: 21-11-2016 FIX gamecontroller creation
+    private GameController() {
 
     }
 
     public static GameBoard getGameBoard() {
         return gameBoard;
     }
-    //private boolean gameWon = false;
 
     public static Player getCurrentPlayer() {
         return currentPlayer;
@@ -60,7 +59,7 @@ public class GameController {
 
     }
 
-    private void initializePlayers() {
+    private static void initializePlayers() {
 
         String numberSelected = InterfaceController.getUserSelection(getString("greeting"), "2", "3", "4", "5", "6");
         int numberOfPlayers = Integer.parseInt(numberSelected);
@@ -77,12 +76,12 @@ public class GameController {
 
     }
 
-    private Color randomColor() {
+    private static Color randomColor() {
         Random random = new Random();
         return new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256));
     }
 
-    private void displayDice(Shaker shaker) {
+    private static void displayDice(Shaker shaker) {
 
         // Declares face values to show the die in the GUI
         int faceValue1 = shaker.getDice()[0].getFaceValue();
@@ -93,7 +92,7 @@ public class GameController {
         InterfaceController.setDice(faceValue1, faceValue2);
     }
 
-    public void startGame() {
+    public static void startGame() {
 
         initializePlayers();
 
