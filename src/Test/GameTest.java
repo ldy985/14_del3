@@ -15,7 +15,7 @@ import static org.junit.Assert.assertEquals;
  * Bugs: none known
  *
  * @author Rasmus Blichfeldt
- * @version v.0.1
+ * @version v.0.2
  */
 
 public class GameTest {
