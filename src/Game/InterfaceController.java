@@ -19,7 +19,6 @@ public class InterfaceController {
     /**
      * Creating new variable type "Mode".
      */
-
     public enum Mode {
 
         //Two types of modes

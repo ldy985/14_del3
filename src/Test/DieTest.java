@@ -1,7 +1,10 @@
 package Test;
 
 import Game.Die;
+import Game.InterfaceController;
+import Game.Language;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -12,26 +15,54 @@ import static org.junit.Assert.assertEquals;
  * <p>
  * Bugs: none known
  *
- * @author Mathias Larsen
- * @version v.0.1
+ * @author Mathias Larsen, Timothy Rasmussen.
+ * @version v.0.2
  */
 
 public class DieTest {
-    
-    Die die = new Die();
+
+    /**
+     * Setting the private Die object die.
+     */
+
+    private Die die;
+
+    /**
+     * Setup for test.
+     */
+
+    @BeforeClass
+    public static void setUpBeforeClass() {
+
+        InterfaceController.setInterfaceMode(InterfaceController.Mode.Test);
+
+        Language.setLanguage("english");
+
+    }
+
+    /**
+     * Creates the die object.
+     */
+
+    @Before
+    public void createDice(){
+
+        die = new Die();
+
+    }
 
     // Declares variables
     @Test
-    public void roll() throws Exception {
+    public void roll() {
 
         int value;
-        int en = 0;
-        int to = 0;
-        int tre = 0;
-        int fire = 0;
-        int fem = 0;
-        int seks = 0;
-        int forkertnr = 0;
+        int one = 0;
+        int two = 0;
+        int three = 0;
+        int four = 0;
+        int five = 0;
+        int six = 0;
+        int wrongNumber = 0;
 
         // Rolling the die 60000 times.
         // Counts the values a specific value has been rolled.
@@ -42,25 +73,25 @@ public class DieTest {
             // System.out.println(value + " ");
             switch (value) {
                 case 1:
-                    en++;
+                    one++;
                     break;
                 case 2:
-                    to++;
+                    two++;
                     break;
                 case 3:
-                    tre++;
+                    three++;
                     break;
                 case 4:
-                    fire++;
+                    four++;
                     break;
                 case 5:
-                    fem++;
+                    five++;
                     break;
                 case 6:
-                    seks++;
+                    six++;
                     break;
                 default:
-                    forkertnr++;
+                    wrongNumber++;
                     break;
             }
 
@@ -69,13 +100,13 @@ public class DieTest {
         // Tests the program.
         // Checks if all values, of the die (1-6), has been rolled and equal amount of times (10000/60000)
         // with a deviation of 400 times.
-        assertEquals(0, forkertnr);
-        assertEquals(10000, en, 400);
-        assertEquals(10000, to, 400);
-        assertEquals(10000, tre, 400);
-        assertEquals(10000, fire, 400);
-        assertEquals(10000, fem, 400);
-        assertEquals(10000, seks, 400);
+        assertEquals(0, wrongNumber);
+        assertEquals(10000, one, 400);
+        assertEquals(10000, two, 400);
+        assertEquals(10000, three, 400);
+        assertEquals(10000, four, 400);
+        assertEquals(10000, five, 400);
+        assertEquals(10000, six, 400);
 
 
     }
