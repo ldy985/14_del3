@@ -30,9 +30,9 @@ public class TaxTest {
     @Before
     public void setUp() throws Exception {
         this.player = new Player("Anders And", 1000);
-        this.tax200 = new Tax(1, "Helle +200", 200, 1);
+        this.tax200 = new Tax(1, "Helle +200", -200, 1);
         this.tax0 = new Tax(2, "Helle 0", 0, 1);
-        this.taxneg200 = new Tax(3, "Helle -200", -200, 1);
+        this.taxneg200 = new Tax(3, "Helle -200", 200, 1);
         this.tax10Pct = new Tax(4, "10Pct", 4000, 0.1f);
     }
 
@@ -64,7 +64,7 @@ public class TaxTest {
         Assert.assertEquals(expected, actual);
 
         //Perform the action to be tested
-        this.taxneg200.landOnField(this.player);
+        this.tax200.landOnField(this.player);
 
         expected = 1000 + 200;
         actual = player.getAccount().getBalance();
@@ -78,8 +78,8 @@ public class TaxTest {
         Assert.assertEquals(expected, actual);
 
         //Perform the action to be tested
-        this.taxneg200.landOnField(this.player);
-        this.taxneg200.landOnField(this.player);
+        this.tax200.landOnField(this.player);
+        this.tax200.landOnField(this.player);
 
         expected = 1000 + 200 + 200;
         actual = player.getAccount().getBalance();

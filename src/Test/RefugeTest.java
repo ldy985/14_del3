@@ -17,8 +17,6 @@ import org.junit.Test;
  */
 public class RefugeTest {
 
-
-    public class TestOfSetup {
         private Player player;
         private Refuge refuge200;
         private Refuge refuge0;
@@ -138,4 +136,3 @@ public class RefugeTest {
             Assert.assertEquals(expected, actual);
         }
     }
-}
