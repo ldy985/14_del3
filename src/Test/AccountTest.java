@@ -1,6 +1,9 @@
 package Test;
 
+import Game.InterfaceController;
+import Game.Language;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -18,8 +21,14 @@ public class AccountTest {
 
     private Game.Account newAccount;
 
+    @BeforeClass
+    public static void setUpBeforeClass() throws Exception {
+        InterfaceController.setInterfaceMode(InterfaceController.Mode.Test);
+        Language.setLanguage("english");
+    }
+
     @Before
-    private void setUp() throws Exception {
+    public void setUp() throws Exception {
 
         newAccount = new Game.Account(1000);
 

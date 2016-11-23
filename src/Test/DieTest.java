@@ -1,6 +1,7 @@
 package Test;
 
 import Game.Die;
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -16,6 +17,7 @@ import static org.junit.Assert.assertEquals;
  */
 
 public class DieTest {
+    
     Die die = new Die();
 
     // Declares variables
