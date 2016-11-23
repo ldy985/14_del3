@@ -61,7 +61,7 @@ public class TerritoryTest {
 
         assertEquals("TestTerri", territory.getName());
 
-        territory.setName("Ritz"); // TODO: 22-11-2016 BUG?
+        territory.setName("RitZ");
 
         assertEquals("RitZ", territory.getName());
     }
