@@ -45,7 +45,7 @@ public class GameBoard {
      * @param fileName Name of the ressource file
      * @return
      */
-    private Field[] loadBoardFromFile(String fileName) {
+    public Field[] loadBoardFromFile(String fileName) {
 
         try {
             Gson g = new Gson();
