@@ -11,10 +11,27 @@ import desktop_resources.GUI;
  * <p>
  * Bugs: none known
  *
- * @author Lasse Dyrsted
- * @version v.0.1
+ * @author Lasse Dyrsted, Timothy Rasmussen
+ * @version v.0.2
  */
 public class InterfaceController {
+
+    /**
+     * Creating new variable type "Mode".
+     */
+
+    public enum Mode {
+
+        //Two types of modes
+
+        GUI,
+        Test
+
+    }
+
+    /**
+     * Setting variables for InterfaceController.
+     */
 
     private static Mode mode;
     private static String preDefinedAnswer;
@@ -22,33 +39,67 @@ public class InterfaceController {
     private InterfaceController() {
     }
 
-    public static void setPreDefinedAnswer(String preDefinedAnswer) {
-        InterfaceController.preDefinedAnswer = preDefinedAnswer;
+    /**
+     * A method for the fields in the testCases.
+     *
+     * @param newPreDefinedAnswer The predefined answer.
+     */
+
+    public static void setPreDefinedAnswer(String newPreDefinedAnswer) {
+        preDefinedAnswer = newPreDefinedAnswer;
     }
 
-    public static void setInterfaceMode(Mode mode) {
-        InterfaceController.mode = mode;
+    /**
+     * The method for setting the interface mode.
+     *
+     * @param newMode Sets the mode for the Mode type.
+     */
+
+    public static void setInterfaceMode(Mode newMode) {
+
+        mode = newMode;
+
     }
 
-    public static void addPlayer(String name, int start_balance, Car build) {
+    /**
+     * The method to add a player to the game, with exception if the program runs in test mode.
+     *
+     * @param name          The players name.
+     * @param start_balance The players starting balance.
+     * @param car           The players car object.
+     */
+
+    public static void addPlayer(String name, int start_balance, Car car) {
         switch (mode) {
 
             case GUI:
-                GUI.addPlayer(name, start_balance, build);
+                GUI.addPlayer(name, start_balance, car);
+                break;
+
             case Test:
+                break;
+
+            default:
                 break;
         }
 
     }
 
-    public static String getUserString(String s) {
+    /**
+     * The method asks a player a question.
+     *
+     * @param question shall take a question.
+     * @return the players answer.
+     */
+
+    public static String getUserString(String question) {
 
         switch (mode) {
 
             case GUI:
-                return GUI.getUserString(s);
+                return GUI.getUserString(question);
             case Test:
-                System.out.println(s);
+                System.out.println(question);
                 System.out.println(preDefinedAnswer);
                 return preDefinedAnswer;
         }
@@ -207,8 +258,4 @@ public class InterfaceController {
         return a.build();
     }
 
-    public enum Mode {
-        GUI,
-        Test
-    }
 }
