@@ -9,17 +9,17 @@ import static org.junit.Assert.assertEquals;
 
 /**
  * Tests the Game class
- *
+ * <p>
  * Bugs: none known
  *
- * @author       Rasmus Blichfeldt
- * @version      v.0.1
+ * @author Rasmus Blichfeldt
+ * @version v.0.1
  */
 
 public class GameTest {
 
     @Test
-    public void benchmark(){
+    public void benchmark() {
 
         double timestart = System.nanoTime();
 
@@ -29,12 +29,11 @@ public class GameTest {
 
         double timeEnded = System.nanoTime();
 
-        double timeTaken = (timeEnded - timestart)/ 1000000.0;//ms
+        double timeTaken = (timeEnded - timestart) / 1000000.0;//ms
 
         System.out.println(timeTaken);
 
         assertEquals(true, timeTaken < 1100);
-
 
 
     }

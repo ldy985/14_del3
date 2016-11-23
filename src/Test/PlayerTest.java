@@ -2,16 +2,17 @@ package Test;
 
 import Game.Player;
 import org.junit.Test;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 /**
  * Tests the Player class
- *
+ * <p>
  * Bugs: none known
  *
- * @author       Mathias Larsen
- * @version      v.0.1
+ * @author Mathias Larsen
+ * @version v.0.1
  */
 public class PlayerTest {
 
@@ -22,6 +23,7 @@ public class PlayerTest {
 
     /**
      * tests the realEstateValue. this value is the value of the fields owned by the player.
+     *
      * @throws Exception
      */
     @Test
@@ -38,6 +40,7 @@ public class PlayerTest {
 
     /**
      * Tests that an account object has been created.
+     *
      * @throws Exception
      */
     @Test

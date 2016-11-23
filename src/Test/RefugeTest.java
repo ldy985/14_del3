@@ -7,15 +7,13 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-
 /**
  * Testes the Refuge class
- *
+ * <p>
  * Bugs: none known
  *
- * @author       Mathias Larsen
- * @version      v.0.2
+ * @author Mathias Larsen
+ * @version v.0.2
  */
 public class RefugeTest {
 

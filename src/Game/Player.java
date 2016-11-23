@@ -3,11 +3,11 @@ package Game;
 
 /**
  * Keeps track of the balance, and adds/subtracts by the points on the board.
- *
+ * <p>
  * Bugs: none known
  *
- * @author       Lasse Dyrsted
- * @version      v.0.1
+ * @author Lasse Dyrsted
+ * @version v.0.1
  */
 
 public class Player {
@@ -15,7 +15,7 @@ public class Player {
     private final String name;
     private final Account account;
     private int realEstateValue = 0;
-    private int onField=0;
+    private int onField = 0;
 
     //
     public Player(String playerName, int startBalance) {

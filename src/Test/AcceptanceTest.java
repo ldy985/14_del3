@@ -130,12 +130,12 @@ public class AcceptanceTest {
         assertTrue(this.player5 instanceof Player);
         assertTrue(this.player6 instanceof Player);
 
-        assertTrue(GameController.getShaker() instanceof  Shaker);
+        assertTrue(GameController.getShaker() instanceof Shaker);
 
     }
 
     @Test
-    public void testNames(){
+    public void testNames() {
 
         //of players
         String expected = "player1";
@@ -250,7 +250,7 @@ public class AcceptanceTest {
     }
 
     @Test
-    public void testRent(){
+    public void testRent() {
 
         Territory currentField = (Territory) GameController.getGameBoard().getField(1);
         int expected = 100;
@@ -309,36 +309,36 @@ public class AcceptanceTest {
 
         LaborCamp currentLabor = (LaborCamp) GameController.getGameBoard().getField(10);
         GameController.getShaker().setSum(2);
-        expected = -2*100;
+        expected = -2 * 100;
         actual = currentLabor.getRent();
         assertEquals(expected, actual);
 
         GameController.getShaker().setSum(5);
-        expected = -5*100;
+        expected = -5 * 100;
         actual = currentLabor.getRent();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
         GameController.getShaker().setSum(12);
-        expected = -12*100;
+        expected = -12 * 100;
         actual = currentLabor.getRent();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
 
         currentLabor = (LaborCamp) GameController.getGameBoard().getField(14);
         GameController.getShaker().setSum(2);
-        expected = -2*100;
+        expected = -2 * 100;
         actual = currentLabor.getRent();
         assertEquals(expected, actual);
 
         GameController.getShaker().setSum(5);
-        expected = -5*100;
+        expected = -5 * 100;
         actual = currentLabor.getRent();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
         GameController.getShaker().setSum(12);
-        expected = -12*100;
+        expected = -12 * 100;
         actual = currentLabor.getRent();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 
     /**
@@ -354,7 +354,7 @@ public class AcceptanceTest {
         currentFleet.setOwner(player1);
         int expected = 500;
         int actual = currentFleet.getRent();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 
     /**
@@ -366,7 +366,7 @@ public class AcceptanceTest {
         currentFleet.setOwner(player1);
         int expected = 500;
         int actual = currentFleet.getRent();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 
     /**
@@ -378,7 +378,7 @@ public class AcceptanceTest {
         currentFleet.setOwner(player1);
         int expected = 500;
         int actual = currentFleet.getRent();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 
     /**
@@ -390,7 +390,7 @@ public class AcceptanceTest {
         currentFleet.setOwner(player1);
         int expected = 500;
         int actual = currentFleet.getRent();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 
     /**
@@ -404,9 +404,9 @@ public class AcceptanceTest {
         currentFleet2.setOwner(player1);
         int expected = 1000;
         int actual = currentFleet1.getRent();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
         actual = currentFleet2.getRent();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 
     /**
@@ -420,9 +420,9 @@ public class AcceptanceTest {
         currentFleet2.setOwner(player1);
         int expected = 1000;
         int actual = currentFleet1.getRent();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
         actual = currentFleet2.getRent();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 
     /**
@@ -436,9 +436,9 @@ public class AcceptanceTest {
         currentFleet2.setOwner(player1);
         int expected = 1000;
         int actual = currentFleet1.getRent();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
         actual = currentFleet2.getRent();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 
     /**
@@ -452,9 +452,9 @@ public class AcceptanceTest {
         currentFleet2.setOwner(player1);
         int expected = 1000;
         int actual = currentFleet1.getRent();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
         actual = currentFleet2.getRent();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 
     /**
@@ -468,9 +468,9 @@ public class AcceptanceTest {
         currentFleet2.setOwner(player1);
         int expected = 1000;
         int actual = currentFleet1.getRent();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
         actual = currentFleet2.getRent();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 
     /**
@@ -484,9 +484,9 @@ public class AcceptanceTest {
         currentFleet2.setOwner(player1);
         int expected = 1000;
         int actual = currentFleet1.getRent();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
         actual = currentFleet2.getRent();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 
     /**
@@ -502,11 +502,11 @@ public class AcceptanceTest {
         currentFleet3.setOwner(player1);
         int expected = 2000;
         int actual = currentFleet1.getRent();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
         actual = currentFleet2.getRent();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
         actual = currentFleet3.getRent();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 
     /**
@@ -522,11 +522,11 @@ public class AcceptanceTest {
         currentFleet3.setOwner(player1);
         int expected = 2000;
         int actual = currentFleet1.getRent();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
         actual = currentFleet2.getRent();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
         actual = currentFleet3.getRent();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 
     /**
@@ -542,11 +542,11 @@ public class AcceptanceTest {
         currentFleet3.setOwner(player1);
         int expected = 2000;
         int actual = currentFleet1.getRent();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
         actual = currentFleet2.getRent();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
         actual = currentFleet3.getRent();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 
     /**
@@ -562,11 +562,11 @@ public class AcceptanceTest {
         currentFleet3.setOwner(player1);
         int expected = 2000;
         int actual = currentFleet1.getRent();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
         actual = currentFleet2.getRent();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
         actual = currentFleet3.getRent();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 
     /**
@@ -584,13 +584,13 @@ public class AcceptanceTest {
         currentFleet4.setOwner(player1);
         int expected = 4000;
         int actual = currentFleet1.getRent();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
         actual = currentFleet2.getRent();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
         actual = currentFleet3.getRent();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
         actual = currentFleet4.getRent();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -598,87 +598,87 @@ public class AcceptanceTest {
         Ownable field = (Ownable) GameController.getGameBoard().getField(1);
         int expected = 1000;
         int actual = field.getPrice();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
         field = (Ownable) GameController.getGameBoard().getField(2);
         expected = 1500;
         actual = field.getPrice();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
         field = (Ownable) GameController.getGameBoard().getField(3);
         expected = 4000;
         actual = field.getPrice();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
         field = (Ownable) GameController.getGameBoard().getField(5);
         expected = 2000;
         actual = field.getPrice();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
         field = (Ownable) GameController.getGameBoard().getField(7);
         expected = 3000;
         actual = field.getPrice();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
         field = (Ownable) GameController.getGameBoard().getField(8);
         expected = 4000;
         actual = field.getPrice();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
         field = (Ownable) GameController.getGameBoard().getField(9);
         expected = 4000;
         actual = field.getPrice();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
         field = (Ownable) GameController.getGameBoard().getField(10);
         expected = 2500;
         actual = field.getPrice();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
         field = (Ownable) GameController.getGameBoard().getField(11);
         expected = 4300;
         actual = field.getPrice();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
         field = (Ownable) GameController.getGameBoard().getField(12);
         expected = 4750;
         actual = field.getPrice();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
         field = (Ownable) GameController.getGameBoard().getField(13);
         expected = 5000;
         actual = field.getPrice();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
         field = (Ownable) GameController.getGameBoard().getField(14);
         expected = 2500;
         actual = field.getPrice();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
         field = (Ownable) GameController.getGameBoard().getField(15);
         expected = 4000;
         actual = field.getPrice();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
         field = (Ownable) GameController.getGameBoard().getField(17);
         expected = 5500;
         actual = field.getPrice();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
         field = (Ownable) GameController.getGameBoard().getField(18);
         expected = 6000;
         actual = field.getPrice();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
         field = (Ownable) GameController.getGameBoard().getField(19);
         expected = 8000;
         actual = field.getPrice();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
         field = (Ownable) GameController.getGameBoard().getField(20);
         expected = 4000;
         actual = field.getPrice();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -687,103 +687,103 @@ public class AcceptanceTest {
         field.setOwner(player1);
         Player expected = player1;
         Player actual = field.getOwner();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
         field = (Ownable) GameController.getGameBoard().getField(2);
         field.setOwner(player1);
         expected = player1;
         actual = field.getOwner();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
         field = (Ownable) GameController.getGameBoard().getField(3);
         field.setOwner(player1);
         expected = player1;
         actual = field.getOwner();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
         field = (Ownable) GameController.getGameBoard().getField(5);
         field.setOwner(player1);
         expected = player1;
         actual = field.getOwner();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
         field = (Ownable) GameController.getGameBoard().getField(7);
         field.setOwner(player1);
         expected = player1;
         actual = field.getOwner();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
         field = (Ownable) GameController.getGameBoard().getField(8);
         field.setOwner(player1);
         expected = player1;
         actual = field.getOwner();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
         field = (Ownable) GameController.getGameBoard().getField(9);
         field.setOwner(player1);
         expected = player1;
         actual = field.getOwner();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
         field = (Ownable) GameController.getGameBoard().getField(10);
         field.setOwner(player1);
         expected = player1;
         actual = field.getOwner();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
         field = (Ownable) GameController.getGameBoard().getField(11);
         field.setOwner(player1);
         expected = player1;
         actual = field.getOwner();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
         field = (Ownable) GameController.getGameBoard().getField(12);
         field.setOwner(player1);
         expected = player1;
         actual = field.getOwner();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
         field = (Ownable) GameController.getGameBoard().getField(13);
         field.setOwner(player1);
         expected = player1;
         actual = field.getOwner();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
         field = (Ownable) GameController.getGameBoard().getField(14);
         field.setOwner(player1);
         expected = player1;
         actual = field.getOwner();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
         field = (Ownable) GameController.getGameBoard().getField(15);
         field.setOwner(player1);
         expected = player1;
         actual = field.getOwner();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
         field = (Ownable) GameController.getGameBoard().getField(17);
         field.setOwner(player1);
         expected = player1;
         actual = field.getOwner();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
         field = (Ownable) GameController.getGameBoard().getField(18);
         field.setOwner(player1);
         expected = player1;
         actual = field.getOwner();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
         field = (Ownable) GameController.getGameBoard().getField(19);
         field.setOwner(player1);
         expected = player1;
         actual = field.getOwner();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
         field = (Ownable) GameController.getGameBoard().getField(20);
         field.setOwner(player1);
         expected = player1;
         actual = field.getOwner();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
     }
 
@@ -792,12 +792,12 @@ public class AcceptanceTest {
         Refuge refuge = (Refuge) GameController.getGameBoard().getField(6);
         int expected = 5000;
         int actual = refuge.getBonus();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
         refuge = (Refuge) GameController.getGameBoard().getField(21);
         expected = 500;
         actual = refuge.getBonus();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -805,12 +805,12 @@ public class AcceptanceTest {
         Tax tax = (Tax) GameController.getGameBoard().getField(4);
         int expected = 2000;
         int actual = tax.getTaxAmount();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
         tax = (Tax) GameController.getGameBoard().getField(16);
         expected = 4000;
         actual = tax.getTaxAmount();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -818,12 +818,12 @@ public class AcceptanceTest {
         Tax tax = (Tax) GameController.getGameBoard().getField(4);
         float expected = (float) 1.0;
         float actual = tax.getTaxRate();
-        assertEquals(expected,actual, 0.0001);
+        assertEquals(expected, actual, 0.0001);
 
         tax = (Tax) GameController.getGameBoard().getField(16);
         expected = (float) 0.1;
         actual = tax.getTaxRate();
-        assertEquals(expected,actual, 0.0001);
+        assertEquals(expected, actual, 0.0001);
     }
 
     @Test

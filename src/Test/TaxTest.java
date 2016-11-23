@@ -7,16 +7,16 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 
 /**
  * Tests the Tax class
- *
+ * <p>
  * Bugs: none known
  *
- * @author       Mathias Larsen
- * @version      v.0.1
+ * @author Mathias Larsen
+ * @version v.0.1
  */
 public class TaxTest {
 
@@ -54,7 +54,7 @@ public class TaxTest {
         Assert.assertTrue(this.tax200 instanceof Tax);
         Assert.assertTrue(this.tax0 instanceof Tax);
         Assert.assertTrue(this.taxneg200 instanceof Tax);
-        Assert.assertTrue(this.tax10Pct instanceof  Tax);
+        Assert.assertTrue(this.tax10Pct instanceof Tax);
     }
 
     @Test
@@ -70,6 +70,7 @@ public class TaxTest {
         actual = player.getAccount().getBalance();
         Assert.assertEquals(expected, actual);
     }
+
     @Test
     public void testLandOnField200Twice() {
         int expected = 1000;
@@ -98,6 +99,7 @@ public class TaxTest {
         actual = player.getAccount().getBalance();
         Assert.assertEquals(expected, actual);
     }
+
     @Test
     public void testLandOnField0Twice() {
         int expected = 1000;
@@ -126,6 +128,7 @@ public class TaxTest {
         actual = player.getAccount().getBalance();
         Assert.assertEquals(expected, actual);
     }
+
     @Test
     public void testLandOnFieldNeg200Twice() {
         int expected = 1000;
@@ -142,7 +145,7 @@ public class TaxTest {
     }
 
     @Test
-    public void testLandOnField10Pct(){
+    public void testLandOnField10Pct() {
 
         int expected = 0;
         int actual = player.getRealEstateValue();
@@ -153,7 +156,6 @@ public class TaxTest {
         expected = 1000;
         actual = player.getRealEstateValue();
         assertEquals(expected, actual);
-
 
 
     }
@@ -174,7 +176,7 @@ public class TaxTest {
     }
 
     @Test
-    public void testGetAmount() throws Exception{
+    public void testGetAmount() throws Exception {
 
     }
 

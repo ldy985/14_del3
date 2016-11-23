@@ -8,11 +8,11 @@ import static org.junit.Assert.assertEquals;
 
 /**
  * Testes the territory class
- *
+ * <p>
  * Bugs: none known
  *
- * @author       Mathias Larsen
- * @version      v.0.1
+ * @author Mathias Larsen
+ * @version v.0.1
  */
 
 public class TerritoryTest {
@@ -31,6 +31,7 @@ public class TerritoryTest {
 
     /**
      * First it is tested that no one owns the field. Then the owner is set and tested.
+     *
      * @throws Exception
      */
     @Test
@@ -46,20 +47,21 @@ public class TerritoryTest {
 
     /**
      * The landOnField method can not be tested automatically as it contains calls to the GUI
+     *
      * @throws Exception
      */
     @Test
     public void landOnField() throws Exception {
 
     }
-    
+
 
     @Test
     public void getName() throws Exception {
 
         assertEquals("TestTerri", territory.getName());
 
-        territory.setName("Ritz");
+        territory.setName("Ritz"); // TODO: 22-11-2016 BUG?
 
         assertEquals("RitZ", territory.getName());
     }

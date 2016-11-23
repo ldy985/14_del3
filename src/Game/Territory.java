@@ -2,11 +2,11 @@ package Game;
 
 /**
  * Keeps track of the balance, and adds/subtracts by the points on the board.
- *
+ * <p>
  * Bugs: none known
  *
- * @author       Timothy Rasmussen
- * @version      v.0.1
+ * @author Timothy Rasmussen
+ * @version v.0.1
  */
 
 public class Territory extends Ownable {

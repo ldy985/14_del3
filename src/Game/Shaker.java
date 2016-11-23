@@ -2,26 +2,27 @@ package Game;
 
 /**
  * Shaker class, contains the Die objects
- *
+ * <p>
  * Bugs: none known
  *
- * @author       Mathias S Larsen (2016)
- * @author       Casper Bodskov
- * @author       Lasse Dyrsted
- * @author       Michael Klan
- * @author       Rasmus Blichfeldt
- * @author       Timothy Rasmussen
- * @version      v.0.1
+ * @author Mathias S Larsen (2016)
+ * @author Casper Bodskov
+ * @author Lasse Dyrsted
+ * @author Michael Klan
+ * @author Rasmus Blichfeldt
+ * @author Timothy Rasmussen
+ * @version v.0.1
  */
 public class Shaker {
 
+    private final Die[] dice;
     //Initializing variables
     private int sum;
-    private final Die[] dice;
 
 
     /**
      * Creates the Dice in the shaker
+     *
      * @param dieCount Amount of Dice to create
      */
     public Shaker(int dieCount) {
@@ -49,7 +50,7 @@ public class Shaker {
         return sum;
     }
 
-    public void setSum(int sum){
+    public void setSum(int sum) {
         this.sum = sum;
     }
 

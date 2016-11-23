@@ -1,23 +1,22 @@
 package Game;
 
-import desktop_resources.GUI;
 import static Game.Language.getString;
 
 /**
  * Keeps track of the balance, and adds/subtracts by the points on the board.
- *
+ * <p>
  * Bugs: none known
  *
- * @author       Rasmus Blichfeldt
- * @version      v.0.1
+ * @author Rasmus Blichfeldt
+ * @version v.0.1
  */
 
-public class Refuge extends Field{
+public class Refuge extends Field {
 
     private final int bonus;
 
 
-    public Refuge(int no, String name, int bonus){
+    public Refuge(int no, String name, int bonus) {
 
         super(no, name);
 
@@ -26,11 +25,11 @@ public class Refuge extends Field{
 
     }
 
-    public int getBonus(){
+    public int getBonus() {
         return bonus;
     }
 
-    public void landOnField(Player player){
+    public void landOnField(Player player) {
 
         player.getAccount().addBalance(bonus);
         InterfaceController.showMessage(getString("landed") + getName());

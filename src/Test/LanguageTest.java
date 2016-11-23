@@ -1,18 +1,17 @@
 package Test;
 
 import Game.Language;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
+
 import static org.junit.Assert.assertEquals;
 
 /**
  * Tests the Language class
- *
+ * <p>
  * Bugs: none known
  *
- * @author       Rasmus Blichfeldt (tror jeg)
- * @version      v.0.1
+ * @author Rasmus Blichfeldt (tror jeg)
+ * @version v.0.1
  */
 
 
@@ -24,7 +23,7 @@ public class LanguageTest {
         //We can't test setLanguage because that would require ......
         Language.setLanguage("english");
         //We test to see if it shows the players name
-        String i=Language.getString("name1");
-        assertEquals("What is Player",i);
+        String i = Language.getString("name1");
+        assertEquals("What is Player", i);
     }
 }

@@ -20,20 +20,19 @@ import static Game.Language.getString;
 
 public class GameController {
 
+    private static final int FIELD_COUNT = 21;
+    private static final GameBoard gameBoard = new GameBoard(FIELD_COUNT);
     private static Shaker shaker = new Shaker(2); //creates a shaker with 2 dice.
     private static Player currentPlayer;
-    private static final int FIELD_COUNT = 21;
     private final int START_BALANCE = 30000;
     private final ArrayList<Player> players = new ArrayList<Player>(); //creates an ArrayList that can contain Player objects
 
-    public static GameBoard getGameBoard() {
-        return gameBoard;
-    }
-
-    private static final GameBoard gameBoard = new GameBoard(FIELD_COUNT);
-
     public GameController() { // TODO: 21-11-2016 FIX gamecontroller creation
 
+    }
+
+    public static GameBoard getGameBoard() {
+        return gameBoard;
     }
     //private boolean gameWon = false;
 
@@ -43,6 +42,22 @@ public class GameController {
 
     public static Shaker getShaker() {
         return shaker;
+    }
+
+    public static void movePlayer(Player thisPlayer, int moveFields) {
+
+        //stores the players location on the gameboard
+        if (thisPlayer.getOnField() + moveFields <= FIELD_COUNT) {
+            thisPlayer.setOnField(thisPlayer.getOnField() + moveFields);
+        } else {
+            thisPlayer.setOnField(thisPlayer.getOnField() + moveFields - FIELD_COUNT);
+        }
+
+        //"Moves" the car on the board by removing it in the previous location
+        // and then set it to the new location.
+        InterfaceController.removeAllCars(thisPlayer.getName());
+        InterfaceController.setCar(thisPlayer.getOnField(), thisPlayer.getName());
+
     }
 
     private void initializePlayers() {
@@ -76,22 +91,6 @@ public class GameController {
 
         // Displays the dice on the board
         InterfaceController.setDice(faceValue1, faceValue2);
-    }
-
-    public static void movePlayer(Player thisPlayer, int moveFields) {
-
-        //stores the players location on the gameboard
-        if (thisPlayer.getOnField() + moveFields <= FIELD_COUNT) {
-            thisPlayer.setOnField(thisPlayer.getOnField() + moveFields);
-        } else {
-            thisPlayer.setOnField(thisPlayer.getOnField() + moveFields - FIELD_COUNT);
-        }
-
-        //"Moves" the car on the board by removing it in the previous location
-        // and then set it to the new location.
-        InterfaceController.removeAllCars(thisPlayer.getName());
-        InterfaceController.setCar(thisPlayer.getOnField(), thisPlayer.getName());
-
     }
 
     public void startGame() {
