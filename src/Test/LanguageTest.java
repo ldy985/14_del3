@@ -24,7 +24,7 @@ public class LanguageTest {
     public void setLanguageEnglish1() throws Exception {
         //The string we expect to be returned
         String expectedTest1 = "What is Player";
-        String expectedTest2 = "You landed on";
+        String expectedTest2 = "landed on";
         String expectedTest3 = "Do you want to pay";
 
 
@@ -47,7 +47,7 @@ public class LanguageTest {
     public void setLanguageEnglish2() throws Exception {
         //The string we expect to be returned
         String expectedTest1 = "What is Player";
-        String expectedTest2 = "You landed on";
+        String expectedTest2 = "landed on";
         String expectedTest3 = "Do you want to pay";
 
         //We set the language to "English" to see if it will give the right return value.        .

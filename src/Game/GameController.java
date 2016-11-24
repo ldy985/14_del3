@@ -101,7 +101,7 @@ public class GameController {
 
             for (int i = 0; i < players.size(); i++) {
                 currentPlayer = players.get(i);
-
+                
 
                 //rolls the dice
                 shaker.shake();
@@ -124,7 +124,8 @@ public class GameController {
                 if (currentPlayer.getBalance() <= 0) {
                     players.remove(currentPlayer);
                     gameBoard.deleteOwnership(currentPlayer);
-                    break;//Stop the loop when we remove an element because we use foreach else we get a pointer error
+                    // Gives the next person the turn, instead of resetting "i".
+                    --i;
                 }
 
 
