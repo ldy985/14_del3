@@ -1,8 +1,5 @@
 package Game;
 
-import desktop_resources.GUI;
-
-import static Game.Language.getString;
 
 /**
  * Keeps track of the balance, and adds/subtracts by the points on the board.
@@ -62,14 +59,19 @@ public class Tax extends Field {
 
 
         int calculatedTax = calculateTax(player.getRealEstateValue() + player.getAccount().getBalance());
-        if (taxRate != 1.0f && InterfaceController.getUserSelection((getString("paytax1") + taxAmount + getString("paytax2") + "10% ( " + calculatedTax + ")"), taxAmount + "", "10%") == "10%") {
+
+        final String  question = (Language.getString("paytax1") + taxAmount + Language.getString("paytax2") + "10% ( " + calculatedTax + ")");
+        final String answer1 = taxAmount + "";
+        final String answer2 = "10%";
+
+        if (taxRate != 1.0f && InterfaceController.getUserSelection(question, answer1, answer2) == answer2) {
             player.getAccount().addBalance(calculatedTax);
 
         } else {
             player.getAccount().addBalance(-taxAmount);
         }
 
-        InterfaceController.showMessage(getString("landed") + getName());
+        InterfaceController.showMessage(Language.getString("landed") + getName());
 
     }
 }

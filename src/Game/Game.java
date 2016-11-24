@@ -1,6 +1,5 @@
 package Game;
 
-import static Game.Language.setLanguage;
 
 /**
  * Keeps track of the balance, and adds/subtracts by the points on the board.
@@ -16,7 +15,7 @@ public class Game {
     public static void main(String[] args) {
 
         // Selects the language
-        setLanguage("english");
+        Language.setLanguage("english");
 
         InterfaceController.setInterfaceMode(InterfaceController.Mode.GUI);
 

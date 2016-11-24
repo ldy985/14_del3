@@ -17,6 +17,10 @@ public class Language {
     private static String languageSelected;
     private static ResourceBundle language;
 
+
+    private Language() {
+    }
+
     public static void setLanguage(String selectLanguage) {
         languageSelected = selectLanguage;
     }

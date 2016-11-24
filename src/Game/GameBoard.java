@@ -49,7 +49,6 @@ public class GameBoard {
 
         try {
             Gson g = new Gson();
-            Language lang = new Language();
 
             Field[] loadedFields = new Field[21];
 
@@ -64,7 +63,7 @@ public class GameBoard {
 
                 String[] lineSplit = line.split("\\|");
                 loadedFields[i] = g.fromJson(lineSplit[1], (Type) Class.forName("Game." + lineSplit[0]));
-                loadedFields[i].setName(lang.getString(loadedFields[i].getName()));
+                loadedFields[i].setName(Language.getString(loadedFields[i].getName()));
                 i++;
 
             }

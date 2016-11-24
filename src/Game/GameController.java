@@ -7,8 +7,6 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 
-import static Game.Language.getString;
-
 /**
  * The main flow of the game.
  * <p>
@@ -61,10 +59,10 @@ public class GameController {
 
     private static void initializePlayers() {
 
-        String numberSelected = InterfaceController.getUserSelection(getString("greeting"), "2", "3", "4", "5", "6");
+        String numberSelected = InterfaceController.getUserSelection(Language.getString("greeting"), "2", "3", "4", "5", "6");
         int numberOfPlayers = Integer.parseInt(numberSelected);
         for (int i = 0; i < numberOfPlayers; i++) {
-            String name = InterfaceController.getUserString(getString("name1") + (i + 1) + getString("name2")); //the + (i+1) changes the number so system prints player1 then player2...
+            String name = InterfaceController.getUserString(Language.getString("name1") + (i + 1) + Language.getString("name2")); //the + (i+1) changes the number so system prints player1 then player2...
             players.add(new Player(name, START_BALANCE)); //creates a new player object.
 
             // Adds player to the GUI
@@ -132,7 +130,7 @@ public class GameController {
         }
 
         //gets displayed when a winner has been found.
-        InterfaceController.showMessage(players.get(0).getName() + getString("won"));
+        InterfaceController.showMessage(players.get(0).getName() + Language.getString("won"));
 
         InterfaceController.close();
     }

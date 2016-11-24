@@ -1,8 +1,6 @@
 package Game;
 
 
-import static Game.Language.getString;
-
 /**
  * Shaker class, contains the Die objects
  * <p>
@@ -60,14 +58,20 @@ public abstract class Ownable extends Field {
         // No one owns the field and the player has the money to buy it
         if (owner == null && price <= player.getAccount().getBalance()) {
 
+
+            final String question = player.getName() + " " + (Language.getString("turn1") + " " +
+                    Language.getString("buy1") + " " + getName() + " " + Language.getString("buy2") + " " + price + " ?");
+
+            final String answer1 = Language.getString("no");
+            final String answer2 = Language.getString("yes");
+
             // Checks whether the player wants to buy
-            if (InterfaceController.getUserButtonPressed(player.getName() + " " + (getString("turn1") + " " +
-                    getString("buy1") + " " + getName() + " " + getString("buy2") + " " + price + " ?"), getString("no"), getString("yes")) == getString("yes")) {
+            if (InterfaceController.getUserButtonPressed(question, answer1, answer2) == answer2) {
 
                 player.getAccount().addBalance(-price);
                 player.addRealEstateValue(price);
-                setOwner(player);
-                InterfaceController.showMessage(player.getName() + " " + getString("bought") + " " + getName());
+                this.setOwner(player);
+                InterfaceController.showMessage(player.getName() + " " + Language.getString("bought") + " " + getName());
 
             }
         }
