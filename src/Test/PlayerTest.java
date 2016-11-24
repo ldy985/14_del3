@@ -19,7 +19,12 @@ public class PlayerTest {
     /**
      * creates a player object.
      */
-    Player player = new Player("Player1", 10000);
+    Player player = new Player("Player1", 30000);
+    
+    @Test
+    public void testEnterties (){
+        
+    }
 
     /**
      * tests the realEstateValue. this value is the value of the fields owned by the player.

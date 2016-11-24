@@ -6,6 +6,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -14,7 +15,7 @@ import static org.junit.Assert.assertTrue;
  * Bugs: none known
  *
  * @author Mathias Larsen
- * @version v.0.2
+ * @version v.0.3
  */
 public class LaborCampTest {
 
@@ -46,6 +47,24 @@ public class LaborCampTest {
         this.labor2 = (LaborCamp) gameBoard.getField(14);
     }
 
+
+    @Test
+    public void testEntities(){
+        assertNotNull(this.player1);
+        assertNotNull(this.player2);
+
+        assertNotNull(this.gameBoard);
+        assertNotNull(this.labor1);
+        assertNotNull(this.labor2);
+
+        assertTrue(this.player1 instanceof Player);
+        assertTrue(this.player2 instanceof Player);
+
+        assertTrue(this.gameBoard instanceof GameBoard);
+        assertTrue(this.labor1 instanceof LaborCamp);
+        assertTrue(this.labor2 instanceof LaborCamp);
+
+    }
 
     @Test
     public void getRent() throws Exception {
