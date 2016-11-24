@@ -43,7 +43,7 @@ public class Tax extends Field {
      */
     private int calculateTax(int totalValue) {
 
-        return (int) (totalValue * taxRate);
+        return (int) (totalValue * -taxRate);
     }
 
     public float getTaxRate() {

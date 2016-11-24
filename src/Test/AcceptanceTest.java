@@ -311,34 +311,34 @@ public class AcceptanceTest {
 
         LaborCamp currentLabor = (LaborCamp) gameBoard.getField(10);
         GameController.getShaker().setSum(2);
-        expected = -2 * 100;
+        expected = 2 * 100;
         actual = currentLabor.getRent();
         assertEquals(expected, actual);
 
         GameController.getShaker().setSum(5);
-        expected = -5 * 100;
+        expected = 5 * 100;
         actual = currentLabor.getRent();
         assertEquals(expected, actual);
 
         GameController.getShaker().setSum(12);
-        expected = -12 * 100;
+        expected = 12 * 100;
         actual = currentLabor.getRent();
         assertEquals(expected, actual);
 
 
         currentLabor = (LaborCamp) gameBoard.getField(14);
         GameController.getShaker().setSum(2);
-        expected = -2 * 100;
+        expected = 2 * 100;
         actual = currentLabor.getRent();
         assertEquals(expected, actual);
 
         GameController.getShaker().setSum(5);
-        expected = -5 * 100;
+        expected = 5 * 100;
         actual = currentLabor.getRent();
         assertEquals(expected, actual);
 
         GameController.getShaker().setSum(12);
-        expected = -12 * 100;
+        expected = 12 * 100;
         actual = currentLabor.getRent();
         assertEquals(expected, actual);
     }
