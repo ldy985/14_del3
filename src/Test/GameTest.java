@@ -15,7 +15,7 @@ import static org.junit.Assert.assertEquals;
  * Bugs: none known
  *
  * @author Rasmus Blichfeldt
- * @version v.0.2
+ * @version v.0.3
  */
 
 public class GameTest {
@@ -30,7 +30,6 @@ public class GameTest {
         InterfaceController.setInterfaceMode(InterfaceController.Mode.GUI);
 
 
-
         Field[] board = GameController.getGameBoard().loadBoardFromFile("board.cfg");
         InterfaceController.showOnGui(board);
 
@@ -42,7 +41,7 @@ public class GameTest {
 
         System.out.println(timeTaken);
 
-        assertEquals(true, timeTaken < 2500);
+        assertEquals(true, timeTaken < 3000);
 
 
     }

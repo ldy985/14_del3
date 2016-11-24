@@ -1,12 +1,9 @@
 package Test;
 
-import Game.InterfaceController;
 import Game.Language;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 /**
  * Tests the Language class
@@ -14,7 +11,7 @@ import static org.junit.Assert.assertNotNull;
  * Bugs: none known
  *
  * @author Rasmus Blichfeldt (tror jeg)
- * @version v.0.1
+ * @version v.0.2
  */
 
 
@@ -67,15 +64,22 @@ public class LanguageTest {
     }
 
     @Test
-    public void setLanguageNull() throws Exception{
+    public void setLanguageNull() throws Exception {
         //The string we expect to be returned
-        String expected = "Invalid Language. Please select English";
+        String expected = "No language was set!";
         //We set the language to nothing (""), to see if it gives us the default answer
         //for a wrong selected language
         Language.setLanguage("");
-        //We test to see if it returns the string "Invalid Language. Please select English"
-        String actual = Language.getString("name1");
 
-        assertEquals(expected, actual);
+        //We test to see if it returns the string "Invalid Language. Please select English"
+        try {
+            Language.getString("name1");
+        } catch (Exception ex) {
+            assertTrue(true);
+
+
+        }
+
+
     }
 }

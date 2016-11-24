@@ -1,11 +1,12 @@
 package Test;
 
 import Game.*;
-import org.junit.*;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 
 /**
@@ -14,7 +15,7 @@ import static org.junit.Assert.assertTrue;
  * Bugs: none known
  *
  * @author Mathias Larsen
- * @version v.0.2
+ * @version v.0.3
  */
 public class TaxTest {
 
@@ -33,12 +34,20 @@ public class TaxTest {
 
     @Before
     public void setUp() throws Exception {
+
         this.player1 = new Player("Player1", 30000);
         this.player2 = new Player("Player2", 30000);
-        this.gameBoard = new GameBoard(21);
+
+        this.gameBoard = GameController.getGameBoard();
+
         this.tax1 = (Tax) gameBoard.getField(4);
         this.tax2 = (Tax) gameBoard.getField(16);
 
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        GameController.reset();
     }
 
     @Test
@@ -67,45 +76,45 @@ public class TaxTest {
 
         expected = "Caravan";
         actual = tax2.getName();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
         tax1.setName("Change");
         expected = "Change";
         actual = tax1.getName();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
     }
 
     @Test
-    public void testTaxAmount(){
+    public void testTaxAmount() {
         int expected = 2000;
         int actual = tax1.getTaxAmount();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
         expected = 4000;
         actual = tax2.getTaxAmount();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 
     @Test
-    public void testTaxRate(){
+    public void testTaxRate() {
         float expected = 1.0f;
         float actual = tax1.getTaxRate();
-        assertEquals(expected,actual,0.001);
+        assertEquals(expected, actual, 0.001);
 
         expected = 0.1f;
         actual = tax2.getTaxRate();
-        assertEquals(expected,actual, 0.001);
+        assertEquals(expected, actual, 0.001);
     }
 
 
     @Test
-    public void testLandOnField(){
+    public void testLandOnField() {
 
         //testes that the players start account is correct.
         int expected = 30000;
         int actual = player1.getBalance();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
         //player lands on tax field
         tax1.landOnField(player1);
@@ -113,7 +122,7 @@ public class TaxTest {
         //testes that the tax (2000) have been payed
         expected = 28000;
         actual = player1.getBalance();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
         //player choses to pay 4000 in tax
         InterfaceController.setPreDefinedAnswer("4000");
@@ -122,7 +131,7 @@ public class TaxTest {
         //tests that the tax (4000) have been payed
         expected = 24000;
         actual = player1.getBalance();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
         //player chooses to pay 10% of total value (realestate + money on account) in tax
         InterfaceController.setPreDefinedAnswer("10%");
@@ -130,7 +139,7 @@ public class TaxTest {
 
         expected = 21600;
         actual = player1.getBalance();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
         //adds value to players realestate
         player1.addRealEstateValue(10000);
@@ -141,7 +150,7 @@ public class TaxTest {
 
         expected = 18440;
         actual = player1.getBalance();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
 
     }

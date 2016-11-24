@@ -1,5 +1,6 @@
 package Game;
 
+import javax.management.RuntimeErrorException;
 import java.util.ResourceBundle;
 
 
@@ -9,12 +10,10 @@ import java.util.ResourceBundle;
  * Bugs: none known
  *
  * @author Rasmus Blichfeldt
- * @version v.0.2
+ * @version v.0.3
  */
 public class Language {
 
-    private static String string;
-    private static String languageSelected;
     private static ResourceBundle language;
 
 
@@ -22,13 +21,9 @@ public class Language {
     }
 
     public static void setLanguage(String selectLanguage) {
-        languageSelected = selectLanguage;
-    }
-
-    public static String getString(String inputString) {
 
         // Selects the language through the String variable "inputString"
-        switch (languageSelected) {
+        switch (selectLanguage) {
             case "english":
                 language = ResourceBundle.getBundle("Language");
                 break;
@@ -36,20 +31,22 @@ public class Language {
                 language = ResourceBundle.getBundle("Language");
                 break;
             default:
-                string = "Invalid Language. Please select English";
+                language = null;
         }
+
+    }
+
+    public static String getString(String inputString) {
+
 
         // If an available language is not selected
-        if(string == "Invalid Language. Please select English"){
+        if (language == null) {
 
-            return string;
-        }  else {
-
-            // Returns the string in the selected language
-            string = language.getString(inputString);
-
-            return string;
+            throw new RuntimeErrorException(new Error("No language was set!"));
         }
+
+        // Returns the string in the selected language
+        return language.getString(inputString);
 
 
     }
