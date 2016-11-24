@@ -15,7 +15,7 @@ import static org.junit.Assert.assertTrue;
  * Bugs: none known
  *
  * @author Mathias Larsen
- * @version v.0.2
+ * @version v.0.3
  */
 public class PlayerTest {
 
@@ -63,10 +63,29 @@ public class PlayerTest {
      * @throws Exception
      */
     @Test
-    public void testAccount() throws Exception {
+    public void testBallance() throws Exception {
 
-        assertNotNull(player.getAccount());
-        assertTrue(player.getAccount() instanceof Account);
+        int expected = 30000;
+        int actual = player.getBalance();
+        assertEquals(expected,actual);
+
+        player.addBalance(5000);
+
+        expected = 35000;
+        actual = player.getBalance();
+        assertEquals(expected,actual);
+
+        player.addBalance(-10000);
+
+        expected = 25000;
+        actual = player.getBalance();
+        assertEquals(expected,actual);
+
+        player.addBalance(0);
+
+        expected = 25000;
+        actual = player.getBalance();
+        assertEquals(expected,actual);
     }
 
     @Test
