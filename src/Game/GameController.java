@@ -121,7 +121,7 @@ public class GameController {
 
 
                 //removes bankrupt players from the game
-                if (currentPlayer.getAccount().getBalance() <= 0) {
+                if (currentPlayer.getBalance() <= 0) {
                     players.remove(currentPlayer);
                     gameBoard.deleteOwnership(currentPlayer);
                     break;//Stop the loop when we remove an element because we use foreach else we get a pointer error

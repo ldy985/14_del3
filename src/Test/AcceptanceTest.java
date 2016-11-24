@@ -21,14 +21,14 @@ public class AcceptanceTest {
 //
 //
 //    private void testBuyfield(Player player) {
-//        int initialPlayerBalance = player.getAccount().getBalance();
+//        int initialPlayerBalance = player.getBalance();
 //        Ownable currentField = (Ownable) gameBoard.getField(player.getOnField());
 //
 //        InterfaceController.setPreDefinedAnswer(Language.getString("yes"));
 //
 //        currentField.landOnField(player);
 //
-//        assertEquals((initialPlayerBalance - currentField.getPrice()), player.getAccount().getBalance());
+//        assertEquals((initialPlayerBalance - currentField.getPrice()), player.getBalance());
 //
 //        assertEquals(player, currentField.getOwner());
 //    }

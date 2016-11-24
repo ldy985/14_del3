@@ -104,7 +104,7 @@ public class TaxTest {
 
         //testes that the players start account is correct.
         int expected = 30000;
-        int actual = player1.getAccount().getBalance();
+        int actual = player1.getBalance();
         assertEquals(expected,actual);
 
         //player lands on tax field
@@ -112,7 +112,7 @@ public class TaxTest {
 
         //testes that the tax (2000) have been payed
         expected = 28000;
-        actual = player1.getAccount().getBalance();
+        actual = player1.getBalance();
         assertEquals(expected,actual);
 
         //player choses to pay 4000 in tax
@@ -121,7 +121,7 @@ public class TaxTest {
 
         //tests that the tax (4000) have been payed
         expected = 24000;
-        actual = player1.getAccount().getBalance();
+        actual = player1.getBalance();
         assertEquals(expected,actual);
 
         //player chooses to pay 10% of total value (realestate + money on account) in tax
@@ -129,7 +129,7 @@ public class TaxTest {
         tax2.landOnField(player1);
 
         expected = 21600;
-        actual = player1.getAccount().getBalance();
+        actual = player1.getBalance();
         assertEquals(expected,actual);
 
         //adds value to players realestate
@@ -140,7 +140,7 @@ public class TaxTest {
         tax2.landOnField(player1);
 
         expected = 18440;
-        actual = player1.getAccount().getBalance();
+        actual = player1.getBalance();
         assertEquals(expected,actual);
 
 

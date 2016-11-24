@@ -129,7 +129,7 @@ public class TerritoryTest {
 
         // testes that tha start balance i correct.
         int expected = 30000;
-        int actual = this.player1.getAccount().getBalance();
+        int actual = this.player1.getBalance();
         assertEquals(expected, actual);
 
         //player1 buys territory 1
@@ -138,7 +138,7 @@ public class TerritoryTest {
 
         //tests that the price of the field have been trancfered.
         expected = 29000;
-        actual = this.player1.getAccount().getBalance();
+        actual = this.player1.getBalance();
         assertEquals(expected, actual);
 
         //tests that the ownership has been terancfered
@@ -149,12 +149,12 @@ public class TerritoryTest {
         //test that player2 payes rent
         this.territory1.landOnField(player2);
         expected = 29900;
-        actual = player2.getAccount().getBalance();
+        actual = player2.getBalance();
         assertEquals(expected,actual);
 
         //test that player1 recives the rent
         expected = 29100;
-        actual = player1.getAccount().getBalance();
+        actual = player1.getBalance();
         assertEquals(expected,actual);
 
 
@@ -166,7 +166,7 @@ public class TerritoryTest {
 
         //tests that the price of the field have been trancfered.
         expected = 27600;
-        actual = this.player1.getAccount().getBalance();
+        actual = this.player1.getBalance();
         assertEquals(expected, actual);
 
         //tests that the ownership has been terancfered
@@ -177,12 +177,12 @@ public class TerritoryTest {
         //test that player2 payes rent
         this.territory2.landOnField(player2);
         expected = 29600;
-        actual = player2.getAccount().getBalance();
+        actual = player2.getBalance();
         assertEquals(expected,actual);
 
         //test that player1 recives the rent
         expected = 27900;
-        actual = player1.getAccount().getBalance();
+        actual = player1.getBalance();
         assertEquals(expected,actual);
 
 
@@ -193,7 +193,7 @@ public class TerritoryTest {
 
         //tests that the price of the field have been trancfered.
         expected = 25900;
-        actual = this.player1.getAccount().getBalance();
+        actual = this.player1.getBalance();
         assertEquals(expected, actual);
 
         //tests that the ownership has been terancfered
@@ -204,12 +204,12 @@ public class TerritoryTest {
         //test that player2 payes rent
         this.territory3.landOnField(player2);
         expected = 29100;
-        actual = player2.getAccount().getBalance();
+        actual = player2.getBalance();
         assertEquals(expected,actual);
 
         //test that player1 recives the rent
         expected = 26400;
-        actual = player1.getAccount().getBalance();
+        actual = player1.getBalance();
         assertEquals(expected,actual);
 
 

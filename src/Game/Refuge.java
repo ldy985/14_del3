@@ -30,7 +30,7 @@ public class Refuge extends Field {
 
     public void landOnField(Player player) {
 
-        player.getAccount().addBalance(bonus);
+        player.addBalance(bonus);
         //InterfaceController.showMessage(player.getName() + " " + Language.getString("landed") + " " + getName());
     }
 }

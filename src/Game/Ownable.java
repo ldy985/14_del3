@@ -56,7 +56,7 @@ public abstract class Ownable extends Field {
     public void landOnField(Player player) {
 
         // No one owns the field and the player has the money to buy it
-        if (owner == null && price <= player.getAccount().getBalance()) {
+        if (owner == null && price <= player.getBalance()) {
 
 
             final String question = player.getName() + " " + (Language.getString("turn1") + " " +
@@ -68,7 +68,7 @@ public abstract class Ownable extends Field {
             // Checks whether the player wants to buy
             if (InterfaceController.getUserButtonPressed(question, answer1, answer2) == answer2) {
 
-                player.getAccount().addBalance(-price);
+                player.addBalance(-price);
                 player.addRealEstateValue(price);
                 this.setOwner(player);
                 InterfaceController.showMessage(player.getName() + " " + Language.getString("bought") + " " + getName());
@@ -85,23 +85,23 @@ public abstract class Ownable extends Field {
         if (getOwner() != player && getOwner() != null) {
 
             // if they have enough money
-            if (price <= player.getAccount().getBalance()) {
+            if (price <= player.getBalance()) {
 
                 // Checks whether the player wants to buy
                 if (true) {//TODO: add gui
 
-                    player.getAccount().addBalance(-price);
+                    player.addBalance(-price);
                     setOwner(player);
 
                 }
                 //If another player owns the field
             } else {
 
-                getOwner().getAccount().addBalance(price);
+                getOwner().addBalance(price);
             }
 
         }else{
-            player.getAccount().addBalance(-getRent());
+            player.addBalance(-getRent());
         }
 
 */

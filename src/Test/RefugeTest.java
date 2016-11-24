@@ -85,17 +85,17 @@ public class RefugeTest {
         @Test
         public void testLandOnField() {
             int expected = 30000;
-            int actual = player.getAccount().getBalance();
+            int actual = player.getBalance();
             assertEquals(expected,actual);
 
             refuge1.landOnField(player);
             expected = 35000;
-            actual = player.getAccount().getBalance();
+            actual = player.getBalance();
             assertEquals(expected,actual);
 
             refuge2.landOnField(player);
             expected = 35500;
-            actual = player.getAccount().getBalance();
+            actual = player.getBalance();
             assertEquals(expected,actual);
         }
 

@@ -51,4 +51,5 @@ public class Player {
     public int getBalance() {
         return account.getBalance();
     }
+
 }

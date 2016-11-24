@@ -58,17 +58,17 @@ public class Tax extends Field {
     public void landOnField(Player player) {
 
 
-        int calculatedTax = calculateTax(player.getRealEstateValue() + player.getAccount().getBalance());
+        int calculatedTax = calculateTax(player.getRealEstateValue() + player.getBalance());
 
         final String question = (Language.getString("paytax1") + " " + taxAmount + " " + Language.getString("paytax2") + " " + "10% (" + calculatedTax + ")");
         final String answer1 = taxAmount + "";
         final String answer2 = "10%";
 
         if (taxRate != 1.0f && InterfaceController.getUserSelection(question, answer1, answer2) == answer2) {
-            player.getAccount().addBalance(calculatedTax);
+            player.addBalance(calculatedTax);
 
         } else {
-            player.getAccount().addBalance(-taxAmount);
+            player.addBalance(-taxAmount);
         }
 
         //InterfaceController.showMessage(Language.getString("landed") + getName());

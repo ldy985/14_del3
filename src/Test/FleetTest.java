@@ -133,7 +133,7 @@ public class FleetTest {
          */
         // testes that tha start balance i correct.
         int expected = 30000;
-        int actual = this.player1.getAccount().getBalance();
+        int actual = this.player1.getBalance();
         assertEquals(expected, actual);
 
         //player1 buys fleet 1
@@ -142,7 +142,7 @@ public class FleetTest {
 
         //tests that the price of the field have been trancfered.
         expected = 26000;
-        actual = this.player1.getAccount().getBalance();
+        actual = this.player1.getBalance();
         assertEquals(expected, actual);
 
         //tests that the ownership has been terancfered
@@ -152,11 +152,11 @@ public class FleetTest {
 
         this.fleet1.landOnField(player2);
         expected = 29500;
-        actual = player2.getAccount().getBalance();
+        actual = player2.getBalance();
         assertEquals(expected,actual);
 
         expected = 26500;
-        actual = player1.getAccount().getBalance();
+        actual = player1.getBalance();
         assertEquals(expected,actual);
 
 
@@ -169,7 +169,7 @@ public class FleetTest {
 
         //tests that the price of the field have been trancfered.
         expected = 22500;
-        actual = this.player1.getAccount().getBalance();
+        actual = this.player1.getBalance();
         assertEquals(expected, actual);
 
         //tests that the ownership has been terancfered
@@ -179,11 +179,11 @@ public class FleetTest {
 
         this.fleet1.landOnField(player2);
         expected = 28500;
-        actual = player2.getAccount().getBalance();
+        actual = player2.getBalance();
         assertEquals(expected,actual);
 
         expected = 23500;
-        actual = player1.getAccount().getBalance();
+        actual = player1.getBalance();
         assertEquals(expected,actual);
 
         /**
@@ -195,7 +195,7 @@ public class FleetTest {
 
         //tests that the price of the field have been trancfered.
         expected = 19500;
-        actual = this.player1.getAccount().getBalance();
+        actual = this.player1.getBalance();
         assertEquals(expected, actual);
 
         //tests that the ownership has been terancfered
@@ -205,11 +205,11 @@ public class FleetTest {
 
         this.fleet1.landOnField(player2);
         expected = 26500;
-        actual = player2.getAccount().getBalance();
+        actual = player2.getBalance();
         assertEquals(expected,actual);
 
         expected = 21500;
-        actual = player1.getAccount().getBalance();
+        actual = player1.getBalance();
         assertEquals(expected,actual);
 
         /**
@@ -221,7 +221,7 @@ public class FleetTest {
 
         //tests that the price of the field have been trancfered.
         expected = 17500;
-        actual = this.player1.getAccount().getBalance();
+        actual = this.player1.getBalance();
         assertEquals(expected, actual);
 
         //tests that the ownership has been terancfered
@@ -231,11 +231,11 @@ public class FleetTest {
 
         this.fleet1.landOnField(player2);
         expected = 22500;
-        actual = player2.getAccount().getBalance();
+        actual = player2.getBalance();
         assertEquals(expected,actual);
 
         expected = 21500;
-        actual = player1.getAccount().getBalance();
+        actual = player1.getBalance();
         assertEquals(expected,actual);
     }
 }
