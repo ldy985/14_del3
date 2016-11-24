@@ -101,8 +101,8 @@ public class GameBoard {
         int num = 0;
 
         for (Field theField : board) {
-            if (theField instanceof Ownable) {
-                if (((Ownable) theField).getOwner() == player) {
+            if (theField instanceof Fleet) {
+                if (((Fleet) theField).getOwner() == player) {
                     num++;
                 }
             }
