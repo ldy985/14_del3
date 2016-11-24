@@ -32,14 +32,26 @@ public class Language {
             case "english":
                 language = ResourceBundle.getBundle("Language");
                 break;
+            case "English":
+                language = ResourceBundle.getBundle("Language");
+                break;
             default:
                 string = "Invalid Language. Please select English";
         }
 
-        // Returns the selected language
-        string = language.getString(inputString);
+        // If an available language is not selected
+        if(string == "Invalid Language. Please select English"){
 
-        return string;
+            return string;
+        }  else {
+
+            // Returns the string in the selected language
+            string = language.getString(inputString);
+
+            return string;
+        }
+
+
     }
 
 
