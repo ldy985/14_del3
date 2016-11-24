@@ -13,7 +13,7 @@ import java.util.Random;
  * Bugs: none known
  *
  * @author Mathias S Larsen (2016)
- * @version v.0.2
+ * @version v.0.3
  */
 
 public class GameController {

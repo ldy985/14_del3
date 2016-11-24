@@ -12,7 +12,7 @@ import desktop_resources.GUI;
  * Bugs: none known
  *
  * @author Lasse Dyrsted, Timothy Rasmussen
- * @version v.0.2
+ * @version v.0.3
  */
 public class InterfaceController {
 

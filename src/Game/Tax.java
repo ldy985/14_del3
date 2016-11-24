@@ -7,7 +7,7 @@ package Game;
  * Bugs: none known
  *
  * @author Casper Bodskov
- * @version v.0.1
+ * @version v.0.2
  */
 
 public class Tax extends Field {

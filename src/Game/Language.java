@@ -9,7 +9,7 @@ import java.util.ResourceBundle;
  * Bugs: none known
  *
  * @author Rasmus Blichfeldt
- * @version v.0.1
+ * @version v.0.2
  */
 public class Language {
 
