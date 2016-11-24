@@ -64,8 +64,10 @@ public class DieTest {
         int six = 0;
         int wrongNumber = 0;
 
-        // Rolling the die 60000 times.
-        // Counts the values a specific value has been rolled.
+        /**
+         * Rolls the die 60.000 times.
+         * Counts how many times each value has been rolled.
+         */
 
         for (int i = 0; i < 60000; i++) {
             die.roll();
@@ -97,9 +99,12 @@ public class DieTest {
 
         }
 
-        // Tests the program.
-        // Checks if all values, of the die (1-6), has been rolled and equal amount of times (10000/60000)
-        // with a deviation of 400 times.
+        /**
+         * Test of the program
+         * Checks if all the values of the die (1-6), has been rolled and equal amount of times (10.000/60.000)
+         * With a difference of 400 times.
+         */
+
         assertEquals(0, wrongNumber);
         assertEquals(10000, one, 400);
         assertEquals(10000, two, 400);
