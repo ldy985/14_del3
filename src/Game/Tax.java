@@ -60,7 +60,7 @@ public class Tax extends Field {
 
         int calculatedTax = calculateTax(player.getRealEstateValue() + player.getAccount().getBalance());
 
-        final String  question = (Language.getString("paytax1") + taxAmount + Language.getString("paytax2") + "10% ( " + calculatedTax + ")");
+        final String question = (Language.getString("paytax1") + " " + taxAmount + " " + Language.getString("paytax2") + " " + "10% (" + calculatedTax + ")");
         final String answer1 = taxAmount + "";
         final String answer2 = "10%";
 
@@ -71,7 +71,7 @@ public class Tax extends Field {
             player.getAccount().addBalance(-taxAmount);
         }
 
-        InterfaceController.showMessage(Language.getString("landed") + getName());
+        //InterfaceController.showMessage(Language.getString("landed") + getName());
 
     }
 }

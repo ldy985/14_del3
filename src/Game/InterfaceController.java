@@ -139,13 +139,13 @@ public class InterfaceController {
 
     }
 
-    public static void showMessage(String won) {
+    public static void showMessage(String message) {
         switch (mode) {
 
             case GUI:
-                GUI.showMessage(won);
+                GUI.showMessage(message);
             case Test:
-                System.out.println(won);
+                System.out.println(message);
                 break;
         }
 

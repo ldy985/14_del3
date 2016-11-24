@@ -115,7 +115,10 @@ public class GameController {
 
                 //controles what happens when the player lands on a specific field.
                 Field currentField = gameBoard.getField(currentPlayer.getOnField());
+                InterfaceController.showMessage(currentPlayer.getName() + " " + Language.getString("landed") + " " + currentField.getName());
                 currentField.landOnField(currentPlayer);
+
+
 
                 //removes bankrupt players from the game
                 if (currentPlayer.getAccount().getBalance() <= 0) {
@@ -130,7 +133,7 @@ public class GameController {
         }
 
         //gets displayed when a winner has been found.
-        InterfaceController.showMessage(players.get(0).getName() + Language.getString("won"));
+        InterfaceController.showMessage(players.get(0).getName() +" "+ Language.getString("won"));
 
         InterfaceController.close();
     }
