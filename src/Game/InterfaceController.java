@@ -207,11 +207,11 @@ public class InterfaceController {
 
     }
 
-    public static void setBalance(int balance) {
+    public static void setBalance(Player player, int balance) {
         switch (mode) {
 
             case GUI:
-                GUI.setBalance(GameController.getCurrentPlayer().getName(), balance);
+                GUI.setBalance(player.getName(), balance);
                 break;
             case Test:
                 System.out.println("The players balance was set to " + balance);

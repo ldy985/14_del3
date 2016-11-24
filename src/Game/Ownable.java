@@ -77,8 +77,8 @@ public abstract class Ownable extends Field {
         }
         //Someone else owns the field
         if (owner != player && owner != null) {
-            player.getAccount().addBalance(-getRent());
-            owner.getAccount().addBalance(getRent());
+            player.addBalance(-getRent());
+            owner.addBalance(getRent());
         }
         /*
         // If the player doesn't own the field and If no-one owns the field and
