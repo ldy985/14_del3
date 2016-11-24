@@ -111,7 +111,7 @@ public class InterfaceController {
 
             case GUI:
                 GUI.setDice(faceValue1, faceValue2);
-
+                break;
             case Test:
                 break;
         }
@@ -122,6 +122,7 @@ public class InterfaceController {
 
             case GUI:
                 GUI.removeAllCars(name);
+                break;
             case Test:
                 break;
         }
@@ -133,6 +134,7 @@ public class InterfaceController {
 
             case GUI:
                 GUI.setCar(onField, name);
+                break;
             case Test:
                 break;
         }
@@ -144,6 +146,7 @@ public class InterfaceController {
 
             case GUI:
                 GUI.showMessage(message);
+                break;
             case Test:
                 System.out.println(message);
                 break;
@@ -156,21 +159,22 @@ public class InterfaceController {
 
             case GUI:
                 GUI.close();
+                break;
             case Test:
                 break;
         }
 
     }
 
-    public static String getUserSelection(String s, String... s1) {
+    public static String getUserSelection(String questionToUser, String... possibleAnswers) {
         switch (mode) {
             case GUI:
-                return GUI.getUserSelection(s, s1);
+                return GUI.getUserSelection(questionToUser, possibleAnswers);
             case Test:
-                System.out.print(s);
+                System.out.print(questionToUser);
                 System.out.print(" [");
 
-                for (String item : s1) {
+                for (String item : possibleAnswers) {
                     System.out.print(item + " ");
                 }
                 System.out.print("] ");
@@ -182,16 +186,16 @@ public class InterfaceController {
 
     }
 
-    public static String getUserButtonPressed(String s, String... no) {
+    public static String getUserButtonPressed(String questionToUser, String... possibleAnswers) {
 
         switch (mode) {
             case GUI:
-                return GUI.getUserButtonPressed(s, no);
+                return GUI.getUserButtonPressed(questionToUser, possibleAnswers);
             case Test:
-                System.out.print(s);
+                System.out.print(questionToUser);
                 System.out.print(" [");
 
-                for (String item : no) {
+                for (String item : possibleAnswers) {
                     System.out.print(item + " ");
                 }
                 System.out.print("] ");
