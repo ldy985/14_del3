@@ -1,11 +1,12 @@
 package Test;
 
-import Game.Player;
-import Game.Refuge;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import Game.*;
+import org.junit.*;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
 
 /**
  * Testes the Refuge class
@@ -13,126 +14,89 @@ import org.junit.Test;
  * Bugs: none known
  *
  * @author Mathias Larsen
- * @version v.0.2
+ * @version v.0.3
  */
 public class RefugeTest {
 
-        private Player player;
-        private Refuge refuge200;
-        private Refuge refuge0;
-        private Refuge refugeNeg200;
+
+    private Player player;
+    private GameBoard gameBoard;
+    private Refuge refuge1;
+    private Refuge refuge2;
+
+    @BeforeClass
+    public static void setUpBeforeClass() throws Exception {
+        InterfaceController.setInterfaceMode(InterfaceController.Mode.Test);
+        Language.setLanguage("english");
+    }
 
         @Before
         public void setUp() throws Exception {
-            this.player = new Player("Anders And", 1000);
-            this.refuge200 = new Refuge(1, "Helle +200", 200);
-            this.refuge0 = new Refuge(2, "Helle 0", 0);
-            this.refugeNeg200 = new Refuge(3, "Helle -200", -200);
+            this.player = new Player("Player1", 30000);
+            this.gameBoard = new GameBoard(21);
+            this.refuge1 = (Refuge) gameBoard.getField(6);
+            this.refuge2 = (Refuge) gameBoard.getField(21);
         }
 
-        @After
-        public void tearDown() throws Exception {
-            this.player = new Player("Anders And", 1000);
-            //The fields are unaltered
-        }
 
         @Test
         public void testEntities() {
-            Assert.assertNotNull(this.player);
 
-            Assert.assertNotNull(this.refuge200);
-            Assert.assertNotNull(this.refuge0);
-            Assert.assertNotNull(this.refugeNeg200);
+            assertNotNull(this.player);
 
-            Assert.assertTrue(this.refuge200 instanceof Refuge);
-            Assert.assertTrue(this.refuge0 instanceof Refuge);
-            Assert.assertTrue(this.refugeNeg200 instanceof Refuge);
+            assertNotNull(this.gameBoard);
+
+            assertNotNull(this.refuge1);
+            assertNotNull(this.refuge2);
+
+            assertTrue(this.refuge1 instanceof Refuge);
+            assertTrue(this.refuge2 instanceof Refuge);
+            assertTrue(this.gameBoard instanceof GameBoard);
+            assertTrue(this.player instanceof Player);
         }
 
         @Test
-        public void testLandOnField200() {
-            int expected = 1000;
-            int actual = player.getAccount().getBalance();
-            Assert.assertEquals(expected, actual);
+        public void testBonus(){
+            int expected = 5000;
+            int actual = refuge1.getBonus();
+            assertEquals(expected,actual);
 
-            //Perform the action to be tested
-            this.refuge200.landOnField(this.player);
-
-            expected = 1000 + 200;
-            actual = player.getAccount().getBalance();
-            Assert.assertEquals(expected, actual);
+            expected = 500;
+            actual = refuge2.getBonus();
+            assertEquals(expected,actual);
         }
 
         @Test
-        public void testLandOnField200Twice() {
-            int expected = 1000;
-            int actual = player.getAccount().getBalance();
-            Assert.assertEquals(expected, actual);
+        public void testName(){
+            String expected = "Walled city";
+            String actual = refuge1.getName();
+            assertEquals(expected,actual);
 
-            //Perform the action to be tested
-            this.refuge200.landOnField(this.player);
-            this.refuge200.landOnField(this.player);
+            expected = "Monastery";
+            actual = refuge2.getName();
+            assertEquals(expected,actual);
 
-            expected = 1000 + 200 + 200;
-            actual = player.getAccount().getBalance();
-            Assert.assertEquals(expected, actual);
+            refuge1.setName("Change");
+            expected = "Change";
+            actual = refuge1.getName();
+            assertEquals(expected,actual);
         }
 
         @Test
-        public void testLandOnField0() {
-            int expected = 1000;
+        public void testLandOnField() {
+            int expected = 30000;
             int actual = player.getAccount().getBalance();
-            Assert.assertEquals(expected, actual);
+            assertEquals(expected,actual);
 
-            //Perform the action to be tested
-            this.refuge0.landOnField(this.player);
-
-            expected = 1000;
+            refuge1.landOnField(player);
+            expected = 35000;
             actual = player.getAccount().getBalance();
-            Assert.assertEquals(expected, actual);
+            assertEquals(expected,actual);
+
+            refuge2.landOnField(player);
+            expected = 35500;
+            actual = player.getAccount().getBalance();
+            assertEquals(expected,actual);
         }
 
-        @Test
-        public void testLandOnField0Twice() {
-            int expected = 1000;
-            int actual = player.getAccount().getBalance();
-            Assert.assertEquals(expected, actual);
-
-            //Perform the action to be tested
-            this.refuge0.landOnField(this.player);
-            this.refuge0.landOnField(this.player);
-
-            expected = 1000;
-            actual = player.getAccount().getBalance();
-            Assert.assertEquals(expected, actual);
-        }
-
-        @Test
-        public void testLandOnFieldNeg200() {
-            int expected = 1000;
-            int actual = player.getAccount().getBalance();
-            Assert.assertEquals(expected, actual);
-
-            //Perform the action to be tested
-            this.refugeNeg200.landOnField(this.player);
-
-            expected = 1000 - 200;
-            actual = player.getAccount().getBalance();
-            Assert.assertEquals(expected, actual);
-        }
-
-        @Test
-        public void testLandOnFieldNeg200Twice() {
-            int expected = 1000;
-            int actual = player.getAccount().getBalance();
-            Assert.assertEquals(expected, actual);
-
-            //Perform the action to be tested
-            this.refugeNeg200.landOnField(this.player);
-            this.refugeNeg200.landOnField(this.player);
-
-            expected = 1000 - 200 - 200;
-            actual = player.getAccount().getBalance();
-            Assert.assertEquals(expected, actual);
-        }
     }
