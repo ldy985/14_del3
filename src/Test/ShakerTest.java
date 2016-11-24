@@ -1,8 +1,13 @@
 package Test;
 
+import Game.Die;
+import Game.Shaker;
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Tests the Shaker class
@@ -10,77 +15,95 @@ import static org.junit.Assert.assertEquals;
  * Bugs: none known
  *
  * @author Mathias Larsen
- * @version v.0.1
+ * @version v.0.2
  */
 
 // Tests the Shaker class
 public class ShakerTest {
 
     // Declares object of the "Shaker" class in the folder "game".
-    private final Game.Shaker shake = new Game.Shaker(2);
+    private Shaker shaker;
+
+    @Before
+    public void setUp(){
+        this.shaker = new Shaker(2);
+    }
+
+    @Test
+    public void testEntities(){
+        assertNotNull(this.shaker);
+
+        assertNotNull(shaker.getDice()[0]);
+        assertNotNull(shaker.getDice()[1]);
+
+        assertTrue(this.shaker instanceof Shaker);
+        assertTrue(shaker.getDice()[0] instanceof Die);
+        assertTrue(shaker.getDice()[1] instanceof Die);
+
+    }
 
     @Test
     public void probTest() {
         int value;
 
-        int to = 0;
-        int tre = 0;
-        int fire = 0;
-        int fem = 0;
-        int seks = 0;
-        int syv = 0;
-        int otte = 0;
-        int ni = 0;
-        int ti = 0;
-        int elleve = 0;
-        int tolv = 0;
-        int forkertnr = 0;
+        int two = 0;
+        int three  = 0;
+        int four  = 0;
+        int five  = 0;
+        int six  = 0;
+        int seven  = 0;
+        int eight  = 0;
+        int nine  = 0;
+        int ten  = 0;
+        int eleven  = 0;
+        int twelve  = 0;
+        int error = 0;
 
         // Rolling the die 60000 times.
         // Counts the values a specific value has been rolled.
 
         for (int i = 0; i < 60000; i++) {
 
-            shake.shake();
+            shaker.shake();
 
-            value = shake.getSum();
+            value = shaker.getSum();
 
             switch (value) {
                 case 2:
-                    to++;
+                    two++;
                     break;
                 case 3:
-                    tre++;
+                    three++;
                     break;
                 case 4:
-                    fire++;
+                    four++;
                     break;
                 case 5:
-                    fem++;
+                    five++;
                     break;
                 case 6:
-                    seks++;
+                    six++;
                     break;
                 case 7:
-                    syv++;
+                    seven++;
                     break;
                 case 8:
-                    otte++;
+                    eight++;
                     break;
                 case 9:
-                    ni++;
+                    nine++;
                     break;
                 case 10:
-                    ti++;
+                    ten++;
                     break;
                 case 11:
-                    elleve++;
+                    eleven++;
                     break;
                 case 12:
-                    tolv++;
+                    twelve++;
                     break;
                 default:
-                    forkertnr++;
+                    error++;
                     break;
             }
 
@@ -89,18 +112,18 @@ public class ShakerTest {
         // Tests the program.
         // Checks if all values, of the die (2-12), has been rolled and equal amount of times
         // with a deviation of 593 times.
-        assertEquals(0, forkertnr);
-        assertEquals(1667, to, 593);
-        assertEquals(3334, tre, 593);
-        assertEquals(5000, fire, 593);
-        assertEquals(6666, fem, 593);
-        assertEquals(8333, seks, 593);
-        assertEquals(10000, syv, 593);
-        assertEquals(8333, otte, 593);
-        assertEquals(6666, ni, 593);
-        assertEquals(5000, ti, 593);
-        assertEquals(3334, elleve, 593);
-        assertEquals(1667, tolv, 593);
+        assertEquals(0, error);
+        assertEquals(1667, two, 593);
+        assertEquals(3334, three, 593);
+        assertEquals(5000, four, 593);
+        assertEquals(6666, five, 593);
+        assertEquals(8333, six, 593);
+        assertEquals(10000, seven, 593);
+        assertEquals(8333, eight, 593);
+        assertEquals(6666, nine, 593);
+        assertEquals(5000, ten, 593);
+        assertEquals(3334, eleven, 593);
+        assertEquals(1667, twelve, 593);
 
     }
 
@@ -109,13 +132,14 @@ public class ShakerTest {
     public void getSumTest() throws Exception {
 
         // Calls the Shake() method in the class Shaker, through the object "shake".
-        shake.shake();
+        shaker.shake();
 
         // Checks if the sum given by the Shaker class is between 2 and 12.
         // Returns a boolean whether it works.
-        int sum = shake.getDice()[0].getFaceValue() + shake.getDice()[1].getFaceValue();
+        int expected = shaker.getDice()[0].getFaceValue() + shaker.getDice()[1].getFaceValue();
+        int actual = shaker.getSum();
 
-        assertEquals(sum, shake.getSum());
+        assertEquals(expected,actual);
 
 
     }
