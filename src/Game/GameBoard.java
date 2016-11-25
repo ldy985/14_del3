@@ -30,7 +30,7 @@ public class GameBoard {
 
         numberOfFields = number;
 
-        //board = new Field[numberOfFields];
+        //loads file from resource folder
         board = loadBoardFromFile("board.cfg");
         InterfaceController.showOnGui(board);
 
@@ -53,7 +53,7 @@ public class GameBoard {
 
             Field[] loadedFields = new Field[21];
 
-            Path relativePath = Paths.get(fileName);
+            Path relativePath = Paths.get("resources\\" + fileName);
             String absolutePath = relativePath.toAbsolutePath().toString();
 
             BufferedReader fileReader = new BufferedReader(new FileReader(absolutePath));
