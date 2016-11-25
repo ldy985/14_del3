@@ -112,7 +112,6 @@ public class GameController {
                 //moves the player's token on the gameboard in the GUI
                 movePlayer(currentPlayer, shaker.getSum());
 
-
                 //controles what happens when the player lands on a specific field.
                 Field currentField = gameBoard.getField(currentPlayer.getOnField());
                 InterfaceController.showMessage(currentPlayer.getName() + " " + Language.getString("landed") + " " + currentField.getName());

@@ -257,7 +257,8 @@ public class InterfaceController {
     public static desktop_fields.Field convertToGUI(Field theField) {
         desktop_fields.Shipping.Builder a = new desktop_fields.Shipping.Builder()
                 .setTitle(theField.getName())
-                .setPicture(null);
+                .setPicture(null)
+                .setSubText("");
         return a.build();
     }
 
