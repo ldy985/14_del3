@@ -53,7 +53,7 @@ public class GameBoard {
 
             Field[] loadedFields = new Field[21];
 
-            Path relativePath = Paths.get("resources\\" + fileName);
+            Path relativePath = Paths.get(fileName);
             String absolutePath = relativePath.toAbsolutePath().toString();
 
             BufferedReader fileReader = new BufferedReader(new FileReader(absolutePath));
