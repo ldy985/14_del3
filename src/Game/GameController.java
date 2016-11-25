@@ -94,7 +94,7 @@ public class GameController {
 
         initializePlayers();
 
-        //loop as long as more than one player is in the game (not bankroupt)
+        //loop as long as more than one player is in the game (not bankrupt)
         while (players.size() > 1) {
 
             //go though all the players.
@@ -106,10 +106,10 @@ public class GameController {
                 //rolls the dice
                 shaker.shake();
 
-                //displayes the dice in the GUI
+                //displays the dice in the GUI
                 displayDice(shaker);
 
-                //moves the players avitar on the gameboard in the GUI
+                //moves the player's token on the gameboard in the GUI
                 movePlayer(currentPlayer, shaker.getSum());
 
 
