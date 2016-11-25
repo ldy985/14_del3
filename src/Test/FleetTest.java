@@ -6,9 +6,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 /**
  * Testes the Fleet class
@@ -16,7 +14,7 @@ import static org.junit.Assert.assertTrue;
  * Bugs: none known
  *
  * @author Mathias Larsen
- * @version v.0.2
+ * @version v.0.3
  */
 public class FleetTest {
 
@@ -35,10 +33,13 @@ public class FleetTest {
     }
 
     @Before
-    public void setUp(){
+    public void setUp() {
         this.player1 = new Player("Player1", 30000);
         this.player2 = new Player("Player2", 30000);
-        this.gameBoard = new GameBoard(21);
+        //this.gameBoard = new GameBoard(21);
+        this.gameBoard = GameController.getGameBoard();
+
+
         this.fleet1 = (Fleet) gameBoard.getField(3);
         this.fleet2 = (Fleet) gameBoard.getField(9);
         this.fleet3 = (Fleet) gameBoard.getField(15);
@@ -47,8 +48,13 @@ public class FleetTest {
 
     }
 
+    @After
+    public void tearDown() throws Exception {
+        GameController.reset();
+    }
+
     @Test
-    public void testEntities(){
+    public void testEntities() {
         assertNotNull(player1);
         assertNotNull(player2);
 
@@ -153,11 +159,11 @@ public class FleetTest {
         this.fleet1.landOnField(player2);
         expected = 29500;
         actual = player2.getBalance();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
         expected = 26500;
         actual = player1.getBalance();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
 
         /**
@@ -174,17 +180,17 @@ public class FleetTest {
 
         //tests that the ownership has been terancfered
         expectedOwner = player1;
-        actualOwner = fleet1.getOwner();
+        actualOwner = fleet2.getOwner();
         assertEquals(expectedOwner, actualOwner);
 
-        this.fleet1.landOnField(player2);
+        this.fleet2.landOnField(player2);
         expected = 28500;
         actual = player2.getBalance();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
         expected = 23500;
         actual = player1.getBalance();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
         /**
          * owner ship of 3 fleets
@@ -200,42 +206,42 @@ public class FleetTest {
 
         //tests that the ownership has been terancfered
         expectedOwner = player1;
-        actualOwner = fleet1.getOwner();
+        actualOwner = fleet3.getOwner();
         assertEquals(expectedOwner, actualOwner);
 
-        this.fleet1.landOnField(player2);
+        this.fleet3.landOnField(player2);
         expected = 26500;
         actual = player2.getBalance();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
         expected = 21500;
         actual = player1.getBalance();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
         /**
          * owner ship of 4 fleets
          */
         //player1 buys fleet 1
         InterfaceController.setPreDefinedAnswer(Language.getString("yes"));
-        this.fleet2.landOnField(this.player1);
+        this.fleet4.landOnField(this.player1);
 
         //tests that the price of the field have been trancfered.
         expected = 17500;
         actual = this.player1.getBalance();
-        assertEquals(expected, actual);
+        assertEquals(expected, actual); /////////// fail
 
         //tests that the ownership has been terancfered
         expectedOwner = player1;
-        actualOwner = fleet1.getOwner();
+        actualOwner = fleet4.getOwner();
         assertEquals(expectedOwner, actualOwner);
 
         this.fleet1.landOnField(player2);
         expected = 22500;
         actual = player2.getBalance();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
         expected = 21500;
         actual = player1.getBalance();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 }

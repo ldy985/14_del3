@@ -13,17 +13,17 @@ import java.util.Random;
  * Bugs: none known
  *
  * @author Mathias S Larsen (2016)
- * @version v.0.3
+ * @version v.0.4
  */
 
 public class GameController {
 
-    private static final int FIELD_COUNT = 21;
-    private static final GameBoard gameBoard = new GameBoard(FIELD_COUNT);
+    private static int FIELD_COUNT = 21;
+    private static GameBoard gameBoard = new GameBoard(FIELD_COUNT);
     private static Shaker shaker = new Shaker(2); //creates a shaker with 2 dice.
     private static Player currentPlayer;
-    private static final int START_BALANCE = 30000;
-    private static final ArrayList<Player> players = new ArrayList<Player>(); //creates an ArrayList that can contain Player objects
+    private static int START_BALANCE = 30000;
+    private static ArrayList<Player> players = new ArrayList<Player>(); //creates an ArrayList that can contain Player objects
 
     private GameController() {
 
@@ -101,7 +101,7 @@ public class GameController {
 
             for (int i = 0; i < players.size(); i++) {
                 currentPlayer = players.get(i);
-
+                
 
                 //rolls the dice
                 shaker.shake();
@@ -119,12 +119,12 @@ public class GameController {
                 currentField.landOnField(currentPlayer);
 
 
-
                 //removes bankrupt players from the game
                 if (currentPlayer.getBalance() <= 0) {
                     players.remove(currentPlayer);
                     gameBoard.deleteOwnership(currentPlayer);
-                    break;//Stop the loop when we remove an element because we use foreach else we get a pointer error
+                    // Gives the next person the turn, instead of resetting "i".
+                    --i;
                 }
 
 
@@ -133,8 +133,19 @@ public class GameController {
         }
 
         //gets displayed when a winner has been found.
-        InterfaceController.showMessage(players.get(0).getName() +" "+ Language.getString("won"));
+        reset();
+        InterfaceController.showMessage(players.get(0).getName() + " " + Language.getString("won"));
 
         InterfaceController.close();
+    }
+
+    public static void reset() {
+        FIELD_COUNT = 21;
+        gameBoard = new GameBoard(FIELD_COUNT);
+        shaker = new Shaker(2); //creates a shaker with 2 dice.
+        currentPlayer = null;
+        START_BALANCE = 30000;
+        players = new ArrayList<Player>(); //creates an ArrayList that can contain Player objects
+
     }
 }

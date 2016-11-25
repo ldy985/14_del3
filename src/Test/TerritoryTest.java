@@ -1,13 +1,12 @@
 package Test;
 
 import Game.*;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 /**
  * Testes the territory class
@@ -15,7 +14,7 @@ import static org.junit.Assert.assertTrue;
  * Bugs: none known
  *
  * @author Mathias Larsen
- * @version v.0.1
+ * @version v.0.2
  */
 
 public class TerritoryTest {
@@ -35,16 +34,24 @@ public class TerritoryTest {
 
     @Before
     public void setUp() {
+
         this.player1 = new Player("Player1", 30000);
         this.player2 = new Player("Player2", 30000);
-        this.gameBoard = new GameBoard(21);
+        //this.gameBoard = new GameBoard(21);
+        this.gameBoard = GameController.getGameBoard();
+
         this.territory1 = (Territory) gameBoard.getField(1);
         this.territory2 = (Territory) gameBoard.getField(2);
         this.territory3 = (Territory) gameBoard.getField(5);
     }
 
+    @After
+    public void tearDown() throws Exception {
+        GameController.reset();
+    }
+
     @Test
-    public void testEntities(){
+    public void testEntities() {
         assertNotNull(this.player1);
         assertNotNull(this.player2);
 
@@ -59,9 +66,9 @@ public class TerritoryTest {
 
         assertTrue(this.gameBoard instanceof GameBoard);
 
-        assertTrue(this.territory1 instanceof  Territory);
-        assertTrue(this.territory2 instanceof  Territory);
-        assertTrue(this.territory3 instanceof  Territory);
+        assertTrue(this.territory1 instanceof Territory);
+        assertTrue(this.territory2 instanceof Territory);
+        assertTrue(this.territory3 instanceof Territory);
 
     }
 
@@ -70,15 +77,15 @@ public class TerritoryTest {
 
         int expected = 100;
         int actual = territory1.getRent();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
         expected = 300;
         actual = territory2.getRent();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
         expected = 500;
         actual = territory3.getRent();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 
 
@@ -95,15 +102,15 @@ public class TerritoryTest {
 
         Player expectd = player1;
         Player actual = territory1.getOwner();
-        assertEquals(expectd,actual);
+        assertEquals(expectd, actual);
 
         expectd = player1;
         actual = territory2.getOwner();
-        assertEquals(expectd,actual);
+        assertEquals(expectd, actual);
 
         expectd = player1;
         actual = territory3.getOwner();
-        assertEquals(expectd,actual);
+        assertEquals(expectd, actual);
     }
 
     @Test
@@ -111,15 +118,15 @@ public class TerritoryTest {
 
         String expected = "Tribe Encampment";
         String actual = territory1.getName();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
         expected = "Crater";
         actual = territory2.getName();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
         expected = "Mountain";
         actual = territory3.getName();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
     }
 
@@ -150,14 +157,12 @@ public class TerritoryTest {
         this.territory1.landOnField(player2);
         expected = 29900;
         actual = player2.getBalance();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
         //test that player1 recives the rent
         expected = 29100;
         actual = player1.getBalance();
-        assertEquals(expected,actual);
-
-
+        assertEquals(expected, actual);
 
 
         //player1 buys territory 2
@@ -178,13 +183,12 @@ public class TerritoryTest {
         this.territory2.landOnField(player2);
         expected = 29600;
         actual = player2.getBalance();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
         //test that player1 recives the rent
         expected = 27900;
         actual = player1.getBalance();
-        assertEquals(expected,actual);
-
+        assertEquals(expected, actual);
 
 
         //player1 buys territory 3
@@ -205,12 +209,12 @@ public class TerritoryTest {
         this.territory3.landOnField(player2);
         expected = 29100;
         actual = player2.getBalance();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
         //test that player1 recives the rent
         expected = 26400;
         actual = player1.getBalance();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
 
     }

@@ -1,12 +1,9 @@
 package Test;
 
-import Game.InterfaceController;
 import Game.Language;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 /**
  * Tests the Language class
@@ -14,7 +11,7 @@ import static org.junit.Assert.assertNotNull;
  * Bugs: none known
  *
  * @author Rasmus Blichfeldt (tror jeg)
- * @version v.0.1
+ * @version v.0.2
  */
 
 
@@ -24,7 +21,7 @@ public class LanguageTest {
     public void setLanguageEnglish1() throws Exception {
         //The string we expect to be returned
         String expectedTest1 = "What is Player";
-        String expectedTest2 = "You landed on";
+        String expectedTest2 = "landed on";
         String expectedTest3 = "Do you want to pay";
 
 
@@ -47,7 +44,7 @@ public class LanguageTest {
     public void setLanguageEnglish2() throws Exception {
         //The string we expect to be returned
         String expectedTest1 = "What is Player";
-        String expectedTest2 = "You landed on";
+        String expectedTest2 = "landed on";
         String expectedTest3 = "Do you want to pay";
 
         //We set the language to "English" to see if it will give the right return value.        .
@@ -67,15 +64,22 @@ public class LanguageTest {
     }
 
     @Test
-    public void setLanguageNull() throws Exception{
+    public void setLanguageNull() throws Exception {
         //The string we expect to be returned
-        String expected = "Invalid Language. Please select English";
+        String expected = "No language was set!";
         //We set the language to nothing (""), to see if it gives us the default answer
         //for a wrong selected language
         Language.setLanguage("");
-        //We test to see if it returns the string "Invalid Language. Please select English"
-        String actual = Language.getString("name1");
 
-        assertEquals(expected, actual);
+        //We test to see if it returns the string "Invalid Language. Please select English"
+        try {
+            Language.getString("name1");
+        } catch (Exception ex) {
+            assertTrue(true);
+
+
+        }
+
+
     }
 }
