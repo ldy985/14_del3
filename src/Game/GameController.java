@@ -97,7 +97,7 @@ public class GameController {
 
             for (int i = 0; i < players.size(); i++) {
                 currentPlayer = players.get(i);
-                
+
 
                 //rolls the dice
                 shaker.shake();
@@ -113,7 +113,6 @@ public class GameController {
                 InterfaceController.showMessage(currentPlayer.getName() + " " + Language.getString("landed") + " " + currentField.getName());
                 currentField.landOnField(currentPlayer);
 
-
                 //removes bankrupt players from the game
                 if (currentPlayer.getBalance() <= 0) {
                     players.remove(currentPlayer);
@@ -128,7 +127,6 @@ public class GameController {
         }
 
         //gets displayed when a winner has been found.
-        reset();
         InterfaceController.showMessage(players.get(0).getName() + " " + Language.getString("won"));
 
         InterfaceController.close();
