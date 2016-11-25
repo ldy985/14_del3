@@ -80,32 +80,6 @@ public abstract class Ownable extends Field {
             player.addBalance(-getRent());
             owner.addBalance(getRent());
         }
-        /*
-        // If the player doesn't own the field and If no-one owns the field and
-        if (getOwner() != player && getOwner() != null) {
-
-            // if they have enough money
-            if (price <= player.getBalance()) {
-
-                // Checks whether the player wants to buy
-                if (true) {//TODO: add gui
-
-                    player.addBalance(-price);
-                    setOwner(player);
-
-                }
-                //If another player owns the field
-            } else {
-
-                getOwner().addBalance(price);
-            }
-
-        }else{
-            player.addBalance(-getRent());
-        }
-
-*/
-
 
     }
 }

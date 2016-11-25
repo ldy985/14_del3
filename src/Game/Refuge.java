@@ -18,9 +18,7 @@ public class Refuge extends Field {
     public Refuge(int no, String name, int bonus) {
 
         super(no, name);
-
         this.bonus = bonus;
-
 
     }
 
@@ -31,6 +29,5 @@ public class Refuge extends Field {
     public void landOnField(Player player) {
 
         player.addBalance(bonus);
-        //InterfaceController.showMessage(player.getName() + " " + Language.getString("landed") + " " + getName());
     }
 }

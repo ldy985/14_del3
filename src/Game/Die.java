@@ -22,9 +22,10 @@ public class Die {
 
     private int faceValue;
 
-    public Die(){
+    public Die() {
 
     }
+
     /**
      * Rolls the die
      */

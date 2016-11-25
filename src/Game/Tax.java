@@ -71,19 +71,5 @@ public class Tax extends Field {
             player.addBalance(-taxAmount);
         }
 
-        //InterfaceController.showMessage(Language.getString("landed") + getName());
-
     }
 }
-
-
-
-/* Percent tax calculation
-int tax = (int) value*(10.0f/100.0f)
-where 10.0f is the percentage, value is the amount of points the player has
-and tax is the final calculated tax.
-Then
-taxRate = -1
-taxRate*tax= finalTaxation
-- that with the player's points either here or in another class. (eg. account)
- */

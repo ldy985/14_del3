@@ -20,6 +20,7 @@ public class GameBoard {
 
     private final Field[] board;
     private int numberOfFields;
+
     /**
      * The constructor of the class GameBoard
      *

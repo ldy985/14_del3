@@ -31,7 +31,7 @@ public class LaborCamp extends Ownable {
         return sum * (baseRent);
     }
 
-    public int getBaseRent(){
+    public int getBaseRent() {
         return baseRent;
     }
 }

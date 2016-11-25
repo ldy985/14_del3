@@ -45,7 +45,7 @@ public class DieTest {
      */
 
     @Before
-    public void createDice(){
+    public void createDice() {
 
         die = new Die();
 

@@ -8,7 +8,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 /**
  * Testes the important methods in the GameController
@@ -29,14 +30,14 @@ public class GameControllerTest {
     }
 
     @Before
-    public void before(){
+    public void before() {
         GameController.reset();
         player1 = new Player("test player", 1000);
     }
 
     @Test
     public void getGameBoard() throws Exception {
-    assertNotNull(GameController.getGameBoard());
+        assertNotNull(GameController.getGameBoard());
     }
 
     @Test
@@ -49,14 +50,14 @@ public class GameControllerTest {
     @Test
     public void movePlayer() throws Exception {
         player1.setOnField(0);
-        GameController.movePlayer(player1,10);
-        assertEquals(player1.getOnField(),10);
+        GameController.movePlayer(player1, 10);
+        assertEquals(player1.getOnField(), 10);
 
-        GameController.movePlayer(player1,10);
-        assertEquals(player1.getOnField(),20);
+        GameController.movePlayer(player1, 10);
+        assertEquals(player1.getOnField(), 20);
 
-        GameController.movePlayer(player1,10);
-        assertEquals(player1.getOnField(),9);
+        GameController.movePlayer(player1, 10);
+        assertEquals(player1.getOnField(), 9);
 
     }
 

@@ -48,6 +48,7 @@ public class Player {
         account.addBalance(balance);
         InterfaceController.setBalance(this, account.getBalance());
     }
+
     public int getBalance() {
         return account.getBalance();
     }
