@@ -33,10 +33,6 @@ public class GameController {
         return gameBoard;
     }
 
-    public static Player getCurrentPlayer() {
-        return currentPlayer;
-    }
-
     public static Shaker getShaker() {
         return shaker;
     }

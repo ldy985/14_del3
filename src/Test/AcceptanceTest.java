@@ -18,27 +18,6 @@ import static org.junit.Assert.*;
  */
 public class AcceptanceTest {
 
-//
-//
-//    private void testBuyfield(Player player) {
-//        int initialPlayerBalance = player.getBalance();
-//        Ownable currentField = (Ownable) GameController.getGameBoard().getField(player.getOnField());
-//
-//        InterfaceController.setPreDefinedAnswer(Language.getString("yes"));
-//
-//        currentField.landOnField(player);
-//
-//        assertEquals((initialPlayerBalance - currentField.getPrice()), player.getBalance());
-//
-//        assertEquals(player, currentField.getOwner());
-//    }
-//
-//    private void testMovePlayer(Player player, int i) {
-//        GameController.movePlayer(player1, i);
-//        assertEquals(i, player1.getOnField());
-//    }
-
-
     private Player player1;
     private Player player2;
     private Player player3;
