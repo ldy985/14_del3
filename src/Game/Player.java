@@ -31,11 +31,6 @@ public class Player {
         this.realEstateValue = realEstateValue + newRealEstateValue;
     }
 
-    // Returns the account object.
-    public Account getAccount() {
-        return account;
-    }
-
     // Returns the name
     public String getName() {
         return name;
@@ -48,4 +43,14 @@ public class Player {
     public void setOnField(int onField) {
         this.onField = onField;
     }
+
+    public void addBalance(int balance) {
+        account.addBalance(balance);
+        InterfaceController.setBalance(this, account.getBalance());
+    }
+
+    public int getBalance() {
+        return account.getBalance();
+    }
+
 }

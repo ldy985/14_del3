@@ -1,8 +1,5 @@
 package Game;
 
-import desktop_resources.GUI;
-
-import static Game.Language.getString;
 
 /**
  * Keeps track of the balance, and adds/subtracts by the points on the board.
@@ -10,7 +7,7 @@ import static Game.Language.getString;
  * Bugs: none known
  *
  * @author Casper Bodskov
- * @version v.0.1
+ * @version v.0.2
  */
 
 public class Tax extends Field {
@@ -46,7 +43,7 @@ public class Tax extends Field {
      */
     private int calculateTax(int totalValue) {
 
-        return (int) (totalValue * taxRate);
+        return (int) (totalValue * -taxRate);
     }
 
     public float getTaxRate() {
@@ -61,27 +58,18 @@ public class Tax extends Field {
     public void landOnField(Player player) {
 
 
-        int calculatedTax = calculateTax(player.getRealEstateValue() + player.getAccount().getBalance());
-        if (taxRate != 1.0f && InterfaceController.getUserSelection((getString("paytax1") + taxAmount + getString("paytax2") + "10% ( " + calculatedTax + ")"), taxAmount + "", "10%") == "10%") {
-            player.getAccount().addBalance(calculatedTax);
+        int calculatedTax = calculateTax(player.getRealEstateValue() + player.getBalance());
+
+        final String question = (Language.getString("paytax1") + " " + taxAmount + " " + Language.getString("paytax2") + " " + "10% (" + calculatedTax + ")");
+        final String answer1 = taxAmount + "";
+        final String answer2 = "10%";
+
+        if (taxRate != 1.0f && InterfaceController.getUserSelection(question, answer1, answer2) == answer2) {
+            player.addBalance(calculatedTax);
 
         } else {
-            player.getAccount().addBalance(-taxAmount);
+            player.addBalance(-taxAmount);
         }
-
-        InterfaceController.showMessage(getString("landed") + getName());
 
     }
 }
-
-
-
-/* Percent tax calculation
-int tax = (int) value*(10.0f/100.0f)
-where 10.0f is the percentage, value is the amount of points the player has
-and tax is the final calculated tax.
-Then
-taxRate = -1
-taxRate*tax= finalTaxation
-- that with the player's points either here or in another class. (eg. account)
- */

@@ -1,6 +1,8 @@
 package Test;
 
+import Game.Field;
 import Game.GameController;
+import Game.InterfaceController;
 import org.junit.Test;
 
 import static Game.Language.setLanguage;
@@ -13,7 +15,7 @@ import static org.junit.Assert.assertEquals;
  * Bugs: none known
  *
  * @author Rasmus Blichfeldt
- * @version v.0.1
+ * @version v.0.3
  */
 
 public class GameTest {
@@ -25,7 +27,13 @@ public class GameTest {
 
         // Selects the language
         setLanguage("english");
-        GameController gameController = new GameController(); // TODO: 21-11-2016 FIX gamecontroller creation
+        InterfaceController.setInterfaceMode(InterfaceController.Mode.GUI);
+
+
+        Field[] board = GameController.getGameBoard().loadBoardFromFile("board.cfg");
+        InterfaceController.showOnGui(board);
+
+        InterfaceController.close();
 
         double timeEnded = System.nanoTime();
 
@@ -33,7 +41,7 @@ public class GameTest {
 
         System.out.println(timeTaken);
 
-        assertEquals(true, timeTaken < 1100);
+        assertEquals(true, timeTaken < 3000);
 
 
     }

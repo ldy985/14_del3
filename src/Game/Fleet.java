@@ -24,7 +24,7 @@ public class Fleet extends Ownable {
 
 
     public int getRent() {
-        switch (GameController.getGameBoard().getNoOfFleetsOwned(GameController.getCurrentPlayer())) {
+        switch (GameController.getGameBoard().getNoOfFleetsOwned(this.getOwner())) {
             case 1:
                 return RENT_1;
             case 2:

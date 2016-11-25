@@ -20,6 +20,7 @@ public class GameBoard {
 
     private final Field[] board;
     private int numberOfFields;
+
     /**
      * The constructor of the class GameBoard
      *
@@ -29,7 +30,7 @@ public class GameBoard {
 
         numberOfFields = number;
 
-        //board = new Field[numberOfFields];
+        //loads file from resource folder
         board = loadBoardFromFile("board.cfg");
         InterfaceController.showOnGui(board);
 
@@ -45,15 +46,14 @@ public class GameBoard {
      * @param fileName Name of the ressource file
      * @return
      */
-    private Field[] loadBoardFromFile(String fileName) {
+    public Field[] loadBoardFromFile(String fileName) {
 
         try {
             Gson g = new Gson();
-            Language lang = new Language();
 
             Field[] loadedFields = new Field[21];
 
-            Path relativePath = Paths.get(fileName);
+            Path relativePath = Paths.get("resources\\" + fileName);
             String absolutePath = relativePath.toAbsolutePath().toString();
 
             BufferedReader fileReader = new BufferedReader(new FileReader(absolutePath));
@@ -64,7 +64,7 @@ public class GameBoard {
 
                 String[] lineSplit = line.split("\\|");
                 loadedFields[i] = g.fromJson(lineSplit[1], (Type) Class.forName("Game." + lineSplit[0]));
-                loadedFields[i].setName(lang.getString(loadedFields[i].getName()));
+                loadedFields[i].setName(Language.getString(loadedFields[i].getName()));
                 i++;
 
             }
@@ -102,8 +102,8 @@ public class GameBoard {
         int num = 0;
 
         for (Field theField : board) {
-            if (theField instanceof Ownable) {
-                if (((Ownable) theField).getOwner() == player) {
+            if (theField instanceof Fleet) {
+                if (((Fleet) theField).getOwner() == player) {
                     num++;
                 }
             }

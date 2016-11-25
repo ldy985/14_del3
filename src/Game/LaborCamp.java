@@ -28,6 +28,10 @@ public class LaborCamp extends Ownable {
         int sum = GameController.getShaker().getSum();
 
         // Calculates the base rent
-        return sum * (-baseRent);
+        return sum * (baseRent);
+    }
+
+    public int getBaseRent() {
+        return baseRent;
     }
 }

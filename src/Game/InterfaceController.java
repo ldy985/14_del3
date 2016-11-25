@@ -11,10 +11,26 @@ import desktop_resources.GUI;
  * <p>
  * Bugs: none known
  *
- * @author Lasse Dyrsted
- * @version v.0.1
+ * @author Lasse Dyrsted, Timothy Rasmussen
+ * @version v.0.3
  */
 public class InterfaceController {
+
+    /**
+     * Creating new variable type "Mode".
+     */
+    public enum Mode {
+
+        //Two types of modes
+
+        GUI,
+        Test
+
+    }
+
+    /**
+     * Setting variables for InterfaceController.
+     */
 
     private static Mode mode;
     private static String preDefinedAnswer;
@@ -22,33 +38,67 @@ public class InterfaceController {
     private InterfaceController() {
     }
 
-    public static void setPreDefinedAnswer(String preDefinedAnswer) {
-        InterfaceController.preDefinedAnswer = preDefinedAnswer;
+    /**
+     * A method for the fields in the testCases.
+     *
+     * @param newPreDefinedAnswer The predefined answer.
+     */
+
+    public static void setPreDefinedAnswer(String newPreDefinedAnswer) {
+        preDefinedAnswer = newPreDefinedAnswer;
     }
 
-    public static void setInterfaceMode(Mode mode) {
-        InterfaceController.mode = mode;
+    /**
+     * The method for setting the interface mode.
+     *
+     * @param newMode Sets the mode for the Mode type.
+     */
+
+    public static void setInterfaceMode(Mode newMode) {
+
+        mode = newMode;
+
     }
 
-    public static void addPlayer(String name, int start_balance, Car build) {
+    /**
+     * The method to add a player to the game, with exception if the program runs in test mode.
+     *
+     * @param name          The players name.
+     * @param start_balance The players starting balance.
+     * @param car           The players car object.
+     */
+
+    public static void addPlayer(String name, int start_balance, Car car) {
         switch (mode) {
 
             case GUI:
-                GUI.addPlayer(name, start_balance, build);
+                GUI.addPlayer(name, start_balance, car);
+                break;
+
             case Test:
+                break;
+
+            default:
                 break;
         }
 
     }
 
-    public static String getUserString(String s) {
+    /**
+     * The method asks a player a question.
+     *
+     * @param question shall take a question.
+     * @return the players answer.
+     */
+
+    public static String getUserString(String question) {
 
         switch (mode) {
 
             case GUI:
-                return GUI.getUserString(s);
+                return GUI.getUserString(question);
             case Test:
-                System.out.println(s);
+                System.out.println(question);
                 System.out.println(preDefinedAnswer);
                 return preDefinedAnswer;
         }
@@ -61,7 +111,7 @@ public class InterfaceController {
 
             case GUI:
                 GUI.setDice(faceValue1, faceValue2);
-
+                break;
             case Test:
                 break;
         }
@@ -72,6 +122,7 @@ public class InterfaceController {
 
             case GUI:
                 GUI.removeAllCars(name);
+                break;
             case Test:
                 break;
         }
@@ -83,19 +134,21 @@ public class InterfaceController {
 
             case GUI:
                 GUI.setCar(onField, name);
+                break;
             case Test:
                 break;
         }
 
     }
 
-    public static void showMessage(String won) {
+    public static void showMessage(String message) {
         switch (mode) {
 
             case GUI:
-                GUI.showMessage(won);
+                GUI.showMessage(message);
+                break;
             case Test:
-                System.out.println(won);
+                System.out.println(message);
                 break;
         }
 
@@ -106,21 +159,22 @@ public class InterfaceController {
 
             case GUI:
                 GUI.close();
+                break;
             case Test:
                 break;
         }
 
     }
 
-    public static String getUserSelection(String s, String... s1) {
+    public static String getUserSelection(String questionToUser, String... possibleAnswers) {
         switch (mode) {
             case GUI:
-                return GUI.getUserSelection(s, s1);
+                return GUI.getUserSelection(questionToUser, possibleAnswers);
             case Test:
-                System.out.print(s);
+                System.out.print(questionToUser);
                 System.out.print(" [");
 
-                for (String item : s1) {
+                for (String item : possibleAnswers) {
                     System.out.print(item + " ");
                 }
                 System.out.print("] ");
@@ -132,16 +186,16 @@ public class InterfaceController {
 
     }
 
-    public static String getUserButtonPressed(String s, String... no) {
+    public static String getUserButtonPressed(String questionToUser, String... possibleAnswers) {
 
         switch (mode) {
             case GUI:
-                return GUI.getUserButtonPressed(s, no);
+                return GUI.getUserButtonPressed(questionToUser, possibleAnswers);
             case Test:
-                System.out.print(s);
+                System.out.print(questionToUser);
                 System.out.print(" [");
 
-                for (String item : no) {
+                for (String item : possibleAnswers) {
                     System.out.print(item + " ");
                 }
                 System.out.print("] ");
@@ -153,11 +207,11 @@ public class InterfaceController {
 
     }
 
-    public static void setBalance(int balance) {
+    public static void setBalance(Player player, int balance) {
         switch (mode) {
 
             case GUI:
-                GUI.setBalance(GameController.getCurrentPlayer().getName(), balance);
+                GUI.setBalance(player.getName(), balance);
                 break;
             case Test:
                 System.out.println("The players balance was set to " + balance);
@@ -203,12 +257,9 @@ public class InterfaceController {
     public static desktop_fields.Field convertToGUI(Field theField) {
         desktop_fields.Shipping.Builder a = new desktop_fields.Shipping.Builder()
                 .setTitle(theField.getName())
-                .setPicture(null);
+                .setPicture(null)
+                .setSubText("");
         return a.build();
     }
 
-    public enum Mode {
-        GUI,
-        Test
-    }
 }

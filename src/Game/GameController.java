@@ -7,37 +7,30 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 
-import static Game.Language.getString;
-
 /**
  * The main flow of the game.
  * <p>
  * Bugs: none known
  *
  * @author Mathias S Larsen (2016)
- * @version v.0.1
+ * @version v.0.4
  */
 
 public class GameController {
 
-    private static final int FIELD_COUNT = 21;
-    private static final GameBoard gameBoard = new GameBoard(FIELD_COUNT);
+    private static int FIELD_COUNT = 21;
+    private static GameBoard gameBoard = new GameBoard(FIELD_COUNT);
     private static Shaker shaker = new Shaker(2); //creates a shaker with 2 dice.
     private static Player currentPlayer;
-    private final int START_BALANCE = 30000;
-    private final ArrayList<Player> players = new ArrayList<Player>(); //creates an ArrayList that can contain Player objects
+    private static int START_BALANCE = 30000;
+    private static ArrayList<Player> players = new ArrayList<Player>(); //creates an ArrayList that can contain Player objects
 
-    public GameController() { // TODO: 21-11-2016 FIX gamecontroller creation
+    private GameController() {
 
     }
 
     public static GameBoard getGameBoard() {
         return gameBoard;
-    }
-    //private boolean gameWon = false;
-
-    public static Player getCurrentPlayer() {
-        return currentPlayer;
     }
 
     public static Shaker getShaker() {
@@ -60,12 +53,12 @@ public class GameController {
 
     }
 
-    private void initializePlayers() {
+    private static void initializePlayers() {
 
-        String numberSelected = InterfaceController.getUserSelection(getString("greeting"), "2", "3", "4", "5", "6");
+        String numberSelected = InterfaceController.getUserSelection(Language.getString("greeting"), "2", "3", "4", "5", "6");
         int numberOfPlayers = Integer.parseInt(numberSelected);
         for (int i = 0; i < numberOfPlayers; i++) {
-            String name = InterfaceController.getUserString(getString("name1") + (i + 1) + getString("name2")); //the + (i+1) changes the number so system prints player1 then player2...
+            String name = InterfaceController.getUserString(Language.getString("name1") + (i + 1) + Language.getString("name2")); //the + (i+1) changes the number so system prints player1 then player2...
             players.add(new Player(name, START_BALANCE)); //creates a new player object.
 
             // Adds player to the GUI
@@ -77,12 +70,12 @@ public class GameController {
 
     }
 
-    private Color randomColor() {
+    private static Color randomColor() {
         Random random = new Random();
         return new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256));
     }
 
-    private void displayDice(Shaker shaker) {
+    private static void displayDice(Shaker shaker) {
 
         // Declares face values to show the die in the GUI
         int faceValue1 = shaker.getDice()[0].getFaceValue();
@@ -93,11 +86,11 @@ public class GameController {
         InterfaceController.setDice(faceValue1, faceValue2);
     }
 
-    public void startGame() {
+    public static void startGame() {
 
         initializePlayers();
 
-        //loop as long as more than one player is in the game (not bankroupt)
+        //loop as long as more than one player is in the game (not bankrupt)
         while (players.size() > 1) {
 
             //go though all the players.
@@ -109,22 +102,23 @@ public class GameController {
                 //rolls the dice
                 shaker.shake();
 
-                //displayes the dice in the GUI
+                //displays the dice in the GUI
                 displayDice(shaker);
 
-                //moves the players avitar on the gameboard in the GUI
+                //moves the player's token on the gameboard in the GUI
                 movePlayer(currentPlayer, shaker.getSum());
-
 
                 //controles what happens when the player lands on a specific field.
                 Field currentField = gameBoard.getField(currentPlayer.getOnField());
+                InterfaceController.showMessage(currentPlayer.getName() + " " + Language.getString("landed") + " " + currentField.getName());
                 currentField.landOnField(currentPlayer);
 
                 //removes bankrupt players from the game
-                if (currentPlayer.getAccount().getBalance() <= 0) {
+                if (currentPlayer.getBalance() <= 0) {
                     players.remove(currentPlayer);
                     gameBoard.deleteOwnership(currentPlayer);
-                    break;//Stop the loop when we remove an element because we use foreach else we get a pointer error
+                    // Gives the next person the turn, instead of resetting "i".
+                    --i;
                 }
 
 
@@ -133,8 +127,18 @@ public class GameController {
         }
 
         //gets displayed when a winner has been found.
-        InterfaceController.showMessage(players.get(0).getName() + getString("won"));
+        InterfaceController.showMessage(players.get(0).getName() + " " + Language.getString("won"));
 
         InterfaceController.close();
+    }
+
+    public static void reset() {
+        FIELD_COUNT = 21;
+        gameBoard = new GameBoard(FIELD_COUNT);
+        shaker = new Shaker(2); //creates a shaker with 2 dice.
+        currentPlayer = null;
+        START_BALANCE = 30000;
+        players = new ArrayList<Player>(); //creates an ArrayList that can contain Player objects
+
     }
 }

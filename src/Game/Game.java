@@ -1,6 +1,5 @@
 package Game;
 
-import static Game.Language.setLanguage;
 
 /**
  * Keeps track of the balance, and adds/subtracts by the points on the board.
@@ -8,27 +7,20 @@ import static Game.Language.setLanguage;
  * Bugs: none known
  *
  * @author Rasmus Blichfeld
- * @version v.0.1
+ * @version v.0.2
  */
-
-// Game entrypoint.
 public class Game {
 
 
     public static void main(String[] args) {
 
         // Selects the language
-        setLanguage("english");
+        Language.setLanguage("english");
 
         InterfaceController.setInterfaceMode(InterfaceController.Mode.GUI);
 
-        GameController gameController = new GameController(); // TODO: 21-11-2016 FIX gamecontroller creation
-
-        // The GUI generates the fields on the board
-        //gameController.initializePlayers();
-
         // The startGame() method is called to startGame the game
-        gameController.startGame();
+        GameController.startGame();
 
     }
 }

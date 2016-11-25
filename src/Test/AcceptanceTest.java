@@ -14,37 +14,17 @@ import static org.junit.Assert.*;
  * Bugs: none known
  *
  * @author Mathias Larsen
- * @version v.0.2
+ * @version v.0.3
  */
 public class AcceptanceTest {
 
-//
-//
-//    private void testBuyfield(Player player) {
-//        int initialPlayerBalance = player.getAccount().getBalance();
-//        Ownable currentField = (Ownable) GameController.getGameBoard().getField(player.getOnField());
-//
-//        InterfaceController.setPreDefinedAnswer(Language.getString("yes"));
-//
-//        currentField.landOnField(player);
-//
-//        assertEquals((initialPlayerBalance - currentField.getPrice()), player.getAccount().getBalance());
-//
-//        assertEquals(player, currentField.getOwner());
-//    }
-//
-//    private void testMovePlayer(Player player, int i) {
-//        GameController.movePlayer(player1, i);
-//        assertEquals(i, player1.getOnField());
-//    }
-
-    
     private Player player1;
     private Player player2;
     private Player player3;
     private Player player4;
     private Player player5;
     private Player player6;
+    //private GameBoard gameBoard;
 
 
     @BeforeClass
@@ -63,24 +43,23 @@ public class AcceptanceTest {
         this.player4 = new Player("player4", 30000);
         this.player5 = new Player("player5", 30000);
         this.player6 = new Player("player6", 30000);
-
+        //this.gameBoard = new GameBoard(21);
 
 
     }
 
     @After
     public void tearDown() throws Exception {
-        //all ententes are reset in the setup phase.
-
+        GameController.reset();
     }
 
     @Test
-    public void testEntities(){
-        //testes that the GameController.getGameBoard() have been created
+    public void testEntities() {
+        //testes that the gameBoard have been created
         assertNotNull(GameController.getGameBoard());
 
         //tests that all the fields have been created
-        for (int i = 1; i < GameController.getGameBoard().getBoard().length; i++){
+        for (int i = 1; i < GameController.getGameBoard().getBoard().length; i++) {
             assertNotNull(GameController.getGameBoard().getField(i));
             //System.out.println(i);
         }
@@ -99,7 +78,7 @@ public class AcceptanceTest {
 
         //tests the type of the ententes
         assertTrue(GameController.getGameBoard() instanceof GameBoard);
-        
+
 
         assertTrue(GameController.getGameBoard().getField(1) instanceof Territory);
         assertTrue(GameController.getGameBoard().getField(2) instanceof Territory);
@@ -309,34 +288,34 @@ public class AcceptanceTest {
 
         LaborCamp currentLabor = (LaborCamp) GameController.getGameBoard().getField(10);
         GameController.getShaker().setSum(2);
-        expected = -2 * 100;
+        expected = 2 * 100;
         actual = currentLabor.getRent();
         assertEquals(expected, actual);
 
         GameController.getShaker().setSum(5);
-        expected = -5 * 100;
+        expected = 5 * 100;
         actual = currentLabor.getRent();
         assertEquals(expected, actual);
 
         GameController.getShaker().setSum(12);
-        expected = -12 * 100;
+        expected = 12 * 100;
         actual = currentLabor.getRent();
         assertEquals(expected, actual);
 
 
         currentLabor = (LaborCamp) GameController.getGameBoard().getField(14);
         GameController.getShaker().setSum(2);
-        expected = -2 * 100;
+        expected = 2 * 100;
         actual = currentLabor.getRent();
         assertEquals(expected, actual);
 
         GameController.getShaker().setSum(5);
-        expected = -5 * 100;
+        expected = 5 * 100;
         actual = currentLabor.getRent();
         assertEquals(expected, actual);
 
         GameController.getShaker().setSum(12);
-        expected = -12 * 100;
+        expected = 12 * 100;
         actual = currentLabor.getRent();
         assertEquals(expected, actual);
     }
@@ -349,7 +328,7 @@ public class AcceptanceTest {
      * where n is the number of fleet fields and r is the number of fleets owned.
      */
     @Test
-    public void testFleetRent1(){
+    public void testFleetRent1() {
         Fleet currentFleet = (Fleet) GameController.getGameBoard().getField(3);
         currentFleet.setOwner(player1);
         int expected = 500;
@@ -361,7 +340,7 @@ public class AcceptanceTest {
      * tests permutation 2 of 15.
      */
     @Test
-    public void testFleetRent2(){
+    public void testFleetRent2() {
         Fleet currentFleet = (Fleet) GameController.getGameBoard().getField(9);
         currentFleet.setOwner(player1);
         int expected = 500;
@@ -373,7 +352,7 @@ public class AcceptanceTest {
      * tests permutation 3 of 15.
      */
     @Test
-    public void testFleetRent3(){
+    public void testFleetRent3() {
         Fleet currentFleet = (Fleet) GameController.getGameBoard().getField(15);
         currentFleet.setOwner(player1);
         int expected = 500;
@@ -385,7 +364,7 @@ public class AcceptanceTest {
      * tests permutation 4 of 15.
      */
     @Test
-    public void testFleetRent4(){
+    public void testFleetRent4() {
         Fleet currentFleet = (Fleet) GameController.getGameBoard().getField(20);
         currentFleet.setOwner(player1);
         int expected = 500;
@@ -397,7 +376,7 @@ public class AcceptanceTest {
      * tests permutation 5 of 15.
      */
     @Test
-    public void testFleetRent5(){
+    public void testFleetRent5() {
         Fleet currentFleet1 = (Fleet) GameController.getGameBoard().getField(3);
         currentFleet1.setOwner(player1);
         Fleet currentFleet2 = (Fleet) GameController.getGameBoard().getField(9);
@@ -413,7 +392,7 @@ public class AcceptanceTest {
      * tests permutation 6 of 15.
      */
     @Test
-    public void testFleetRent6(){
+    public void testFleetRent6() {
         Fleet currentFleet1 = (Fleet) GameController.getGameBoard().getField(3);
         currentFleet1.setOwner(player1);
         Fleet currentFleet2 = (Fleet) GameController.getGameBoard().getField(15);
@@ -429,7 +408,7 @@ public class AcceptanceTest {
      * tests permutation 7 of 15.
      */
     @Test
-    public void testFleetRent7(){
+    public void testFleetRent7() {
         Fleet currentFleet1 = (Fleet) GameController.getGameBoard().getField(3);
         currentFleet1.setOwner(player1);
         Fleet currentFleet2 = (Fleet) GameController.getGameBoard().getField(20);
@@ -445,7 +424,7 @@ public class AcceptanceTest {
      * tests permutation 8 of 15.
      */
     @Test
-    public void testFleetRent8(){
+    public void testFleetRent8() {
         Fleet currentFleet1 = (Fleet) GameController.getGameBoard().getField(9);
         currentFleet1.setOwner(player1);
         Fleet currentFleet2 = (Fleet) GameController.getGameBoard().getField(15);
@@ -461,7 +440,7 @@ public class AcceptanceTest {
      * tests permutation 9 of 15.
      */
     @Test
-    public void testFleetRent9(){
+    public void testFleetRent9() {
         Fleet currentFleet1 = (Fleet) GameController.getGameBoard().getField(9);
         currentFleet1.setOwner(player1);
         Fleet currentFleet2 = (Fleet) GameController.getGameBoard().getField(20);
@@ -477,7 +456,7 @@ public class AcceptanceTest {
      * tests permutation 10 of 15.
      */
     @Test
-    public void testFleetRent10(){
+    public void testFleetRent10() {
         Fleet currentFleet1 = (Fleet) GameController.getGameBoard().getField(15);
         currentFleet1.setOwner(player1);
         Fleet currentFleet2 = (Fleet) GameController.getGameBoard().getField(20);
@@ -493,7 +472,7 @@ public class AcceptanceTest {
      * tests permutation 11 of 15.
      */
     @Test
-    public void testFleetRent11(){
+    public void testFleetRent11() {
         Fleet currentFleet1 = (Fleet) GameController.getGameBoard().getField(3);
         currentFleet1.setOwner(player1);
         Fleet currentFleet2 = (Fleet) GameController.getGameBoard().getField(9);
@@ -513,7 +492,7 @@ public class AcceptanceTest {
      * tests permutation 12 of 15.
      */
     @Test
-    public void testFleetRent12(){
+    public void testFleetRent12() {
         Fleet currentFleet1 = (Fleet) GameController.getGameBoard().getField(3);
         currentFleet1.setOwner(player1);
         Fleet currentFleet2 = (Fleet) GameController.getGameBoard().getField(9);
@@ -533,7 +512,7 @@ public class AcceptanceTest {
      * tests permutation 13 of 15.
      */
     @Test
-    public void testFleetRent13(){
+    public void testFleetRent13() {
         Fleet currentFleet1 = (Fleet) GameController.getGameBoard().getField(3);
         currentFleet1.setOwner(player1);
         Fleet currentFleet2 = (Fleet) GameController.getGameBoard().getField(15);
@@ -553,7 +532,7 @@ public class AcceptanceTest {
      * tests permutation 14 of 15.
      */
     @Test
-    public void testFleetRent14(){
+    public void testFleetRent14() {
         Fleet currentFleet1 = (Fleet) GameController.getGameBoard().getField(9);
         currentFleet1.setOwner(player1);
         Fleet currentFleet2 = (Fleet) GameController.getGameBoard().getField(15);
@@ -573,7 +552,7 @@ public class AcceptanceTest {
      * tests permutation 15 of 15.
      */
     @Test
-    public void testFleetRent15(){
+    public void testFleetRent15() {
         Fleet currentFleet1 = (Fleet) GameController.getGameBoard().getField(3);
         currentFleet1.setOwner(player1);
         Fleet currentFleet2 = (Fleet) GameController.getGameBoard().getField(9);
@@ -594,7 +573,7 @@ public class AcceptanceTest {
     }
 
     @Test
-    public void testPrice(){
+    public void testPrice() {
         Ownable field = (Ownable) GameController.getGameBoard().getField(1);
         int expected = 1000;
         int actual = field.getPrice();
@@ -682,7 +661,7 @@ public class AcceptanceTest {
     }
 
     @Test
-    public void testOwner(){
+    public void testOwner() {
         Ownable field = (Ownable) GameController.getGameBoard().getField(1);
         field.setOwner(player1);
         Player expected = player1;
@@ -788,7 +767,7 @@ public class AcceptanceTest {
     }
 
     @Test
-    public void testBonus(){
+    public void testBonus() {
         Refuge refuge = (Refuge) GameController.getGameBoard().getField(6);
         int expected = 5000;
         int actual = refuge.getBonus();
@@ -801,7 +780,7 @@ public class AcceptanceTest {
     }
 
     @Test
-    public void testTaxAmount(){
+    public void testTaxAmount() {
         Tax tax = (Tax) GameController.getGameBoard().getField(4);
         int expected = 2000;
         int actual = tax.getTaxAmount();
@@ -814,7 +793,7 @@ public class AcceptanceTest {
     }
 
     @Test
-    public void testTaxRate(){
+    public void testTaxRate() {
         Tax tax = (Tax) GameController.getGameBoard().getField(4);
         float expected = (float) 1.0;
         float actual = tax.getTaxRate();
@@ -827,7 +806,7 @@ public class AcceptanceTest {
     }
 
     @Test
-    public void testGameFlow(){
+    public void testGameFlow() {
 
     }
 }

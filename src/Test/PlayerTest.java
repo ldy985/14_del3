@@ -1,10 +1,10 @@
 package Test;
 
 import Game.Player;
+import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 /**
  * Tests the Player class
@@ -12,14 +12,22 @@ import static org.junit.Assert.assertNotNull;
  * Bugs: none known
  *
  * @author Mathias Larsen
- * @version v.0.1
+ * @version v.0.3
  */
 public class PlayerTest {
 
-    /**
-     * creates a player object.
-     */
-    Player player = new Player("Player1", 10000);
+    private Player player;
+
+    @Before
+    public void setUp() {
+        player = new Player("Player1", 30000);
+    }
+
+    @Test
+    public void testEntities() {
+        assertNotNull(this.player);
+        assertTrue(this.player instanceof Player);
+    }
 
     /**
      * tests the realEstateValue. this value is the value of the fields owned by the player.
@@ -27,15 +35,23 @@ public class PlayerTest {
      * @throws Exception
      */
     @Test
-    public void getRealEstateValue() throws Exception {
+    public void testRealEstateValue() throws Exception {
+
+        int expected = 0;
+        int actual = player.getRealEstateValue();
+        assertEquals(expected, actual);
 
         player.addRealEstateValue(5000);
 
-        assertEquals(5000, player.getRealEstateValue());
+        expected = 5000;
+        actual = player.getRealEstateValue();
+        assertEquals(expected, actual);
 
         player.addRealEstateValue(1000);
 
-        assertEquals(6000, player.getRealEstateValue());
+        expected = 6000;
+        actual = player.getRealEstateValue();
+        assertEquals(expected, actual);
     }
 
     /**
@@ -44,22 +60,52 @@ public class PlayerTest {
      * @throws Exception
      */
     @Test
-    public void getAccount() throws Exception {
+    public void testBallance() throws Exception {
 
-        assertNotNull(player.getAccount());
+        int expected = 30000;
+        int actual = player.getBalance();
+        assertEquals(expected, actual);
+
+        player.addBalance(5000);
+
+        expected = 35000;
+        actual = player.getBalance();
+        assertEquals(expected, actual);
+
+        player.addBalance(-10000);
+
+        expected = 25000;
+        actual = player.getBalance();
+        assertEquals(expected, actual);
+
+        player.addBalance(0);
+
+        expected = 25000;
+        actual = player.getBalance();
+        assertEquals(expected, actual);
     }
 
     @Test
-    public void getName() throws Exception {
+    public void testName() throws Exception {
 
-        assertEquals("Player1", player.getName());
+        String expected = "Player1";
+        String actual = player.getName();
+        assertEquals(expected, actual);
     }
 
     @Test
-    public void getOnField() throws Exception {
+    public void testOnField() throws Exception {
 
         player.setOnField(20);
 
-        assertEquals(20, player.getOnField());
+        int expected = 20;
+        int actual = player.getOnField();
+        assertEquals(expected, actual);
+
+
+        player.setOnField(5);
+        expected = 5;
+        actual = player.getOnField();
+        assertEquals(expected, actual);
     }
 }
